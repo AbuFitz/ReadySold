@@ -6,10 +6,10 @@
     <meta name="description" content="ReadySold - Professional car selling service. We handle everything while you keep your car. Pay only when sold. London & 30 miles.">
     <title>ReadySold - Sell Your Car Without The Stress</title>
 
-    <!-- Google Fonts - Updated Typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
@@ -19,428 +19,365 @@
 </head>
 <body>
 
-    <!-- Header / Navigation - Transparent initially, solid on scroll -->
-    <header class="header" id="main-header">
+    <!-- Header / Navigation -->
+    <header class="header">
         <nav class="nav-container">
-            <!-- Artsy Logo -->
-            <a href="#home" class="logo">
-                <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="25" r="20" class="logo-circle"/>
-                    <path d="M 15 25 L 25 15 L 35 25 L 25 35 Z" class="logo-diamond"/>
-                    <path d="M 25 10 L 25 40" class="logo-line"/>
-                </svg>
-                <span class="logo-text">
-                    <span class="logo-ready">Ready</span><span class="logo-sold">Sold</span>
-                </span>
-            </a>
-
-            <!-- Desktop Navigation -->
+            <div class="logo">
+                <h1>ReadySold</h1>
+            </div>
             <ul class="nav-menu">
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#why-readysold">Why Us</a></li>
-                <li><a href="#calculator">Pricing</a></li>
+                <li><a href="#why-readysold">Why ReadySold</a></li>
+                <li><a href="#calculator">Calculator</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-
-            <button class="cta-button" onclick="scrollToForm()">Free Valuation</button>
-
-            <!-- Mobile Menu Toggle -->
+            <button class="cta-button">Get Free Valuation</button>
             <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <span class="menu-bar"></span>
-                <span class="menu-bar"></span>
-                <span class="menu-bar"></span>
+                <i class="fas fa-bars"></i>
             </button>
         </nav>
     </header>
 
-    <!-- Hero Section - Full View -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-background"></div>
         <div class="hero-overlay"></div>
-
-        <div class="hero-content-wrapper">
-            <!-- Centered Valuation Form -->
-            <div class="valuation-form-centered">
-                <div class="form-intro">
-                    <h1 class="form-headline">Sell Your Car</h1>
-                    <p class="form-subheadline">Professional service. Maximum price. Zero stress.</p>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-headline">SELL YOUR CAR.<br>WE HANDLE EVERYTHING.</h1>
+                <p class="hero-subheadline">Professional service. Maximum price. You keep your car until sold. Pay only when it's done.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Browse Our Service</button>
+                    <button class="btn-secondary">Discover ReadySold</button>
                 </div>
-
-                <form id="valuation-form" class="valuation-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Smith" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="07700 900000" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="registration">Vehicle Registration</label>
-                            <input type="text" id="registration" name="registration" placeholder="AB12 CDE" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mileage">Current Mileage</label>
-                            <input type="text" id="mileage" name="mileage" placeholder="25,000" required>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-submit-form">
-                        Get Free Valuation
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-
-                    <p class="form-disclaimer">Free valuation • No obligation • 2-hour response</p>
-                </form>
             </div>
 
-            <!-- Scroll Down Indicator -->
-            <div class="scroll-indicator">
-                <span>Scroll to explore</span>
-                <i class="fas fa-chevron-down"></i>
+            <!-- Floating Valuation Form -->
+            <div class="floating-form-card">
+                <h3>Get Your Free Valuation</h3>
+                <form id="valuation-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="registration" placeholder="Vehicle Registration" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="mileage" placeholder="Current Mileage" required>
+                    </div>
+                    <button type="submit" class="btn-form-submit">Get Free Valuation</button>
+                </form>
+                <p class="form-note">Free • No obligation • 2-hour response</p>
             </div>
         </div>
     </section>
 
-    <!-- Trust Bar - Animated -->
+    <!-- Trust Bar -->
     <section class="trust-bar">
         <div class="container">
             <div class="trust-items">
-                <div class="trust-item" data-aos="fade-up" data-aos-delay="0">
+                <div class="trust-item">
                     <div class="trust-icon">
-                        <i class="fas fa-shield-check"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="trust-content">
+                    <div class="trust-text">
                         <h4>No Upfront Fees</h4>
                         <p>Pay only when sold</p>
                     </div>
                 </div>
-                <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="trust-item">
                     <div class="trust-icon">
-                        <i class="fas fa-car-side"></i>
+                        <i class="fas fa-car"></i>
                     </div>
-                    <div class="trust-content">
-                        <h4>Keep Your Car</h4>
-                        <p>Drive until it's sold</p>
+                    <div class="trust-text">
+                        <h4>You Keep Your Car</h4>
+                        <p>Drive until sold</p>
                     </div>
                 </div>
-                <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="trust-item">
                     <div class="trust-icon">
-                        <i class="fas fa-hands-helping"></i>
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <div class="trust-content">
-                        <h4>Full Service</h4>
+                    <div class="trust-text">
+                        <h4>Full Service Included</h4>
                         <p>We handle everything</p>
                     </div>
                 </div>
-                <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="trust-item">
                     <div class="trust-icon">
-                        <i class="fas fa-map-marked-alt"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="trust-content">
-                        <h4>London Based</h4>
-                        <p>30-mile coverage</p>
+                    <div class="trust-text">
+                        <h4>London & 30 Miles</h4>
+                        <p>Local service area</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section - Redesigned -->
+    <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The Process</span>
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Three simple steps to sell your car without the stress</p>
+                <h2 class="section-title">HOW IT WORKS</h2>
+                <p class="section-subtitle">Three simple steps to selling your car the stress-free way</p>
             </div>
 
-            <div class="steps-timeline">
-                <div class="step-item" data-aos="fade-right">
-                    <div class="step-visual">
-                        <div class="step-number-circle">01</div>
-                        <div class="step-icon-box">
-                            <i class="fas fa-file-invoice"></i>
-                        </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-list"></i>
                     </div>
-                    <div class="step-content">
-                        <h3>Free Valuation</h3>
-                        <p>Submit your car details. We research market data and comparable sales to provide you with a realistic, data-driven valuation within 2 hours.</p>
-                    </div>
+                    <h3 class="step-title">Free Valuation</h3>
+                    <p class="step-description">Tell us about your car. We research the market, analyze comparable sales, and call you with a realistic target price. No guesswork, just data.</p>
                 </div>
 
-                <div class="step-connector"></div>
-
-                <div class="step-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="step-visual">
-                        <div class="step-number-circle">02</div>
-                        <div class="step-icon-box">
-                            <i class="fas fa-camera-retro"></i>
-                        </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-camera"></i>
                     </div>
-                    <div class="step-content">
-                        <h3>We Take Control</h3>
-                        <p>Professional photography, compelling listings across multiple platforms, screening buyers, managing viewings, and expert negotiation. You stay in the driver's seat.</p>
-                    </div>
+                    <h3 class="step-title">We Handle Everything</h3>
+                    <p class="step-description">Professional photos, compelling listings, managing viewings, conducting test drives, negotiating with buyers. You keep your car and carry on as normal.</p>
                 </div>
 
-                <div class="step-connector"></div>
-
-                <div class="step-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="step-visual">
-                        <div class="step-number-circle">03</div>
-                        <div class="step-icon-box">
-                            <i class="fas fa-badge-check"></i>
-                        </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-money-bill-wave"></i>
                     </div>
-                    <div class="step-content">
-                        <h3>Sale Complete</h3>
-                        <p>Buyer transfers funds directly to you. We handle all paperwork and DVLA notifications. You pay our fee only when the sale completes successfully.</p>
-                    </div>
+                    <h3 class="step-title">You Get Paid</h3>
+                    <p class="step-description">Buyer pays you directly. We complete all paperwork and admin. You pay our fee only when the sale is complete. Simple, transparent, fair.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Break 1 - Parallax Effect -->
-    <section class="image-break parallax-section" data-parallax="scroll" data-image-src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920">
-        <div class="parallax-overlay"></div>
-        <div class="parallax-content">
-            <h2 data-aos="zoom-in">Professional Photography Included</h2>
-            <p data-aos="zoom-in" data-aos-delay="100">Showroom-quality images that sell your car faster</p>
-        </div>
+    <!-- Image Break 1 -->
+    <section class="image-break image-break-1">
+        <div class="image-break-overlay"></div>
     </section>
 
-    <!-- Why ReadySold - Enhanced Comparison -->
+    <!-- Why ReadySold Section -->
     <section class="why-readysold" id="why-readysold">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The Difference</span>
-                <h2 class="section-title">Why Choose ReadySold?</h2>
-                <p class="section-subtitle">See how we compare to your other options</p>
+                <h2 class="section-title">WHY READYSOLD?</h2>
+                <p class="section-subtitle">Compare your options and see why we're the smart choice</p>
             </div>
 
-            <div class="comparison-table-wrapper">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th class="feature-col">Feature</th>
-                            <th class="highlight-col">
-                                <span class="table-badge">ReadySold</span>
-                            </th>
-                            <th>Sell Yourself</th>
-                            <th>WeBuyAnyCar</th>
-                            <th>Dealer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="feature-col">Get full market value</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">No time wasters or scammers</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">Keep your car while selling</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">Professional photography</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td class="na-cell">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">Handle viewings & test drives</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td class="na-cell">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">Expert negotiation</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">No upfront costs</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="feature-col">All paperwork handled</td>
-                            <td class="highlight-col"><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-times-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                            <td><i class="fas fa-check-circle"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comparison-cell">Feature</div>
+                    <div class="comparison-cell highlight-column">ReadySold</div>
+                    <div class="comparison-cell">Sell Yourself</div>
+                    <div class="comparison-cell">WeBuyAnyCar</div>
+                    <div class="comparison-cell">Dealer</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Get full market value</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">No time wasters or scammers</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Keep your car while selling</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Professional photography</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell">N/A</div>
+                    <div class="comparison-cell">N/A</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">We handle viewings & test drives</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell">N/A</div>
+                    <div class="comparison-cell">N/A</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Expert negotiation</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell">N/A</div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">No upfront costs</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">All paperwork handled</div>
+                    <div class="comparison-cell highlight-column"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
             </div>
 
-            <div class="section-cta">
-                <button class="btn-primary-large" onclick="scrollToForm()">Get Started Today</button>
+            <div class="why-readysold-cta">
+                <button class="btn-primary">Get Started Today</button>
             </div>
         </div>
     </section>
 
-    <!-- Calculator Section - Enhanced -->
+    <!-- Calculator Section -->
     <section class="calculator-section" id="calculator">
         <div class="container">
-            <div class="calculator-wrapper">
+            <div class="calculator-grid">
                 <div class="calculator-info">
-                    <span class="section-label">Pricing</span>
-                    <h2 class="section-title">Transparent Pricing</h2>
-                    <p class="calculator-intro">Our fee structure is simple and fair. You only pay when your car sells successfully.</p>
+                    <h2 class="section-title">TRANSPARENT PRICING</h2>
+                    <p class="calculator-intro">Our fee is simple and fair. You only pay when your car sells.</p>
 
-                    <ul class="features-list">
+                    <ul class="calculator-features">
                         <li>
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-check-circle"></i>
                             <span>No hidden charges or surprise fees</span>
                         </li>
                         <li>
-                            <i class="fas fa-check"></i>
-                            <span>Payment only on successful sale</span>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Pay only on successful sale</span>
                         </li>
                         <li>
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-check-circle"></i>
                             <span>Includes all professional services</span>
                         </li>
                         <li>
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-check-circle"></i>
                             <span>Photography, listings, viewings, paperwork</span>
                         </li>
                         <li>
-                            <i class="fas fa-check"></i>
-                            <span>Expert negotiation for maximum price</span>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert negotiation to maximize price</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="calculator-box">
+                <div class="calculator-card">
                     <h3>Calculate Your Fee</h3>
-                    <div class="calculator-controls">
+                    <div class="calculator-form">
                         <label for="sale-price">Expected Sale Price</label>
-                        <div class="price-input-wrapper">
-                            <span class="currency">£</span>
+                        <div class="input-with-symbol">
+                            <span class="currency-symbol">£</span>
                             <input type="number" id="sale-price" value="15000" min="1000" max="100000" step="500">
                         </div>
-                        <input type="range" id="price-slider" min="1000" max="100000" value="15000" step="500" class="price-slider">
+                        <input type="range" id="price-slider" min="1000" max="100000" value="15000" step="500">
 
-                        <div class="calculator-breakdown">
-                            <div class="breakdown-row">
-                                <span class="breakdown-label">Sale Price</span>
-                                <span class="breakdown-value" id="display-price">£15,000</span>
+                        <div class="calculator-results">
+                            <div class="result-row">
+                                <span>Sale Price:</span>
+                                <span class="result-value" id="display-price">£15,000</span>
                             </div>
-                            <div class="breakdown-row">
-                                <span class="breakdown-label">Our Fee (5%)</span>
-                                <span class="breakdown-value" id="fee-amount">£750</span>
+                            <div class="result-row">
+                                <span>Our Fee (5%):</span>
+                                <span class="result-value" id="fee-amount">£750</span>
                             </div>
-                            <div class="breakdown-row total-row">
-                                <span class="breakdown-label">You Receive</span>
-                                <span class="breakdown-value highlight" id="you-receive">£14,250</span>
+                            <div class="result-row total">
+                                <span>You Receive:</span>
+                                <span class="result-value" id="you-receive">£14,250</span>
                             </div>
                         </div>
 
-                        <button class="btn-calculator" onclick="scrollToForm()">
-                            Get Your Free Valuation
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
+                        <button class="btn-calculator">Get Your Free Valuation</button>
                     </div>
-                    <p class="calculator-footnote">* Typical fee is 5%. Final commission discussed during valuation.</p>
+                    <p class="calculator-note">* Typical fee is 5%. Final fee discussed during valuation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Break 2 - Parallax Effect -->
-    <section class="image-break parallax-section" data-parallax="scroll" data-image-src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920">
-        <div class="parallax-overlay"></div>
-        <div class="parallax-content">
-            <h2 data-aos="zoom-in">We Handle Everything</h2>
-            <p data-aos="zoom-in" data-aos-delay="100">From listing to sale completion</p>
-        </div>
+    <!-- Image Break 2 -->
+    <section class="image-break image-break-2">
+        <div class="image-break-overlay"></div>
     </section>
 
-    <!-- Testimonials Section - Enhanced -->
+    <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Reviews</span>
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle">Real experiences from satisfied car sellers</p>
+                <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+                <p class="section-subtitle">Real experiences from car sellers who chose ReadySold</p>
             </div>
 
-            <div class="testimonials-slider">
-                <div class="testimonial-card" data-aos="fade-up">
-                    <div class="testimonial-rating">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"Absolutely brilliant service. They sold my BMW for £2,000 more than the dealer offered and I didn't have to do anything. Worth every penny of their fee."</p>
+                    <p class="testimonial-quote">"Absolutely brilliant service. They sold my BMW for £2,000 more than the dealer offered and I didn't have to do anything. Worth every penny of their fee."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">JW</div>
-                        <div class="author-details">
+                        <div class="author-info">
                             <h4>James Wilson</h4>
                             <p>Richmond, London</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-rating">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"I was dreading selling my car privately - the time wasters, the lowball offers. ReadySold handled everything professionally and got me a great price."</p>
+                    <p class="testimonial-quote">"I was dreading selling my car privately - the time wasters, the lowball offers. ReadySold handled everything professionally and got me a great price. Highly recommend."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">SP</div>
-                        <div class="author-details">
+                        <div class="author-info">
                             <h4>Sarah Peterson</h4>
                             <p>Wimbledon, London</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-rating">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"Professional from start to finish. The photos they took made my car look showroom-ready. Sold within 2 weeks at asking price. Couldn't be happier."</p>
+                    <p class="testimonial-quote">"Professional from start to finish. The photos they took made my car look showroom-ready. Sold within 2 weeks at asking price. Couldn't be happier with the service."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">MC</div>
-                        <div class="author-details">
+                        <div class="author-info">
                             <h4>Michael Chen</h4>
                             <p>Clapham, London</p>
                         </div>
@@ -453,17 +390,14 @@
     <!-- Final CTA Section -->
     <section class="final-cta" id="contact">
         <div class="container">
-            <div class="cta-wrapper">
-                <h2 data-aos="fade-up">Ready to Sell Without The Stress?</h2>
-                <p data-aos="fade-up" data-aos-delay="50">Get your free valuation today. No obligation, no upfront costs.</p>
-                <div class="cta-actions" data-aos="fade-up" data-aos-delay="100">
-                    <button class="btn-cta-primary" onclick="scrollToForm()">Get Free Valuation</button>
-                    <a href="tel:02012345678" class="btn-cta-secondary">
-                        <i class="fas fa-phone"></i>
-                        020 1234 5678
-                    </a>
+            <div class="cta-content">
+                <h2>Ready to sell without the stress?</h2>
+                <p>Get your free valuation today. No obligation, no upfront costs.</p>
+                <div class="cta-buttons">
+                    <button class="btn-cta-primary">Get Free Valuation</button>
+                    <button class="btn-cta-secondary">Call Us: 020 1234 5678</button>
                 </div>
-                <p class="cta-meta">2-hour response • London & 30 miles • Mon-Sat 9am-6pm</p>
+                <p class="cta-note">Average response time: 2 hours • Service area: London & 30 miles</p>
             </div>
         </div>
     </section>
@@ -471,122 +405,59 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <!-- Logo -->
-                    <a href="#home" class="footer-logo">
-                        <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="25" cy="25" r="20" class="logo-circle"/>
-                            <path d="M 15 25 L 25 15 L 35 25 L 25 35 Z" class="logo-diamond"/>
-                            <path d="M 25 10 L 25 40" class="logo-line"/>
-                        </svg>
-                        <span class="logo-text">
-                            <span class="logo-ready">Ready</span><span class="logo-sold">Sold</span>
-                        </span>
-                    </a>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ReadySold</h3>
                     <p>Professional car selling service in London. We handle everything while you keep your car. Pay only when sold.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#how-it-works">How It Works</a></li>
-                            <li><a href="#why-readysold">Why ReadySold</a></li>
-                            <li><a href="#calculator">Pricing Calculator</a></li>
-                            <li><a href="#testimonials">Testimonials</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#why-readysold">Why ReadySold</a></li>
+                        <li><a href="#calculator">Pricing Calculator</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Car Valuation</a></li>
-                            <li><a href="#">Professional Photography</a></li>
-                            <li><a href="#">Listing Management</a></li>
-                            <li><a href="#">Viewing Coordination</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Car Valuation</a></li>
+                        <li><a href="#">Professional Photography</a></li>
+                        <li><a href="#">Listing Management</a></li>
+                        <li><a href="#">Viewing Coordination</a></li>
+                    </ul>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Contact</h4>
-                        <ul class="contact-list">
-                            <li><i class="fas fa-phone"></i> 020 1234 5678</li>
-                            <li><i class="fas fa-envelope"></i> hello@readysold.co.uk</li>
-                            <li><i class="fas fa-map-marker-alt"></i> London & 30 miles</li>
-                            <li><i class="fas fa-clock"></i> Mon-Sat: 9am-6pm</li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> 020 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> hello@readysold.co.uk</li>
+                        <li><i class="fas fa-map-marker-alt"></i> London & 30 miles</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9am-6pm</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2025 ReadySold. All rights reserved.</p>
                 <div class="footer-legal">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms & Conditions</a>
-                    <a href="cookies.html">Cookie Policy</a>
-                    <a href="gdpr.html">GDPR</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content">
-            <p><strong>We use cookies</strong> to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="cookies.html">Learn more</a></p>
-            <div class="cookie-actions">
-                <button class="btn-cookie-accept" onclick="acceptCookies()">Accept</button>
-                <button class="btn-cookie-decline" onclick="declineCookies()">Decline</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chat Widget -->
-    <div class="chat-widget" id="chat-widget">
-        <button class="chat-toggle" id="chat-toggle" aria-label="Open chat">
-            <i class="fas fa-comments"></i>
-            <span class="chat-badge">1</span>
-        </button>
-        <div class="chat-window" id="chat-window">
-            <div class="chat-header">
-                <h4>How can we help?</h4>
-                <button class="chat-close" id="chat-close" aria-label="Close chat">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-body">
-                <div class="chat-message bot-message">
-                    <p>Hi! I'm here to help. What would you like to know?</p>
-                </div>
-                <div class="chat-options">
-                    <button class="chat-option" onclick="selectChatOption('valuation')">
-                        <i class="fas fa-calculator"></i>
-                        Get a valuation
-                    </button>
-                    <button class="chat-option" onclick="selectChatOption('process')">
-                        <i class="fas fa-question-circle"></i>
-                        How does it work?
-                    </button>
-                    <button class="chat-option" onclick="selectChatOption('pricing')">
-                        <i class="fas fa-pound-sign"></i>
-                        Pricing questions
-                    </button>
-                    <button class="chat-option" onclick="selectChatOption('contact')">
-                        <i class="fas fa-phone"></i>
-                        Speak to someone
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
