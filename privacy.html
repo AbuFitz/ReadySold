@@ -3,81 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for ReadySold car selling service.">
     <title>Privacy Policy - ReadySold</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .legal-page {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 20px 60px;
-        }
-        .legal-page h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-        }
-        .legal-page .last-updated {
-            color: #757575;
-            margin-bottom: 2rem;
-        }
-        .legal-page h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.75rem;
-            color: #1a1a1a;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .legal-page h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.25rem;
-            color: #212121;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .legal-page p, .legal-page li {
-            line-height: 1.8;
-            color: #424242;
-            margin-bottom: 1rem;
-        }
-        .legal-page ul, .legal-page ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        .legal-page li {
-            margin-bottom: 0.5rem;
-        }
-        .legal-page strong {
-            color: #212121;
-        }
-        .legal-page a {
-            color: #d32f2f;
-            text-decoration: underline;
-        }
-        .legal-page a:hover {
-            color: #b71c1c;
-        }
-    </style>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container-fluid">
-            <nav class="nav-container">
-                <a href="index.html" class="logo">
-                    <h1><span class="logo-ready">Ready</span><span class="logo-sold">Sold</span></h1>
-                    <p class="logo-tagline">Best Car Dealer London</p>
-                </a>
-                <a href="index.html" style="color: #d32f2f; text-decoration: none; font-weight: 600;">← Back to Home</a>
-            </nav>
+
+    <!-- Header / Navigation -->
+    <header class="header" id="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-ready">Ready</span><span class="logo-sold">Sold</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#comparison">Why Choose Us</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html" class="btn-nav">Get Free Valuation</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </header>
 
-    <div class="legal-page">
-        <h1>Privacy Policy</h1>
-        <p class="last-updated"><strong>Last Updated:</strong> 5 December 2025</p>
+    <!-- Legal Hero Section -->
+    <section class="legal-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="legal-subtitle">Last updated: December 5, 2025</p>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="legal-content">
+        <div class="container">
+            <div class="legal-wrapper">
+                <div class="legal-text">
 
         <p>ReadySold ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our car selling services.</p>
 
@@ -252,27 +227,86 @@
             Website: <a href="https://ico.org.uk" target="_blank">www.ico.org.uk</a><br>
             Helpline: 0303 123 1113
         </p>
+                </div>
 
-        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
-            <a href="index.html">Return to Homepage</a> |
-            <a href="terms.html">Terms & Conditions</a> |
-            <a href="cookies.html">Cookie Policy</a> |
-            <a href="gdpr.html">GDPR Information</a>
-        </p>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 ReadySold. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms & Conditions</a>
-                    <a href="cookies.html">Cookie Policy</a>
-                    <a href="gdpr.html">GDPR</a>
+                <div class="legal-sidebar">
+                    <div class="legal-contact-card">
+                        <h3>Need Help?</h3>
+                        <p>Have questions about our privacy policy?</p>
+                        <a href="contact.html" class="btn-secondary">Contact Us</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4><span class="logo-ready">Ready</span><span class="logo-sold">Sold</span></h4>
+                    <p>Professional car selling service. We handle everything while you keep your car. Pay only when sold.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#comparison">Why Choose Us</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Get In Touch</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:02012345678">020 1234 5678</a></li>
+                        <li><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
+                        <li>Nationwide Service</li>
+                        <li>Mon-Sat 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ReadySold. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navigation scroll behavior
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>
