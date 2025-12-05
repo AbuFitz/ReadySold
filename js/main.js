@@ -376,6 +376,19 @@ function scrollToHero() {
 window.scrollToSection = scrollToSection;
 window.scrollToHero = scrollToHero;
 
+// Chat widget functions
+function toggleChat() {
+    const chatPanel = document.getElementById('chat-panel');
+    chatPanel.classList.toggle('active');
+}
+
+function toggleFaq(element) {
+    element.classList.toggle('active');
+}
+
+window.toggleChat = toggleChat;
+window.toggleFaq = toggleFaq;
+
 // Smooth scroll for all anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
