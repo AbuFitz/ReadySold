@@ -3,25 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms & Conditions for ReadySold car selling service.">
     <title>Terms & Conditions - ReadySold</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container nav-container">
-            <div class="logo">
-                <span class="logo-icon">🚗</span>
-                <span class="logo-text">ReadySold</span>
-            </div>
-            <ul class="nav-links">
+
+    <!-- Header / Navigation -->
+    <header class="header" id="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-ready">Ready</span><span class="logo-sold">Sold</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#comparison">Why Choose Us</a></li>
                 <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html" class="btn-nav">Get Free Valuation</a></li>
             </ul>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
-    </nav>
+    </header>
 
     <!-- Legal Hero Section -->
     <section class="legal-hero">
@@ -249,22 +266,17 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-column">
-                    <div class="footer-logo">
-                        <span class="logo-icon">🚗</span>
-                        <span class="logo-text">ReadySold</span>
-                    </div>
-                    <p class="footer-description">
-                        The UK's most trusted car buying service. Sell your car quickly, safely, and for the best price.
-                    </p>
+                    <h4><span class="logo-ready">Ready</span><span class="logo-sold">Sold</span></h4>
+                    <p>Professional car selling service. We handle everything while you keep your car. Pay only when sold.</p>
                 </div>
 
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#comparison">Why Choose Us</a></li>
                         <li><a href="index.html#pricing">Pricing</a></li>
                     </ul>
                 </div>
@@ -281,20 +293,33 @@
                 <div class="footer-column">
                     <h4>Get In Touch</h4>
                     <ul class="footer-links">
-                        <li><a href="tel:08001234567">0800 123 4567</a></li>
+                        <li><a href="tel:02012345678">020 1234 5678</a></li>
                         <li><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
+                        <li>Nationwide Service</li>
+                        <li>Mon-Sat 9am-6pm</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 ReadySold. All rights reserved.</p>
+                <p>&copy; 2025 ReadySold. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>

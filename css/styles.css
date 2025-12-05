@@ -1706,7 +1706,7 @@ input,
 
 .contact-hero {
     background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
-    padding: 8rem 0 6rem;
+    padding: 6rem 0 4rem;
     text-align: center;
     color: var(--white);
 }
@@ -1720,49 +1720,19 @@ input,
 .contact-hero-subtitle {
     font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 3rem;
-}
-
-.search-box {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.search-box i {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gray-400);
-    width: 20px;
-    height: 20px;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 1.25rem 1.25rem 1.25rem 3.5rem;
-    border: none;
-    border-radius: var(--radius-lg);
-    font-size: 1rem;
-    font-family: var(--font-primary);
-    box-shadow: var(--shadow-lg);
-}
-
-.search-box input:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2), var(--shadow-lg);
+    margin-bottom: 0;
 }
 
 /* FAQ Section */
 .faq-section {
     padding: 4rem 0;
-    background-color: var(--white);
+    background-color: var(--gray-50);
 }
 
 .faq-categories {
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .faq-category {
@@ -1770,26 +1740,26 @@ input,
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     padding: 2rem;
-    box-shadow: var(--shadow-sm);
 }
 
 .category-header {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 2px solid var(--gray-100);
 }
 
 .category-header i {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     color: var(--sky-blue);
 }
 
-.category-header h2 {
-    font-size: 1.75rem;
+.category-header h2,
+.category-header h3 {
+    font-size: 1.5rem;
     color: var(--navy);
     margin: 0;
 }
@@ -1872,28 +1842,28 @@ input,
 
 /* Contact Info Section */
 .contact-info-section {
-    padding: 6rem 0;
-    background-color: var(--gray-50);
+    padding: 4rem 0;
+    background-color: var(--white);
 }
 
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 3rem;
 }
 
 .contact-card {
     background-color: var(--white);
     padding: 3rem 2rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    border: 2px solid var(--gray-200);
     text-align: center;
     transition: var(--transition);
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
+    border-color: var(--sky-blue);
     box-shadow: var(--shadow-lg);
 }
 
@@ -1977,7 +1947,7 @@ input,
 
 @media (max-width: 640px) {
     .contact-hero {
-        padding: 6rem 0 4rem;
+        padding: 5rem 0 3rem;
     }
 
     .contact-hero h1 {
@@ -1992,8 +1962,9 @@ input,
         padding: 1.5rem;
     }
 
-    .category-header h2 {
-        font-size: 1.5rem;
+    .category-header h2,
+    .category-header h3 {
+        font-size: 1.25rem;
     }
 
     .faq-question {
