@@ -238,10 +238,12 @@ section {
 
 .btn-nav {
     background-color: var(--sky-blue);
-    color: var(--white);
+    color: var(--white) !important;
     padding: 0.75rem 1.75rem;
     border-radius: var(--radius-full);
     font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-primary);
     border: none;
     cursor: pointer;
     transition: var(--transition);
@@ -252,6 +254,7 @@ section {
     background-color: var(--sky-blue-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    color: var(--white) !important;
 }
 
 /* Mobile Menu Toggle */
@@ -281,10 +284,12 @@ section {
 .hero {
     position: relative;
     height: 85vh;
+    min-height: 650px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: 12vh;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
     background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
@@ -310,22 +315,23 @@ section {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    gap: 2rem;
+    justify-content: center;
 }
 
 .hero-text-content {
     background-color: transparent;
-    padding: 3rem;
+    padding: 1.5rem;
     border-radius: var(--radius-lg);
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
-    margin-bottom: auto;
 }
 
 .hero h1 {
     color: var(--white);
     margin-bottom: 1rem;
     font-weight: 700;
+    font-size: 4rem;
 }
 
 .hero-subtitle {
@@ -344,7 +350,6 @@ section {
     max-width: 1100px;
     width: 100%;
     margin: 0 auto;
-    transform: translateY(60px);
     position: relative;
     z-index: 20;
 }
@@ -426,7 +431,9 @@ section {
 
 .trust-bar {
     background-color: var(--gray-50);
-    padding: 5rem 0 2rem;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
 }
 
 .trust-container {
@@ -1018,8 +1025,8 @@ section {
 }
 
 .btn-cta {
-    background-color: var(--sky-blue);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--sky-blue);
     padding: 1.25rem 3rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius-full);
@@ -1034,10 +1041,10 @@ section {
 }
 
 .btn-cta:hover {
-    background-color: var(--sky-blue-light);
-    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.95);
+    border-color: var(--white);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.4);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3);
 }
 
 .cta-trust-line {
@@ -1825,7 +1832,7 @@ input,
    ============================================ */
 
 .contact-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
+    background: var(--navy);
     padding: 6rem 0 4rem;
     text-align: center;
     color: var(--white);
@@ -2102,7 +2109,7 @@ input,
    ============================================ */
 
 .legal-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
+    background: var(--navy);
     padding: 6rem 0 4rem;
     text-align: center;
     color: var(--white);
