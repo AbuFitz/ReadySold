@@ -19,8 +19,8 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="nav" id="main-nav">
+    <!-- Header / Navigation -->
+    <header class="header" id="main-header">
         <div class="nav-container">
             <a href="#home" class="logo">
                 <span class="logo-ready">Ready</span><span class="logo-sold">Sold</span>
@@ -29,41 +29,42 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#why-choose-us">Why Choose Us</a></li>
+                <li><a href="#comparison">Why Choose Us</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button class="btn-nav" onclick="scrollToHero()">Get Started</button></li>
             </ul>
 
-            <button class="btn-cta" onclick="scrollToHero()">Get Free Valuation</button>
-
             <button class="mobile-menu-toggle" id="mobile-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <i data-lucide="menu"></i>
             </button>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Sell Your Car Without The Stress</h1>
-            <p class="hero-subtitle">We handle photos, listings, viewings, and negotiation.<br>You only pay when it sells.</p>
+            <div class="hero-badge">
+                <i data-lucide="trending-up"></i>
+                Professional Car Selling Service
+            </div>
+
+            <h1>Sell Your Car Without The Stress</h1>
+            <p class="hero-subtitle">We handle photos, listings, viewings, and negotiation. You only pay when it sells.</p>
 
             <div class="hero-form-card">
                 <form id="hero-form" class="hero-form">
                     <div class="form-field">
                         <label>Registration</label>
-                        <input type="text" id="registration" placeholder="AB12 CDE" required maxlength="8">
+                        <input type="text" name="registration" id="registration" placeholder="AB12 CDE" required maxlength="8">
                     </div>
                     <div class="form-field">
                         <label>Mileage</label>
-                        <input type="text" id="mileage" placeholder="e.g. 45,000" required>
+                        <input type="text" name="mileage" id="mileage" placeholder="e.g. 45,000" required>
                     </div>
                     <div class="form-field">
                         <label>Your Price</label>
-                        <input type="text" id="price" placeholder="e.g. £6,000" required>
+                        <input type="text" name="price" id="price" placeholder="e.g. £6,000" required>
                     </div>
                     <button type="submit" class="btn-hero">
                         Get Free Valuation
@@ -78,52 +79,68 @@
     <!-- Trust Bar -->
     <section class="trust-bar">
         <div class="container">
-            <div class="trust-items">
+            <div class="trust-grid">
                 <div class="trust-item">
-                    <i data-lucide="pound-sterling"></i>
-                    <span>No Upfront Fees</span>
+                    <div class="trust-icon">
+                        <i data-lucide="pound-sterling"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>No Upfront Fees</h4>
+                        <p>Pay only when sold</p>
+                    </div>
                 </div>
                 <div class="trust-item">
-                    <i data-lucide="car"></i>
-                    <span>Keep Driving Your Car</span>
+                    <div class="trust-icon">
+                        <i data-lucide="car"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>Keep Your Car</h4>
+                        <p>Drive until it sells</p>
+                    </div>
                 </div>
                 <div class="trust-item">
-                    <i data-lucide="check-circle"></i>
-                    <span>We Handle Everything</span>
+                    <div class="trust-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>We Handle Everything</h4>
+                        <p>From photos to paperwork</p>
+                    </div>
                 </div>
                 <div class="trust-item">
-                    <i data-lucide="star"></i>
-                    <span>Helping Sellers Since 2025</span>
+                    <div class="trust-icon">
+                        <i data-lucide="star"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>Expert Service</h4>
+                        <p>Professional car sellers</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="section" id="how-it-works">
+    <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">THE PROCESS</span>
+                <p class="section-subtitle">THE PROCESS</p>
                 <h2>How It Works</h2>
                 <p>Three simple steps to sell your car stress-free</p>
             </div>
 
-            <div class="steps">
+            <div class="steps-container">
                 <div class="step-card">
-                    <div class="step-badge">01</div>
+                    <div class="step-number">1</div>
                     <div class="step-icon">
-                        <i data-lucide="clipboard"></i>
+                        <i data-lucide="clipboard-list"></i>
                     </div>
                     <h3>Free Valuation</h3>
                     <p>Tell us about your car. We'll research the market and call you within 2 hours with a realistic price.</p>
                 </div>
 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-
                 <div class="step-card">
-                    <div class="step-badge">02</div>
+                    <div class="step-number">2</div>
                     <div class="step-icon">
                         <i data-lucide="camera"></i>
                     </div>
@@ -131,14 +148,10 @@
                     <p>Professional photography, listings on all platforms, buyer screening, viewings, test drives, negotiation — all handled by us.</p>
                 </div>
 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-
                 <div class="step-card">
-                    <div class="step-badge">03</div>
+                    <div class="step-number">3</div>
                     <div class="step-icon">
-                        <i data-lucide="check"></i>
+                        <i data-lucide="check-circle-2"></i>
                     </div>
                     <h3>Sale Complete</h3>
                     <p>Buyer pays you directly. We handle the paperwork. You pay our fee only when successfully sold.</p>
@@ -147,30 +160,24 @@
         </div>
     </section>
 
-    <!-- Image Break -->
-    <section class="image-break">
-        <div class="image-break-overlay"></div>
-        <div class="image-break-content">
-            <h2>Professional Photography Included</h2>
-            <p>Showroom-quality images that sell your car faster</p>
-        </div>
-    </section>
+    <!-- Image Divider -->
+    <div class="image-divider"></div>
 
-    <!-- Why Choose Us -->
-    <section class="section section-grey" id="why-choose-us">
+    <!-- Comparison Section -->
+    <section class="comparison-section" id="comparison">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">THE DIFFERENCE</span>
+                <p class="section-subtitle">THE DIFFERENCE</p>
                 <h2>Why Choose ReadySold?</h2>
                 <p>See how we compare to your other options</p>
             </div>
 
-            <div class="comparison-table-wrapper">
+            <div class="comparison-container">
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th class="feature-col">Feature</th>
-                            <th class="highlight-col">ReadySold</th>
+                            <th>Feature</th>
+                            <th>ReadySold</th>
                             <th>Sell Yourself</th>
                             <th>WeBuyAnyCar</th>
                             <th>Dealer Trade-In</th>
@@ -178,53 +185,53 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="feature-col">Get full market value</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
+                            <td>Get full market value</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
                         </tr>
                         <tr>
-                            <td class="feature-col">No time wasters</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
+                            <td>No time wasters</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
                         </tr>
                         <tr>
-                            <td class="feature-col">Keep your car while selling</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
+                            <td>Keep your car while selling</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
                         </tr>
                         <tr>
-                            <td class="feature-col">Professional photography</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td class="na-cell">N/A</td>
+                            <td>Professional photography</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td>N/A</td>
+                            <td>N/A</td>
                         </tr>
                         <tr>
-                            <td class="feature-col">Handle viewings & test drives</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td class="na-cell">N/A</td>
+                            <td>Handle viewings & test drives</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td>N/A</td>
+                            <td>N/A</td>
                         </tr>
                         <tr>
-                            <td class="feature-col">Expert negotiation</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td class="na-cell">N/A</td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
+                            <td>Expert negotiation</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td>N/A</td>
+                            <td><i data-lucide="x" class="cross"></i></td>
                         </tr>
                         <tr>
-                            <td class="feature-col">All paperwork handled</td>
-                            <td class="highlight-col"><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="x" class="x-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
-                            <td><i data-lucide="check" class="check-icon"></i></td>
+                            <td>All paperwork handled</td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="x" class="cross"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
+                            <td><i data-lucide="check" class="check"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -233,64 +240,54 @@
     </section>
 
     <!-- Pricing Calculator -->
-    <section class="section" id="pricing">
+    <section class="pricing-section" id="pricing">
         <div class="container">
-            <div class="pricing-wrapper">
-                <div class="pricing-content">
-                    <span class="section-label">PRICING</span>
-                    <h2>Transparent Pricing</h2>
-                    <p class="pricing-intro">Simple, fair pricing. You only pay when your car sells successfully.</p>
+            <div class="section-header">
+                <p class="section-subtitle">PRICING</p>
+                <h2>Transparent Pricing</h2>
+                <p>Simple, fair pricing. You only pay when your car sells successfully.</p>
+            </div>
 
-                    <ul class="pricing-features">
-                        <li><i data-lucide="check-circle"></i><span>No hidden charges or surprise fees</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Payment only on successful sale</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Includes all professional services</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Photography, listings, viewings included</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Expert negotiation for maximum price</span></li>
-                    </ul>
-                </div>
-
-                <div class="calculator-card">
-                    <h3>Calculate Your Fee</h3>
-                    <div class="calculator-body">
-                        <label>Expected Sale Price</label>
-                        <div class="price-input-wrapper">
-                            <span class="currency">£</span>
-                            <input type="number" id="calc-price" value="8000" min="1000" max="100000" step="100">
-                        </div>
-                        <input type="range" id="calc-slider" min="1000" max="100000" value="8000" step="100" class="price-slider">
-
-                        <div class="calc-results">
-                            <div class="calc-row">
-                                <span>Sale Price</span>
-                                <strong id="result-price">£8,000</strong>
-                            </div>
-                            <div class="calc-row">
-                                <span>Our Fee (10%)</span>
-                                <strong id="result-fee">£800</strong>
-                            </div>
-                            <div class="calc-row calc-total">
-                                <span>You Receive</span>
-                                <strong id="result-receive">£7,200</strong>
-                            </div>
-                        </div>
-
-                        <button class="btn-calculator" onclick="scrollToHero()">
-                            Get Your Free Valuation
-                        </button>
-
-                        <p class="calc-note">* Minimum fee £350</p>
+            <div class="calculator-card">
+                <h3>Calculate Your Fee</h3>
+                <div class="calculator-body">
+                    <label>Expected Sale Price</label>
+                    <div class="price-input-wrapper">
+                        <span class="currency">£</span>
+                        <input type="number" id="calc-price" value="8000" min="1000" max="100000" step="100">
                     </div>
+                    <input type="range" id="calc-slider" min="1000" max="100000" value="8000" step="100" class="price-slider">
+
+                    <div class="calc-results">
+                        <div class="calc-row">
+                            <span>Sale Price</span>
+                            <strong id="result-price">£8,000</strong>
+                        </div>
+                        <div class="calc-row">
+                            <span>Our Fee (10%)</span>
+                            <strong id="result-fee">£800</strong>
+                        </div>
+                        <div class="calc-row calc-total">
+                            <span>You Receive</span>
+                            <strong id="result-receive">£7,200</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn-calculator" onclick="scrollToHero()">
+                        Get Your Free Valuation
+                    </button>
+
+                    <p class="calc-note">* Minimum fee £350</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="section section-grey">
+    <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">REVIEWS</span>
+                <p class="section-subtitle">REVIEWS</p>
                 <h2>What Our Clients Say</h2>
                 <p>Real experiences from satisfied car sellers</p>
             </div>
@@ -298,54 +295,54 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars">
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
                     </div>
                     <p class="testimonial-text">"Absolutely brilliant service. They sold my BMW for £2,000 more than the dealer offered and I didn't have to do anything. Worth every penny of their fee."</p>
                     <div class="testimonial-author">
-                        <div class="author-initials">JW</div>
+                        <div class="author-avatar">JW</div>
                         <div class="author-info">
-                            <strong>James W.</strong>
-                            <span>Richmond</span>
+                            <h5>James Wilson</h5>
+                            <p>BMW 3 Series Owner</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
                     </div>
                     <p class="testimonial-text">"I was dreading selling my car privately — the time wasters, the lowball offers. ReadySold handled everything professionally and got me a great price."</p>
                     <div class="testimonial-author">
-                        <div class="author-initials">SP</div>
+                        <div class="author-avatar">SP</div>
                         <div class="author-info">
-                            <strong>Sarah P.</strong>
-                            <span>Wimbledon</span>
+                            <h5>Sarah Parker</h5>
+                            <p>Audi A4 Owner</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="stars">
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
-                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
                     </div>
                     <p class="testimonial-text">"Professional from start to finish. The photos they took made my car look showroom-ready. Sold within 2 weeks at asking price. Couldn't be happier."</p>
                     <div class="testimonial-author">
-                        <div class="author-initials">MT</div>
+                        <div class="author-avatar">MT</div>
                         <div class="author-info">
-                            <strong>Michael T.</strong>
-                            <span>Clapham</span>
+                            <h5>Michael Thompson</h5>
+                            <p>Mercedes C-Class Owner</p>
                         </div>
                     </div>
                 </div>
@@ -353,53 +350,40 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="final-cta" id="contact">
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
         <div class="container">
             <h2>Ready to Sell Without The Stress?</h2>
             <p>Get your free valuation today. No obligation, no upfront costs.</p>
-
-            <div class="cta-buttons">
-                <button class="btn-cta-primary" onclick="scrollToHero()">Get Free Valuation</button>
-                <button class="btn-cta-outline">Call Us</button>
-            </div>
-
-            <div class="cta-trust-line">
-                <span><i data-lucide="clock"></i> 2-hour response</span>
-                <span><i data-lucide="map-pin"></i> Nationwide</span>
-                <span><i data-lucide="calendar"></i> Mon-Sat 9am-6pm</span>
-            </div>
+            <button class="btn-cta" onclick="scrollToHero()">
+                Get Free Valuation
+                <i data-lucide="arrow-right"></i>
+            </button>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-columns">
-                <div class="footer-col">
-                    <h3><span class="logo-ready">Ready</span><span class="logo-sold">Sold</span></h3>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4><span class="logo-ready">Ready</span><span class="logo-sold">Sold</span></h4>
                     <p>Professional car selling service. We handle everything while you keep your car. Pay only when sold.</p>
-                    <div class="social-icons">
-                        <a href="#"><i data-lucide="facebook"></i></a>
-                        <a href="#"><i data-lucide="twitter"></i></a>
-                        <a href="#"><i data-lucide="instagram"></i></a>
-                        <a href="#"><i data-lucide="linkedin"></i></a>
-                    </div>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-column">
                     <h4>Quick Links</h4>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#why-choose-us">Why Choose Us</a></li>
+                        <li><a href="#comparison">Why Choose Us</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-column">
                     <h4>Services</h4>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#">Car Valuation</a></li>
                         <li><a href="#">Professional Photography</a></li>
                         <li><a href="#">Listing Management</a></li>
@@ -407,23 +391,19 @@
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-column">
                     <h4>Contact</h4>
-                    <ul class="footer-contact">
-                        <li><i data-lucide="phone"></i> [TBC]</li>
-                        <li><i data-lucide="mail"></i> hello@readysold.co.uk</li>
-                        <li><i data-lucide="map-pin"></i> Nationwide</li>
-                        <li><i data-lucide="clock"></i> Mon-Sat 9am-6pm</li>
+                    <ul class="footer-links">
+                        <li><a href="tel:02012345678">020 1234 5678</a></li>
+                        <li><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
+                        <li>Nationwide Service</li>
+                        <li>Mon-Sat 9am-6pm</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2025 ReadySold. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms & Conditions</a>
-                </div>
             </div>
         </div>
     </footer>
@@ -442,17 +422,17 @@
                 <form id="contact-form">
                     <div class="modal-field">
                         <label>Your Name</label>
-                        <input type="text" id="contact-name" placeholder="John Smith" required>
+                        <input type="text" name="name" id="contact-name" placeholder="John Smith" required>
                     </div>
 
                     <div class="modal-field">
                         <label>Phone Number</label>
-                        <input type="tel" id="contact-phone" placeholder="07700 900000" required>
+                        <input type="tel" name="phone" id="contact-phone" placeholder="07700 900000" required>
                     </div>
 
                     <div class="modal-field">
                         <label>Email Address</label>
-                        <input type="email" id="contact-email" placeholder="john@example.com" required>
+                        <input type="email" name="email" id="contact-email" placeholder="john@example.com" required>
                     </div>
 
                     <button type="submit" class="btn-modal">Get My Free Valuation</button>
@@ -479,8 +459,12 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Initialize Lucide icons after page load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>
