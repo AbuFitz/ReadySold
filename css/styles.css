@@ -1256,7 +1256,7 @@ section {
    ============================================ */
 
 .footer {
-    background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
+    background: var(--navy);
     color: var(--white);
     padding: 4rem 0 0;
 }
@@ -1277,13 +1277,6 @@ section {
     font-size: 2rem;
     margin-bottom: 0.75rem;
     font-weight: 800;
-}
-
-.footer-tagline {
-    color: var(--sky-blue-light);
-    font-size: 0.938rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
 }
 
 .footer-description {
