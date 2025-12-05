@@ -1,65 +1,40 @@
 // ============================================
 // ReadySold - Main JavaScript
-// Modern interactive functionality
+// Navy & Sky Blue Theme - Modern Interactions
 // ============================================
 
 'use strict';
 
 // ============================================
-// DOM Elements
+// Initialize Lucide Icons
 // ============================================
-
-const priceInput = document.getElementById('sale-price');
-const priceSlider = document.getElementById('price-slider');
-const displayPrice = document.getElementById('display-price');
-const feeAmount = document.getElementById('fee-amount');
-const youReceive = document.getElementById('you-receive');
-const valuationForm = document.getElementById('valuation-form');
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const cookieBanner = document.getElementById('cookie-banner');
-const chatButton = document.getElementById('chat-button');
-const chatWindow = document.getElementById('chat-window');
-const chatClose = document.getElementById('chat-close');
-
-// ============================================
-// Constants
-// ============================================
-
-const FEE_PERCENTAGE = 0.05; // 5%
-const COOKIE_CONSENT_KEY = 'readysold_cookie_consent';
-const COOKIE_PREFERENCES_KEY = 'readysold_cookie_preferences';
-
-// ============================================
-// Utility Functions
-// ============================================
-
-// Format number to currency (UK pounds)
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('en-GB', {
-        style: 'currency',
-        currency: 'GBP',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    }).format(amount);
+if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
 }
 
-// Smooth scroll to element
-function smoothScrollTo(element) {
-    if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+// ============================================
+// Navigation Scroll Behavior
+// ============================================
+
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
-}
+});
 
 // ============================================
 // Mobile Navigation
 // ============================================
 
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
 if (mobileMenuToggle && navMenu) {
-    mobileMenuToggle.addEventListener('click', function() {
+    mobileMenuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
     });
@@ -74,7 +49,7 @@ if (mobileMenuToggle && navMenu) {
     });
 
     // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', (event) => {
         const isClickInsideNav = navMenu.contains(event.target);
         const isClickOnToggle = mobileMenuToggle.contains(event.target);
 
@@ -86,140 +61,85 @@ if (mobileMenuToggle && navMenu) {
 }
 
 // ============================================
-// Navigation Active Link
+// Hero Form and Modal System
 // ============================================
 
-// Highlight active section in navigation
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-menu a');
+const heroForm = document.getElementById('hero-form');
+const modalOverlay = document.getElementById('modal-overlay');
+const contactModal = document.getElementById('contact-modal');
+const contactForm = document.getElementById('contact-form');
+const modalStep1 = document.getElementById('modal-step-1');
+const modalStep2 = document.getElementById('modal-step-2');
 
-window.addEventListener('scroll', () => {
-    let current = '';
+// Store hero form data
+let heroFormData = {};
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-
-        if (window.pageYOffset >= sectionTop - 100) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// ============================================
-// Scroll to Valuation Form
-// ============================================
-
-function scrollToValuation() {
-    const valuationSection = document.getElementById('valuation-section');
-    if (valuationSection) {
-        smoothScrollTo(valuationSection);
-
-        // Focus on first input after scrolling
-        setTimeout(() => {
-            const firstInput = valuationForm.querySelector('input');
-            if (firstInput) {
-                firstInput.focus();
-            }
-        }, 500);
-    }
-}
-
-// Make function globally available
-window.scrollToValuation = scrollToValuation;
-
-// ============================================
-// Price Calculator
-// ============================================
-
-function updateCalculator(price) {
-    const salePrice = parseFloat(price);
-
-    if (isNaN(salePrice) || salePrice < 0) {
-        return;
-    }
-
-    const fee = salePrice * FEE_PERCENTAGE;
-    const received = salePrice - fee;
-
-    if (displayPrice) displayPrice.textContent = formatCurrency(salePrice);
-    if (feeAmount) feeAmount.textContent = formatCurrency(fee);
-    if (youReceive) youReceive.textContent = formatCurrency(received);
-}
-
-// Sync price input and slider
-if (priceInput && priceSlider) {
-    priceInput.addEventListener('input', function() {
-        const value = this.value;
-        priceSlider.value = value;
-        updateCalculator(value);
-    });
-
-    priceSlider.addEventListener('input', function() {
-        const value = this.value;
-        priceInput.value = value;
-        updateCalculator(value);
-    });
-
-    // Initialize calculator
-    updateCalculator(priceInput.value);
-}
-
-// ============================================
-// Valuation Form Handling
-// ============================================
-
-if (valuationForm) {
-    valuationForm.addEventListener('submit', function(e) {
+// Hero form submission - opens modal
+if (heroForm) {
+    heroForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
+        // Get and store hero form data
+        const formData = new FormData(heroForm);
+        heroFormData = {
+            registration: formData.get('registration'),
+            mileage: formData.get('mileage'),
+            price: formData.get('price')
+        };
 
-        // Validate UK phone number
-        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
-            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
-            return;
-        }
-
-        // Validate UK registration
+        // Validate registration format
         const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
-        if (!regRegex.test(data.registration.replace(/\s/g, ''))) {
+        if (!regRegex.test(heroFormData.registration.replace(/\s/g, ''))) {
             alert('Please enter a valid UK registration (e.g., AB12 CDE)');
             return;
         }
 
-        // Log form data (in production, send to backend)
-        console.log('Form submitted:', data);
+        // Open modal
+        openModal();
+    });
+}
 
-        // Show success message
-        alert('Thank you! We\'ll get back to you within 2 hours with your free valuation.');
+// Contact form submission - shows success
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        // Reset form
-        this.reset();
+        // Get contact form data
+        const formData = new FormData(contactForm);
+        const contactData = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email')
+        };
 
-        // In production, send data to backend:
+        // Validate UK phone number
+        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+        if (!phoneRegex.test(contactData.phone.replace(/\s/g, ''))) {
+            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
+            return;
+        }
+
+        // Combine all data
+        const completeData = { ...heroFormData, ...contactData };
+
+        // Log data (in production, send to backend)
+        console.log('Complete valuation request:', completeData);
+
+        // Show success step
+        showSuccessStep();
+
+        // In production, send to backend:
         /*
         fetch('/api/valuation', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(completeData)
         })
         .then(response => response.json())
         .then(result => {
-            alert('Thank you! We\'ll get back to you within 2 hours with your free valuation.');
-            this.reset();
+            showSuccessStep();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -229,135 +149,141 @@ if (valuationForm) {
     });
 }
 
-// ============================================
-// Cookie Consent Banner
-// ============================================
+// Modal functions
+function openModal() {
+    if (modalOverlay) {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
 
-function showCookieBanner() {
-    if (!cookieBanner) return;
+        // Reset modal to step 1
+        if (modalStep1) modalStep1.style.display = 'block';
+        if (modalStep2) modalStep2.classList.remove('active');
 
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-
-    if (!consent) {
+        // Focus on first input
         setTimeout(() => {
-            cookieBanner.classList.add('show');
-        }, 2000);
+            const firstInput = contactForm.querySelector('input');
+            if (firstInput) firstInput.focus();
+        }, 300);
+
+        // Reinitialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     }
 }
 
-function acceptCookies() {
-    localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
-    localStorage.setItem(COOKIE_PREFERENCES_KEY, JSON.stringify({
-        necessary: true,
-        analytics: true,
-        marketing: true
-    }));
+function closeModal() {
+    if (modalOverlay) {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
 
-    if (cookieBanner) {
-        cookieBanner.classList.remove('show');
-    }
+        // Reset forms
+        if (heroForm) heroForm.reset();
+        if (contactForm) contactForm.reset();
 
-    // Initialize analytics if accepted
-    initializeAnalytics();
-}
-
-function declineCookies() {
-    localStorage.setItem(COOKIE_CONSENT_KEY, 'declined');
-    localStorage.setItem(COOKIE_PREFERENCES_KEY, JSON.stringify({
-        necessary: true,
-        analytics: false,
-        marketing: false
-    }));
-
-    if (cookieBanner) {
-        cookieBanner.classList.remove('show');
+        // Reset modal to step 1
+        setTimeout(() => {
+            if (modalStep1) modalStep1.style.display = 'block';
+            if (modalStep2) modalStep2.classList.remove('active');
+        }, 300);
     }
 }
 
-function manageCookies() {
-    // In production, open a modal with detailed cookie preferences
-    alert('Cookie settings panel would open here. For now, you can Accept or use browser settings.');
+function showSuccessStep() {
+    if (modalStep1) modalStep1.style.display = 'none';
+    if (modalStep2) modalStep2.classList.add('active');
+
+    // Reinitialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 // Make functions globally available
-window.acceptCookies = acceptCookies;
-window.declineCookies = declineCookies;
-window.manageCookies = manageCookies;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.showSuccessStep = showSuccessStep;
 
-// Initialize cookie banner
-showCookieBanner();
-
-// ============================================
-// Analytics Initialization
-// ============================================
-
-function initializeAnalytics() {
-    const preferences = JSON.parse(localStorage.getItem(COOKIE_PREFERENCES_KEY) || '{}');
-
-    if (preferences.analytics) {
-        // Initialize Google Analytics or other analytics
-        console.log('Analytics initialized');
-
-        // Example: Google Analytics
-        /*
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-        */
-    }
-}
-
-// ============================================
-// Chat Widget
-// ============================================
-
-if (chatButton && chatWindow) {
-    chatButton.addEventListener('click', function() {
-        chatWindow.classList.toggle('active');
+// Close modal on overlay click
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            closeModal();
+        }
     });
 }
 
-if (chatClose) {
-    chatClose.addEventListener('click', function() {
-        chatWindow.classList.remove('active');
-    });
-}
-
-// Chat option selection
-function selectChatOption(option) {
-    let message = '';
-
-    switch(option) {
-        case 'valuation':
-            message = 'Great! Scroll up to fill out the free valuation form, and we\'ll get back to you within 2 hours with a realistic price for your car.';
-            scrollToValuation();
-            break;
-        case 'process':
-            message = 'Our process is simple:\n\n1. Free Valuation - We assess your car\n2. We Take Control - Professional photos, listings, viewings\n3. Sale Complete - You get paid, we handle paperwork\n\nYou only pay when sold!';
-            break;
-        case 'pricing':
-            message = 'Our standard fee is 5% of the sale price, only charged when your car sells successfully. This includes professional photography, multi-platform listings, viewings, negotiations, and all paperwork.';
-            break;
-        case 'contact':
-            message = 'You can reach us at:\n📞 020 1234 5678\n📧 hello@readysold.co.uk\n\nOffice hours: Mon-Sat, 9am-6pm';
-            break;
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+        closeModal();
     }
-
-    if (message) {
-        alert(message);
-    }
-
-    if (chatWindow) {
-        chatWindow.classList.remove('active');
-    }
-}
-
-// Make function globally available
-window.selectChatOption = selectChatOption;
+});
 
 // ============================================
-// Form Input Enhancements
+// Pricing Calculator (10% Fee)
+// ============================================
+
+const calcPrice = document.getElementById('calc-price');
+const calcSlider = document.getElementById('calc-slider');
+const resultPrice = document.getElementById('result-price');
+const resultFee = document.getElementById('result-fee');
+const resultReceive = document.getElementById('result-receive');
+
+const FEE_PERCENTAGE = 0.10; // 10%
+const MINIMUM_FEE = 350; // £350 minimum
+
+function updateCalculator(price) {
+    const salePrice = parseFloat(price);
+
+    if (isNaN(salePrice) || salePrice < 0) {
+        return;
+    }
+
+    // Calculate fee (10% with minimum £350)
+    let fee = salePrice * FEE_PERCENTAGE;
+    if (fee < MINIMUM_FEE) {
+        fee = MINIMUM_FEE;
+    }
+
+    const received = salePrice - fee;
+
+    // Update display
+    if (resultPrice) resultPrice.textContent = formatCurrency(salePrice);
+    if (resultFee) resultFee.textContent = formatCurrency(fee);
+    if (resultReceive) resultReceive.textContent = formatCurrency(received);
+}
+
+// Sync price input and slider
+if (calcPrice && calcSlider) {
+    calcPrice.addEventListener('input', function() {
+        const value = this.value;
+        calcSlider.value = value;
+        updateCalculator(value);
+    });
+
+    calcSlider.addEventListener('input', function() {
+        const value = this.value;
+        calcPrice.value = value;
+        updateCalculator(value);
+    });
+
+    // Initialize calculator
+    updateCalculator(calcPrice.value);
+}
+
+// Format number to currency (UK pounds)
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(amount);
+}
+
+// ============================================
+// Form Input Auto-formatting
 // ============================================
 
 // Auto-format registration plate
@@ -369,21 +295,6 @@ if (regInput) {
         // Format as XX12 XXX
         if (value.length > 4) {
             value = value.slice(0, 4) + ' ' + value.slice(4, 7);
-        }
-
-        this.value = value;
-    });
-}
-
-// Auto-format phone number
-const phoneInput = document.getElementById('phone');
-if (phoneInput) {
-    phoneInput.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, '');
-
-        // Format as 07700 900000
-        if (value.length > 5) {
-            value = value.slice(0, 5) + ' ' + value.slice(5, 11);
         }
 
         this.value = value;
@@ -405,57 +316,67 @@ if (mileageInput) {
     });
 }
 
-// ============================================
-// Scroll Animations
-// ============================================
+// Auto-format price
+const priceInput = document.getElementById('price');
+if (priceInput) {
+    priceInput.addEventListener('input', function() {
+        let value = this.value.replace(/[^\d]/g, '');
 
-// Fade in elements on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+        // Add commas for thousands
+        if (value) {
+            value = '£' + parseInt(value).toLocaleString('en-GB');
         }
+
+        this.value = value;
     });
-}, observerOptions);
+}
 
-// Observe elements with data-aos attribute
-document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('[data-aos]');
+// Auto-format contact phone number
+const contactPhone = document.getElementById('contact-phone');
+if (contactPhone) {
+    contactPhone.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
 
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-});
+        // Format as 07700 900000
+        if (value.length > 5) {
+            value = value.slice(0, 5) + ' ' + value.slice(5, 11);
+        }
 
-// ============================================
-// Parallax Effect for Image Dividers
-// ============================================
-
-const parallaxElements = document.querySelectorAll('.image-divider');
-
-if (parallaxElements.length > 0) {
-    window.addEventListener('scroll', function() {
-        parallaxElements.forEach(element => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * 0.5;
-            element.style.backgroundPositionY = rate + 'px';
-        });
+        this.value = value;
     });
 }
 
 // ============================================
-// Smooth Scroll for Anchor Links
+// Smooth Scrolling
 // ============================================
 
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+function scrollToHero() {
+    window.scrollTo({
+        behavior: 'smooth',
+        top: 0
+    });
+
+    // Focus on first input after scrolling
+    setTimeout(() => {
+        if (regInput) regInput.focus();
+    }, 500);
+}
+
+// Make functions globally available
+window.scrollToSection = scrollToSection;
+window.scrollToHero = scrollToHero;
+
+// Smooth scroll for all anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -467,47 +388,60 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         const target = document.querySelector(href);
         if (target) {
-            smoothScrollTo(target);
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     });
 });
 
 // ============================================
-// Page Load Animations
+// Scroll Animations
 // ============================================
 
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-    // Initialize analytics if consent given
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (consent === 'accepted') {
-        initializeAnalytics();
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate');
+        }
+    });
+}, observerOptions);
+
+// Observe elements with data-aos attribute
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('[data-aos]');
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
     }
 });
 
 // ============================================
-// Performance Optimization
+// Page Load
 // ============================================
 
-// Lazy load images
-if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
-    });
-} else {
-    // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
-}
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+
+    // Reinitialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+});
 
 // ============================================
 // Error Handling
 // ============================================
 
-window.addEventListener('error', function(e) {
+window.addEventListener('error', (e) => {
     console.error('JavaScript error:', e.message);
     // In production, send errors to monitoring service
 });
@@ -516,6 +450,6 @@ window.addEventListener('error', function(e) {
 // Console Info
 // ============================================
 
-console.log('%cReadySold', 'font-size: 24px; font-weight: bold; color: #d32f2f;');
-console.log('%cProfessional Car Selling Service', 'font-size: 14px; color: #666;');
+console.log('%cReadySold', 'font-size: 24px; font-weight: bold; color: #0EA5E9;');
+console.log('%cModern Car Selling Service - Navy & Sky Blue Theme', 'font-size: 14px; color: #0F172A;');
 console.log('Website loaded successfully');
