@@ -558,9 +558,9 @@ function initializeChat() {
     chatMessages.innerHTML = '';
     
     // Welcome message
-    addBotMessage("Hi! I'm the ReadySold assistant. I'm here to help you understand how we can sell your car hassle-free.", true);
+    addBotMessage("👋 Hi! I'm here to help you sell your car.", true);
     setTimeout(() => {
-        addBotMessage("I can answer questions about pricing, explain our process, or help you get started with a free valuation. What would you like to know?");
+        addBotMessage("What would you like to know?");
         setTimeout(() => {
             addQuickReplies();
         }, 500);
