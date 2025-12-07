@@ -237,6 +237,33 @@
         </div>
     </section>
 
+    <!-- Any Condition Section -->
+    <section class="condition-section">
+        <div class="container">
+            <div class="condition-content">
+                <div class="condition-text">
+                    <span class="condition-badge">We Accept All Vehicles</span>
+                    <h2>Your Car Doesn't Need To Be Perfect</h2>
+                    <p>We sell vehicles in any condition, including those needing bodywork, mechanical repairs, or cosmetic touch-ups. Damaged doesn't mean unsellable.</p>
+                    <ul class="condition-list">
+                        <li><i data-lucide="check-circle"></i>Minor dents and scratches</li>
+                        <li><i data-lucide="check-circle"></i>Bodywork damage</li>
+                        <li><i data-lucide="check-circle"></i>Mechanical issues</li>
+                        <li><i data-lucide="check-circle"></i>High mileage vehicles</li>
+                    </ul>
+                    <button class="btn-condition" onclick="openConditionModal()">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="condition-image">
+                    <div class="condition-badge-overlay">Any Condition Accepted</div>
+                    <img src="public/images/damaged-car.jpg" alt="We buy cars in any condition" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Calculator -->
     <section class="pricing-section" id="pricing">
         <div class="container">
@@ -543,6 +570,70 @@
                 <p>We'll call you within 2 hours.</p>
                 <p class="success-subtext">In the meantime, here's what happens next...</p>
                 <button class="btn-modal" onclick="closeValuationModal(); scrollToSection('how-it-works')">See How It Works</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Condition Modal -->
+    <div class="modal-overlay" id="condition-modal-overlay">
+        <div class="modal modal-large" id="condition-modal">
+            <button class="modal-close" onclick="closeConditionModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="modal-content">
+                <h3>We Buy Cars In Any Condition</h3>
+                <p>Don't let damage or wear stop you from selling. We specialize in finding buyers for all types of vehicles.</p>
+
+                <div class="condition-modal-image">
+                    <img src="public/images/damaged-car.jpg" alt="Damaged car we can sell" loading="lazy">
+                </div>
+
+                <div class="condition-grid">
+                    <div class="condition-item">
+                        <div class="condition-icon">
+                            <i data-lucide="wrench"></i>
+                        </div>
+                        <h4>Mechanical Issues</h4>
+                        <p>Engine problems, transmission issues, or electrical faults - we'll still find the right buyer.</p>
+                    </div>
+
+                    <div class="condition-item">
+                        <div class="condition-icon">
+                            <i data-lucide="shield-alert"></i>
+                        </div>
+                        <h4>Body Damage</h4>
+                        <p>Dents, scratches, bumper damage, or paintwork issues don't stop us from getting you a fair price.</p>
+                    </div>
+
+                    <div class="condition-item">
+                        <div class="condition-icon">
+                            <i data-lucide="gauge"></i>
+                        </div>
+                        <h4>High Mileage</h4>
+                        <p>High-mileage vehicles still have value. We connect you with buyers looking for exactly that.</p>
+                    </div>
+
+                    <div class="condition-item">
+                        <div class="condition-icon">
+                            <i data-lucide="car"></i>
+                        </div>
+                        <h4>Age & Wear</h4>
+                        <p>Older cars or those showing wear and tear are still sellable - we know the market.</p>
+                    </div>
+                </div>
+
+                <div class="condition-cta">
+                    <h4>Ready to sell your car, whatever its condition?</h4>
+                    <button class="btn-modal" onclick="closeConditionModal(); openValuationModal()">
+                        Get Free Valuation
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                    <p class="modal-privacy">
+                        <i data-lucide="shield-check"></i>
+                        Honest valuations · No obligation · We handle everything
+                    </p>
+                </div>
             </div>
         </div>
     </div>

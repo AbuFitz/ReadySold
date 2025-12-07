@@ -213,16 +213,6 @@ if (modalOverlay) {
     });
 }
 
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
-        closeModal();
-    }
-    if (e.key === 'Escape' && valuationModalOverlay && valuationModalOverlay.classList.contains('active')) {
-        closeValuationModal();
-    }
-});
-
 // ============================================
 // Valuation Modal Functions
 // ============================================
@@ -349,6 +339,59 @@ if (valuationModalOverlay) {
         }
     });
 }
+
+// ============================================
+// Condition Modal Functions
+// ============================================
+
+const conditionModalOverlay = document.getElementById('condition-modal-overlay');
+
+function openConditionModal() {
+    if (conditionModalOverlay) {
+        conditionModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+}
+
+function closeConditionModal() {
+    if (conditionModalOverlay) {
+        conditionModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Make functions globally available
+window.openConditionModal = openConditionModal;
+window.closeConditionModal = closeConditionModal;
+
+// Close condition modal on overlay click
+if (conditionModalOverlay) {
+    conditionModalOverlay.addEventListener('click', (e) => {
+        if (e.target === conditionModalOverlay) {
+            closeConditionModal();
+        }
+    });
+}
+
+// Update escape key handler to include condition modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (modalOverlay && modalOverlay.classList.contains('active')) {
+            closeModal();
+        }
+        if (valuationModalOverlay && valuationModalOverlay.classList.contains('active')) {
+            closeValuationModal();
+        }
+        if (conditionModalOverlay && conditionModalOverlay.classList.contains('active')) {
+            closeConditionModal();
+        }
+    }
+});
 
 // ============================================
 // Pricing Calculator (10% Fee)
