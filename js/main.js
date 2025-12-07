@@ -104,23 +104,30 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get contact form data
+        // Get all form data
         const formData = new FormData(contactForm);
-        const contactData = {
+        const completeData = {
+            registration: formData.get('registration'),
+            mileage: formData.get('mileage'),
+            price: formData.get('price'),
             name: formData.get('name'),
             phone: formData.get('phone'),
             email: formData.get('email')
         };
 
-        // Validate UK phone number
-        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        if (!phoneRegex.test(contactData.phone.replace(/\s/g, ''))) {
-            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
+        // Validate registration format
+        const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
+        if (!regRegex.test(completeData.registration.replace(/\s/g, ''))) {
+            alert('Please enter a valid UK registration (e.g., AB12 CDE)');
             return;
         }
 
-        // Combine all data
-        const completeData = { ...heroFormData, ...contactData };
+        // Validate UK phone number
+        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+        if (!phoneRegex.test(completeData.phone.replace(/\s/g, ''))) {
+            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
+            return;
+        }
 
         // Log data (in production, send to backend)
         console.log('Complete valuation request:', completeData);
@@ -340,6 +347,51 @@ if (contactPhone) {
         // Format as 07700 900000
         if (value.length > 5) {
             value = value.slice(0, 5) + ' ' + value.slice(5, 11);
+        }
+
+        this.value = value;
+    });
+}
+
+// Auto-format modal registration
+const modalRegInput = document.getElementById('modal-registration');
+if (modalRegInput) {
+    modalRegInput.addEventListener('input', function() {
+        let value = this.value.toUpperCase().replace(/\s/g, '');
+
+        // Format as XX12 XXX
+        if (value.length > 4) {
+            value = value.slice(0, 4) + ' ' + value.slice(4, 7);
+        }
+
+        this.value = value;
+    });
+}
+
+// Auto-format modal mileage
+const modalMileageInput = document.getElementById('modal-mileage');
+if (modalMileageInput) {
+    modalMileageInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+
+        // Add commas for thousands
+        if (value) {
+            value = parseInt(value).toLocaleString('en-GB');
+        }
+
+        this.value = value;
+    });
+}
+
+// Auto-format modal price
+const modalPriceInput = document.getElementById('modal-price');
+if (modalPriceInput) {
+    modalPriceInput.addEventListener('input', function() {
+        let value = this.value.replace(/[^\d]/g, '');
+
+        // Add commas for thousands
+        if (value) {
+            value = '£' + parseInt(value).toLocaleString('en-GB');
         }
 
         this.value = value;

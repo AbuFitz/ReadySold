@@ -31,7 +31,7 @@
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#comparison">Why Choose Us</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><button class="btn-nav" onclick="scrollToHero()">Get Free Valuation</button></li>
+                <li><button class="btn-nav" onclick="openModal()">Get Free Valuation</button></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobile-toggle">
@@ -280,7 +280,7 @@
                         </div>
                     </div>
 
-                    <button class="btn-calculator" onclick="scrollToHero()">
+                    <button class="btn-calculator" onclick="openModal()">
                         Get Your Free Valuation
                     </button>
 
@@ -363,7 +363,7 @@
         <div class="container">
             <h2>Ready to Sell Without The Stress?</h2>
             <p>Get your free valuation today. No obligation, no upfront costs.</p>
-            <button class="btn-cta" onclick="scrollToHero()">
+            <button class="btn-cta" onclick="openModal()">
                 Get Free Valuation
                 <i data-lucide="arrow-right"></i>
             </button>
@@ -436,10 +436,25 @@
             </button>
 
             <div class="modal-content" id="modal-step-1">
-                <h3>Almost there!</h3>
-                <p>Enter your details and we'll call you within 2 hours.</p>
+                <h3>Get Your Free Valuation</h3>
+                <p>Tell us about your car and we'll call you within 2 hours.</p>
 
                 <form id="contact-form">
+                    <div class="modal-field">
+                        <label>Registration</label>
+                        <input type="text" name="registration" id="modal-registration" placeholder="AB12 CDE" required maxlength="8">
+                    </div>
+
+                    <div class="modal-field">
+                        <label>Mileage</label>
+                        <input type="text" name="mileage" id="modal-mileage" placeholder="e.g. 45,000" required>
+                    </div>
+
+                    <div class="modal-field">
+                        <label>Your Expected Price</label>
+                        <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000" required>
+                    </div>
+
                     <div class="modal-field">
                         <label>Your Name</label>
                         <input type="text" name="name" id="contact-name" placeholder="John Smith" required>
