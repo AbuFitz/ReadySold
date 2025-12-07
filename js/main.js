@@ -13,17 +13,22 @@ if (typeof lucide !== 'undefined') {
 }
 
 // ============================================
-// Homepage Welcome Popup
+// Floating Popup (Bottom-Left Corner)
 // ============================================
 
-const homepagePopupOverlay = document.getElementById('homepage-popup-overlay');
-let popupShown = false;
+const floatingPopup = document.getElementById('floating-popup');
+let popupTriggered = false;
+let hasScrolledPastHero = false;
 
-function showHomepagePopup() {
-    if (!popupShown && homepagePopupOverlay) {
-        popupShown = true;
-        homepagePopupOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+function showFloatingPopup() {
+    // Check if popup was previously dismissed
+    if (localStorage.getItem('floatingPopupDismissed') === 'true') {
+        return;
+    }
+
+    if (!popupTriggered && floatingPopup) {
+        popupTriggered = true;
+        floatingPopup.classList.add('active');
         
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
@@ -31,27 +36,31 @@ function showHomepagePopup() {
     }
 }
 
-function closeHomepagePopup() {
-    if (homepagePopupOverlay) {
-        homepagePopupOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+function closeFloatingPopup() {
+    if (floatingPopup) {
+        floatingPopup.classList.remove('active');
+        // Remember that user dismissed the popup
+        localStorage.setItem('floatingPopupDismissed', 'true');
     }
 }
 
-// Make functions globally available
-window.closeHomepagePopup = closeHomepagePopup;
+// Make function globally available
+window.closeFloatingPopup = closeFloatingPopup;
 
-// Show popup after 5 seconds
-setTimeout(showHomepagePopup, 5000);
+// Trigger popup after 7 seconds (if user hasn't scrolled past hero yet)
+setTimeout(() => {
+    if (!hasScrolledPastHero) {
+        showFloatingPopup();
+    }
+}, 7000);
 
-// Close popup on overlay click
-if (homepagePopupOverlay) {
-    homepagePopupOverlay.addEventListener('click', (e) => {
-        if (e.target === homepagePopupOverlay) {
-            closeHomepagePopup();
-        }
-    });
-}
+// Also trigger popup when user scrolls past hero section
+window.addEventListener('scroll', () => {
+    if (!hasScrolledPastHero && window.scrollY > window.innerHeight * 0.7) {
+        hasScrolledPastHero = true;
+        showFloatingPopup();
+    }
+});
 
 // ============================================
 // Navigation Scroll Behavior
@@ -382,44 +391,9 @@ if (valuationModalOverlay) {
 }
 
 // ============================================
-// Condition Modal Functions
+// Escape Key Handler for Modals
 // ============================================
 
-const conditionModalOverlay = document.getElementById('condition-modal-overlay');
-
-function openConditionModal() {
-    if (conditionModalOverlay) {
-        conditionModalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Reinitialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-}
-
-function closeConditionModal() {
-    if (conditionModalOverlay) {
-        conditionModalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// Make functions globally available
-window.openConditionModal = openConditionModal;
-window.closeConditionModal = closeConditionModal;
-
-// Close condition modal on overlay click
-if (conditionModalOverlay) {
-    conditionModalOverlay.addEventListener('click', (e) => {
-        if (e.target === conditionModalOverlay) {
-            closeConditionModal();
-        }
-    });
-}
-
-// Update escape key handler to include condition modal
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (modalOverlay && modalOverlay.classList.contains('active')) {
@@ -428,11 +402,8 @@ document.addEventListener('keydown', (e) => {
         if (valuationModalOverlay && valuationModalOverlay.classList.contains('active')) {
             closeValuationModal();
         }
-        if (conditionModalOverlay && conditionModalOverlay.classList.contains('active')) {
-            closeConditionModal();
-        }
-        if (homepagePopupOverlay && homepagePopupOverlay.classList.contains('active')) {
-            closeHomepagePopup();
+        if (floatingPopup && floatingPopup.classList.contains('active')) {
+            closeFloatingPopup();
         }
     }
 });
