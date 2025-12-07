@@ -13,12 +13,14 @@ if (typeof lucide !== 'undefined') {
 }
 
 // ============================================
-// Floating Popup (Bottom-Left Corner)
+// 50/50 Floating Popup (Two-State Design)
 // ============================================
 
 const floatingPopup = document.getElementById('floating-popup');
+const floatingPopupBtn = document.getElementById('floating-popup-btn');
 let popupTriggered = false;
 let hasScrolledPastHero = false;
+let popupExpanded = false;
 
 function showFloatingPopup() {
     // Check if popup was previously dismissed
@@ -39,13 +41,37 @@ function showFloatingPopup() {
 function closeFloatingPopup() {
     if (floatingPopup) {
         floatingPopup.classList.remove('active');
+        floatingPopup.classList.remove('expanded');
         // Remember that user dismissed the popup
         localStorage.setItem('floatingPopupDismissed', 'true');
+        popupExpanded = false;
     }
 }
 
-// Make function globally available
+function toggleFloatingPopupState() {
+    if (!popupExpanded) {
+        // State 1 → State 2: Expand and show bullet list
+        floatingPopup.classList.add('expanded');
+        popupExpanded = true;
+        
+        // Update button text and action
+        if (floatingPopupBtn) {
+            floatingPopupBtn.innerHTML = 'Get Free Valuation <i data-lucide="arrow-right"></i>';
+            floatingPopupBtn.onclick = function() {
+                closeFloatingPopup();
+                openValuationModal();
+            };
+        }
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+}
+
+// Make functions globally available
 window.closeFloatingPopup = closeFloatingPopup;
+window.toggleFloatingPopupState = toggleFloatingPopupState;
 
 // Trigger popup after 7 seconds (if user hasn't scrolled past hero yet)
 setTimeout(() => {
@@ -667,7 +693,6 @@ const chatbotKnowledge = {
     pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing', 'fees', 'commission', 'percentage', 'cheap', 'affordable'],
     process: ['how', 'work', 'process', 'steps', 'procedure', 'what happens', 'how does', 'explain', 'walk me through', 'works'],
     driving: ['drive', 'driving', 'keep', 'use', 'car', 'still use', 'keep using', 'access', 'use my car'],
-    coverage: ['area', 'location', 'where', 'cover', 'nationwide', 'region', 'available', 'service', 'operate', 'uk'],
     time: ['long', 'quick', 'fast', 'duration', 'time', 'how long', 'quickly', 'speed', 'when', 'timeline'],
     payment: ['pay', 'payment', 'when', 'upfront', 'money', 'paid', 'paying', 'receive', 'get paid'],
     photography: ['photo', 'picture', 'image', 'photos', 'pictures', 'photography', 'images'],
@@ -696,11 +721,6 @@ const responses = {
         "Yes, absolutely! Your car stays with you throughout the entire selling process. We work around your schedule for viewings, so you maintain full use of your vehicle until the moment it sells. There's no need to hand over keys or lose access - it's your car until someone buys it.",
         "That's one of the best parts of our service. You keep driving your car normally. When potential buyers want to view it, we coordinate times that work for you. No inconvenience, no loss of mobility - your life continues as usual while we work on finding the right buyer.",
         "Definitely! We understand you need your car, so it stays in your possession. We schedule viewings around your availability, whether that's evenings, weekends, or whenever suits you best. You're never without your vehicle until the sale completes."
-    ],
-    coverage: [
-        "We operate across the entire UK. Whether you're in London, Manchester, Edinburgh, Cardiff, or a small village in the countryside, we can help you sell your car. Our nationwide network means we reach buyers everywhere, maximizing your chances of a quick sale at the right price.",
-        "Our service covers all of the UK. We've successfully sold cars from the Scottish Highlands to Cornwall and everywhere in between. If you want to double-check coverage for your specific postcode, give us a call on 020 1234 5678.",
-        "Nationwide coverage - we're not limited by region. Our platform reaches potential buyers across England, Scotland, Wales, and Northern Ireland, which means more eyes on your listing and better competition for the sale."
     ],
     time: [
         "For valuations, we're very responsive - you'll hear from us within 2 hours during business hours. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often go faster. We'll give you a realistic timeframe when we value your car.",

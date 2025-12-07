@@ -369,7 +369,7 @@
             </button>
             <div class="cta-trust-line">
                 <span><i data-lucide="clock"></i> 2-hour response</span>
-                <span><i data-lucide="map-pin"></i> Nationwide</span>
+                <span><i data-lucide="award"></i> Expert Service</span>
                 <span><i data-lucide="calendar"></i> Mon-Sat 9am-6pm</span>
             </div>
         </div>
@@ -409,7 +409,7 @@
                             <li><i data-lucide="phone" class="footer-icon"></i><a href="tel:02012345678">020 1234 5678</a></li>
                             <li><i data-lucide="mail" class="footer-icon"></i><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
                             <li><i data-lucide="clock" class="footer-icon"></i>Mon-Sat: 9am-6pm</li>
-                            <li><i data-lucide="map-pin" class="footer-icon"></i>Nationwide Service</li>
+                            <li><i data-lucide="zap" class="footer-icon"></i>Quick Response</li>
                         </ul>
                     </div>
                 </div>
@@ -547,21 +547,29 @@
         </div>
     </div>
 
-    <!-- Small Floating Popup -->
+    <!-- 50/50 Split Floating Popup -->
     <div class="floating-popup" id="floating-popup">
         <button class="floating-popup-close" onclick="closeFloatingPopup()">
             <i data-lucide="x"></i>
         </button>
-        <div class="floating-popup-image">
-            <img src="public/images/damaged.jpg" alt="Car condition" loading="lazy">
-        </div>
-        <div class="floating-popup-content">
-            <p class="floating-popup-title">Your car doesn't need to be perfect.</p>
-            <p class="floating-popup-text">We sell vehicles in any condition.</p>
-            <button class="floating-popup-btn" onclick="closeFloatingPopup(); openValuationModal()">
-                Get Free Valuation
-                <i data-lucide="arrow-right"></i>
-            </button>
+        <div class="floating-popup-split">
+            <div class="floating-popup-content">
+                <p class="floating-popup-title">Your car doesn't need to be perfect.</p>
+                <p class="floating-popup-text">We sell vehicles in any condition.</p>
+                <ul class="floating-popup-list" id="floating-popup-list">
+                    <li><i data-lucide="check-circle"></i>Minor dents & scratches</li>
+                    <li><i data-lucide="check-circle"></i>High mileage</li>
+                    <li><i data-lucide="check-circle"></i>Wear and tear</li>
+                    <li><i data-lucide="check-circle"></i>Older vehicles</li>
+                </ul>
+                <button class="floating-popup-btn" id="floating-popup-btn" onclick="toggleFloatingPopupState()">
+                    Learn More
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+            <div class="floating-popup-image">
+                <img src="public/images/damaged.jpg" alt="Car condition" loading="lazy">
+            </div>
         </div>
     </div>
 
