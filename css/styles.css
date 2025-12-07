@@ -1670,6 +1670,28 @@ section {
     color: var(--gray-400);
 }
 
+/* Larger modal for valuation form */
+.modal-large {
+    max-width: 650px;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h4 {
+    color: var(--navy);
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
 /* ============================================
    Responsive Design
    ============================================ */

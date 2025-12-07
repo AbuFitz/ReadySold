@@ -218,7 +218,137 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
         closeModal();
     }
+    if (e.key === 'Escape' && valuationModalOverlay && valuationModalOverlay.classList.contains('active')) {
+        closeValuationModal();
+    }
 });
+
+// ============================================
+// Valuation Modal Functions
+// ============================================
+
+const valuationModalOverlay = document.getElementById('valuation-modal-overlay');
+const valuationForm = document.getElementById('valuation-form');
+const valuationSuccess = document.getElementById('valuation-success');
+const modalRegistration = document.getElementById('modal-registration');
+const modalMileage = document.getElementById('modal-mileage');
+const modalPrice = document.getElementById('modal-price');
+const modalName = document.getElementById('modal-name');
+const modalPhone = document.getElementById('modal-phone');
+const modalEmail = document.getElementById('modal-email');
+
+function openValuationModal() {
+    if (valuationModalOverlay) {
+        valuationModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+}
+
+function closeValuationModal() {
+    if (valuationModalOverlay) {
+        valuationModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset form
+        if (valuationForm) {
+            valuationForm.reset();
+            valuationForm.parentElement.style.display = 'block';
+            valuationSuccess.style.display = 'none';
+        }
+    }
+}
+
+function showValuationSuccess() {
+    if (valuationForm && valuationSuccess) {
+        valuationForm.parentElement.style.display = 'none';
+        valuationSuccess.style.display = 'block';
+
+        // Reinitialize icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+}
+
+// Make functions globally available
+window.openValuationModal = openValuationModal;
+window.closeValuationModal = closeValuationModal;
+
+// Auto-format modal inputs
+if (modalRegistration) {
+    modalRegistration.addEventListener('input', function() {
+        let value = this.value.toUpperCase().replace(/\s/g, '');
+        if (value.length > 4) {
+            value = value.slice(0, 4) + ' ' + value.slice(4, 7);
+        }
+        this.value = value;
+    });
+}
+
+if (modalMileage) {
+    modalMileage.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value) {
+            value = parseInt(value).toLocaleString('en-GB');
+        }
+        this.value = value;
+    });
+}
+
+if (modalPrice) {
+    modalPrice.addEventListener('input', function() {
+        let value = this.value.replace(/[^\d]/g, '');
+        if (value) {
+            value = '£' + parseInt(value).toLocaleString('en-GB');
+        }
+        this.value = value;
+    });
+}
+
+if (modalPhone) {
+    modalPhone.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length > 5) {
+            value = value.slice(0, 5) + ' ' + value.slice(5, 11);
+        }
+        this.value = value;
+    });
+}
+
+// Handle valuation form submission
+if (valuationForm) {
+    valuationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = {
+            registration: modalRegistration.value,
+            mileage: modalMileage.value,
+            price: modalPrice.value,
+            name: modalName.value,
+            phone: modalPhone.value,
+            email: modalEmail.value
+        };
+
+        console.log('Valuation Form Data:', formData);
+
+        // Show success step
+        showValuationSuccess();
+    });
+}
+
+// Close valuation modal on overlay click
+if (valuationModalOverlay) {
+    valuationModalOverlay.addEventListener('click', (e) => {
+        if (e.target === valuationModalOverlay) {
+            closeValuationModal();
+        }
+    });
+}
 
 // ============================================
 // Pricing Calculator (10% Fee)
