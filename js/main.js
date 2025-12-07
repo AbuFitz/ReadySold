@@ -466,3 +466,196 @@ window.addEventListener('error', (e) => {
 console.log('%cReadySold', 'font-size: 24px; font-weight: bold; color: #0EA5E9;');
 console.log('%cModern Car Selling Service - Navy & Sky Blue Theme', 'font-size: 14px; color: #0F172A;');
 console.log('Website loaded successfully');
+
+// ============================================
+// Chatbot System
+// ============================================
+
+let chatInitialized = false;
+
+// Knowledge base for the chatbot
+const chatbotKnowledge = {
+    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'],
+    pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing'],
+    process: ['how', 'work', 'process', 'steps', 'procedure'],
+    driving: ['drive', 'driving', 'keep', 'use', 'car'],
+    coverage: ['area', 'location', 'where', 'cover', 'nationwide', 'region'],
+    time: ['long', 'quick', 'fast', 'duration', 'time'],
+    payment: ['pay', 'payment', 'when', 'upfront'],
+    photography: ['photo', 'picture', 'image'],
+    selling: ['sell', 'buyer', 'listing'],
+    contact: ['call', 'phone', 'email', 'reach', 'contact', 'talk', 'speak'],
+    valuation: ['value', 'worth', 'estimate', 'valuation']
+};
+
+const responses = {
+    greeting: ["👋 Hi there! I'm here to help you sell your car stress-free.", "Hello! How can I help you today?", "Hey! Got questions about selling your car?"],
+    pricing: ["We charge 10% of the sale price (minimum £350).\nYou only pay when your car sells.\nNo upfront costs or hidden fees.", "10% commission when sold (£350 minimum).\nZero upfront costs.\nYou pay nothing if it doesn't sell."],
+    process: ["Here's how it works:\n1. Free valuation - we call you within 2 hours\n2. Professional photos & listings on all platforms\n3. We handle viewings, calls & negotiations\n4. You get paid, we get our fee", "Simple process:\n• Get your free valuation\n• We photograph & list your car\n• Keep driving while we find buyers\n• We handle everything until sold"],
+    driving: ["Yes, you keep driving your car!\nWe coordinate viewings around your schedule.\nYour car stays with you until sold.", "Absolutely! Keep full use of your car.\nWe work around your availability for viewings."],
+    coverage: ["We cover the entire UK.\nNationwide service available.\nWherever you are, we can help.", "UK-wide coverage.\nCall us to confirm your specific area: 020 1234 5678"],
+    time: ["We respond within 2 hours for valuations.\nSale time varies by car & market.\nUsually 2-6 weeks for most vehicles.", "Quick response - 2 hours max.\nSelling time depends on your car.\nWe'll give you realistic timescales."],
+    payment: ["You only pay when your car sells.\nNo upfront costs ever.\nBuyer pays you directly, then you pay our fee.", "Zero upfront payment.\nPay only on successful sale.\n10% of sale price (£350 minimum)."],
+    photography: ["Professional photography is included.\nShowroom-quality images.\nMakes your car sell faster.", "We include pro photos at no extra cost.\nHigh-quality images for all listings."],
+    selling: ["We list on all major platforms.\nHandle all buyer communications.\nNegotiate on your behalf.\nYou approve the final sale.", "We manage the entire sale:\n• List everywhere\n• Screen buyers\n• Arrange viewings\n• Negotiate price\n• Handle paperwork"],
+    contact: ["📞 Call: 020 1234 5678\n📧 Email: hello@readysold.co.uk\n⏰ Mon-Sat: 9am-6pm", "Reach us:\nPhone: 020 1234 5678\nEmail: hello@readysold.co.uk\nHours: Mon-Sat, 9am-6pm"],
+    valuation: ["Get your free valuation now!\nEnter your reg above or call us.\nWe'll research the market & call you within 2 hours.", "Free valuation available.\nNo obligation.\nJust enter your registration and we'll be in touch."],
+    default: ["I'm not sure about that.\nWould you like to:\n• Talk about pricing?\n• Learn how it works?\n• Get a free valuation?\n• Speak to someone? 020 1234 5678", "Good question! Let me help:\n• Our fees: 10% when sold\n• How it works: We handle everything\n• Coverage: UK-wide\n• Call us: 020 1234 5678"]
+};
+
+function initializeChat() {
+    if (chatInitialized) return;
+    
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.innerHTML = '';
+    
+    // Welcome message
+    addBotMessage("👋 Hi! I'm the ReadySold assistant.", true);
+    setTimeout(() => {
+        addBotMessage("Got questions about selling your car?\nI can help with pricing, process, or anything else!");
+        setTimeout(() => {
+            addQuickReplies();
+        }, 500);
+    }, 800);
+    
+    chatInitialized = true;
+}
+
+function addBotMessage(message, isFirst = false) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message bot-message';
+    messageDiv.innerHTML = `<div class="message-bubble">${message.replace(/\n/g, '<br>')}</div>`;
+    chatMessages.appendChild(messageDiv);
+    scrollToBottom();
+}
+
+function addUserMessage(message) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message user-message';
+    messageDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+    chatMessages.appendChild(messageDiv);
+    scrollToBottom();
+}
+
+function addQuickReplies() {
+    const chatMessages = document.getElementById('chat-messages');
+    const quickRepliesDiv = document.createElement('div');
+    quickRepliesDiv.className = 'quick-replies';
+    quickRepliesDiv.innerHTML = `
+        <button class="quick-reply-btn" onclick="handleQuickReply('What are your fees?')">💰 Pricing</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How does it work?')">📋 Process</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('Get valuation')">🚗 Get Valuation</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('Contact you')">📞 Contact</button>
+    `;
+    chatMessages.appendChild(quickRepliesDiv);
+    scrollToBottom();
+}
+
+function handleQuickReply(message) {
+    // Remove quick replies
+    const quickReplies = document.querySelector('.quick-replies');
+    if (quickReplies) quickReplies.remove();
+    
+    // Send as user message
+    addUserMessage(message);
+    setTimeout(() => processMessage(message), 500);
+}
+
+function scrollToBottom() {
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function processMessage(message) {
+    const lowerMessage = message.toLowerCase();
+    let responseType = 'default';
+    
+    // Check for greetings
+    if (chatbotKnowledge.greetings.some(word => lowerMessage.includes(word))) {
+        responseType = 'greeting';
+    }
+    // Check other categories
+    else if (chatbotKnowledge.pricing.some(word => lowerMessage.includes(word))) {
+        responseType = 'pricing';
+    }
+    else if (chatbotKnowledge.process.some(word => lowerMessage.includes(word))) {
+        responseType = 'process';
+    }
+    else if (chatbotKnowledge.driving.some(word => lowerMessage.includes(word))) {
+        responseType = 'driving';
+    }
+    else if (chatbotKnowledge.coverage.some(word => lowerMessage.includes(word))) {
+        responseType = 'coverage';
+    }
+    else if (chatbotKnowledge.time.some(word => lowerMessage.includes(word))) {
+        responseType = 'time';
+    }
+    else if (chatbotKnowledge.payment.some(word => lowerMessage.includes(word))) {
+        responseType = 'payment';
+    }
+    else if (chatbotKnowledge.photography.some(word => lowerMessage.includes(word))) {
+        responseType = 'photography';
+    }
+    else if (chatbotKnowledge.selling.some(word => lowerMessage.includes(word))) {
+        responseType = 'selling';
+    }
+    else if (chatbotKnowledge.contact.some(word => lowerMessage.includes(word))) {
+        responseType = 'contact';
+    }
+    else if (chatbotKnowledge.valuation.some(word => lowerMessage.includes(word))) {
+        responseType = 'valuation';
+    }
+    
+    // Get random response from category
+    const responseArray = responses[responseType];
+    const response = responseArray[Math.floor(Math.random() * responseArray.length)];
+    
+    addBotMessage(response);
+    
+    // Add quick replies after certain responses
+    if (['pricing', 'process', 'default'].includes(responseType)) {
+        setTimeout(() => addQuickReplies(), 500);
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    addUserMessage(message);
+    input.value = '';
+    
+    // Remove any existing quick replies
+    const quickReplies = document.querySelector('.quick-replies');
+    if (quickReplies) quickReplies.remove();
+    
+    // Process after short delay
+    setTimeout(() => processMessage(message), 600);
+}
+
+function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function toggleChat() {
+    const panel = document.getElementById('chat-panel');
+    const button = document.getElementById('chat-toggle');
+    
+    if (panel.classList.contains('active')) {
+        panel.classList.remove('active');
+        button.classList.remove('active');
+    } else {
+        panel.classList.add('active');
+        button.classList.add('active');
+        if (!chatInitialized) {
+            setTimeout(initializeChat, 300);
+        }
+    }
+}
+

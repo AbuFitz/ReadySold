@@ -492,53 +492,21 @@
 
         <div class="chat-panel" id="chat-panel">
             <div class="chat-header">
-                <h4>How can we help?</h4>
+                <h4>Chat with ReadySold</h4>
                 <button class="chat-close" onclick="toggleChat()">
                     <i data-lucide="x"></i>
                 </button>
             </div>
 
-            <div class="chat-body">
-                <p class="chat-intro">Hi! We're here to help. Check out these common questions or contact us directly:</p>
+            <div class="chat-body" id="chat-messages">
+                <!-- Messages will be inserted here dynamically -->
+            </div>
 
-                <ul class="faq-list">
-                    <li class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">How does it work?</div>
-                        <div class="faq-answer">We value your car, take professional photos, list it on multiple platforms, handle all viewings and negotiations, and you only pay our 10% fee when it sells successfully.</div>
-                    </li>
-                    <li class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">What's your fee?</div>
-                        <div class="faq-answer">We charge 10% of the sale price (minimum £350). You only pay when your car sells. No upfront costs, no hidden fees.</div>
-                    </li>
-                    <li class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">Can I keep driving my car?</div>
-                        <div class="faq-answer">Yes! You keep full use of your car until it's sold. We'll coordinate viewings around your schedule.</div>
-                    </li>
-                    <li class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">What areas do you cover?</div>
-                        <div class="faq-answer">We offer our service nationwide across the UK. Get in touch to confirm coverage in your area.</div>
-                    </li>
-                </ul>
-
-                <div class="chat-contact">
-                    <div class="chat-contact-title">Still have questions?</div>
-                    <div class="contact-options">
-                        <a href="tel:02012345678" class="contact-option">
-                            <i data-lucide="phone"></i>
-                            <div class="contact-option-text">
-                                <span class="contact-option-label">Call us</span>
-                                <span class="contact-option-value">020 1234 5678</span>
-                            </div>
-                        </a>
-                        <a href="mailto:hello@readysold.co.uk" class="contact-option">
-                            <i data-lucide="mail"></i>
-                            <div class="contact-option-text">
-                                <span class="contact-option-label">Email us</span>
-                                <span class="contact-option-value">hello@readysold.co.uk</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Type your question..." onkeypress="handleChatKeyPress(event)">
+                <button class="chat-send-btn" onclick="sendMessage()">
+                    <i data-lucide="send"></i>
+                </button>
             </div>
         </div>
     </div>
