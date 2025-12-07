@@ -73,6 +73,50 @@
         </div>
     </section>
 
+    <!-- Homepage Welcome Popup -->
+    <div class="homepage-popup-overlay" id="homepage-popup-overlay">
+        <div class="homepage-popup">
+            <button class="modal-close" onclick="closeHomepagePopup()">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="popup-split">
+                <div class="popup-image">
+                    <img src="public/images/damaged.jpg" alt="We buy any condition" loading="lazy">
+                </div>
+                <div class="popup-content">
+                    <h3>Sell Your Car In Any Condition</h3>
+                    <p>Did you know we buy vehicles even if they need work? Damaged, high mileage, or mechanical issues - we'll still help you sell.</p>
+                    
+                    <div class="popup-features">
+                        <div class="popup-feature">
+                            <i data-lucide="check-circle"></i>
+                            <span>No upfront costs</span>
+                        </div>
+                        <div class="popup-feature">
+                            <i data-lucide="check-circle"></i>
+                            <span>Keep driving until sold</span>
+                        </div>
+                        <div class="popup-feature">
+                            <i data-lucide="check-circle"></i>
+                            <span>We handle everything</span>
+                        </div>
+                        <div class="popup-feature">
+                            <i data-lucide="check-circle"></i>
+                            <span>Any condition accepted</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-modal" onclick="closeHomepagePopup(); openValuationModal()">
+                        Get Free Valuation
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                    
+                    <p class="popup-note">Takes 30 seconds · No obligation · 2-hour response</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Trust Bar -->
     <section class="trust-bar">
         <div class="trust-container">
@@ -242,7 +286,7 @@
         <div class="container">
             <div class="condition-content">
                 <div class="condition-text">
-                    <span class="condition-badge">We Accept All Vehicles</span>
+                    <p class="condition-tagline">All Vehicles Welcome</p>
                     <h2>Your Car Doesn't Need To Be Perfect</h2>
                     <p>We sell vehicles in any condition, including those needing bodywork, mechanical repairs, or cosmetic touch-ups. Damaged doesn't mean unsellable.</p>
                     <ul class="condition-list">
@@ -258,7 +302,7 @@
                 </div>
                 <div class="condition-image">
                     <div class="condition-badge-overlay">Any Condition Accepted</div>
-                    <img src="public/images/damaged-car.jpg" alt="We buy cars in any condition" loading="lazy">
+                    <img src="public/images/damaged.jpg" alt="We buy cars in any condition" loading="lazy">
                 </div>
             </div>
         </div>
@@ -584,10 +628,6 @@
             <div class="modal-content">
                 <h3>We Buy Cars In Any Condition</h3>
                 <p>Don't let damage or wear stop you from selling. We specialize in finding buyers for all types of vehicles.</p>
-
-                <div class="condition-modal-image">
-                    <img src="public/images/damaged-car.jpg" alt="Damaged car we can sell" loading="lazy">
-                </div>
 
                 <div class="condition-grid">
                     <div class="condition-item">

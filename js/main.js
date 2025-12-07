@@ -13,6 +13,47 @@ if (typeof lucide !== 'undefined') {
 }
 
 // ============================================
+// Homepage Welcome Popup
+// ============================================
+
+const homepagePopupOverlay = document.getElementById('homepage-popup-overlay');
+let popupShown = false;
+
+function showHomepagePopup() {
+    if (!popupShown && homepagePopupOverlay) {
+        popupShown = true;
+        homepagePopupOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+}
+
+function closeHomepagePopup() {
+    if (homepagePopupOverlay) {
+        homepagePopupOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Make functions globally available
+window.closeHomepagePopup = closeHomepagePopup;
+
+// Show popup after 5 seconds
+setTimeout(showHomepagePopup, 5000);
+
+// Close popup on overlay click
+if (homepagePopupOverlay) {
+    homepagePopupOverlay.addEventListener('click', (e) => {
+        if (e.target === homepagePopupOverlay) {
+            closeHomepagePopup();
+        }
+    });
+}
+
+// ============================================
 // Navigation Scroll Behavior
 // ============================================
 
@@ -389,6 +430,9 @@ document.addEventListener('keydown', (e) => {
         }
         if (conditionModalOverlay && conditionModalOverlay.classList.contains('active')) {
             closeConditionModal();
+        }
+        if (homepagePopupOverlay && homepagePopupOverlay.classList.contains('active')) {
+            closeHomepagePopup();
         }
     }
 });
