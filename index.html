@@ -369,7 +369,6 @@
             </button>
             <div class="cta-trust-line">
                 <span><i data-lucide="clock"></i> 2-hour response</span>
-                <span><i data-lucide="map-pin"></i> Nationwide</span>
                 <span><i data-lucide="calendar"></i> Mon-Sat 9am-6pm</span>
             </div>
         </div>
@@ -409,7 +408,6 @@
                             <li><i data-lucide="phone" class="footer-icon"></i><a href="tel:02012345678">020 1234 5678</a></li>
                             <li><i data-lucide="mail" class="footer-icon"></i><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
                             <li><i data-lucide="clock" class="footer-icon"></i>Mon-Sat: 9am-6pm</li>
-                            <li><i data-lucide="map-pin" class="footer-icon"></i>Nationwide Service</li>
                         </ul>
                     </div>
                 </div>
@@ -502,6 +500,30 @@
                     <i data-lucide="send"></i>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Condition Info Popup -->
+    <div class="condition-popup" id="condition-popup">
+        <button class="popup-close" onclick="closeConditionPopup()">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="popup-content">
+            <h3>Your car doesn't need to be perfect.</h3>
+            <p class="popup-subtext">We sell vehicles in any condition.</p>
+            <div class="popup-bullets" id="popup-bullets">
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Minor dents & scratches</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> High mileage</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Wear and tear</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Older vehicles</div>
+            </div>
+            <button class="popup-btn" id="popup-btn" onclick="handlePopupButtonClick()">
+                <span id="popup-btn-text">Learn More</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+        <div class="popup-image">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Car">
         </div>
     </div>
 

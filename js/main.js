@@ -479,7 +479,6 @@ const chatbotKnowledge = {
     pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing', 'fees', 'commission', 'percentage', 'cheap', 'affordable'],
     process: ['how', 'work', 'process', 'steps', 'procedure', 'what happens', 'how does', 'explain', 'walk me through', 'works'],
     driving: ['drive', 'driving', 'keep', 'use', 'car', 'still use', 'keep using', 'access', 'use my car'],
-    coverage: ['area', 'location', 'where', 'cover', 'nationwide', 'region', 'available', 'service', 'operate', 'uk'],
     time: ['long', 'quick', 'fast', 'duration', 'time', 'how long', 'quickly', 'speed', 'when', 'timeline'],
     payment: ['pay', 'payment', 'when', 'upfront', 'money', 'paid', 'paying', 'receive', 'get paid'],
     photography: ['photo', 'picture', 'image', 'photos', 'pictures', 'photography', 'images'],
@@ -508,11 +507,6 @@ const responses = {
         "Yes, absolutely! Your car stays with you throughout the entire selling process. We work around your schedule for viewings, so you maintain full use of your vehicle until the moment it sells. There's no need to hand over keys or lose access - it's your car until someone buys it.",
         "That's one of the best parts of our service. You keep driving your car normally. When potential buyers want to view it, we coordinate times that work for you. No inconvenience, no loss of mobility - your life continues as usual while we work on finding the right buyer.",
         "Definitely! We understand you need your car, so it stays in your possession. We schedule viewings around your availability, whether that's evenings, weekends, or whenever suits you best. You're never without your vehicle until the sale completes."
-    ],
-    coverage: [
-        "We operate across the entire UK. Whether you're in London, Manchester, Edinburgh, Cardiff, or a small village in the countryside, we can help you sell your car. Our nationwide network means we reach buyers everywhere, maximizing your chances of a quick sale at the right price.",
-        "Our service covers all of the UK. We've successfully sold cars from the Scottish Highlands to Cornwall and everywhere in between. If you want to double-check coverage for your specific postcode, give us a call on 020 1234 5678.",
-        "Nationwide coverage - we're not limited by region. Our platform reaches potential buyers across England, Scotland, Wales, and Northern Ireland, which means more eyes on your listing and better competition for the sale."
     ],
     time: [
         "For valuations, we're very responsive - you'll hear from us within 2 hours during business hours. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often go faster. We'll give you a realistic timeframe when we value your car.",
@@ -634,9 +628,6 @@ function processMessage(message) {
     else if (chatbotKnowledge.driving.some(word => lowerMessage.includes(word))) {
         responseType = 'driving';
     }
-    else if (chatbotKnowledge.coverage.some(word => lowerMessage.includes(word))) {
-        responseType = 'coverage';
-    }
     else if (chatbotKnowledge.time.some(word => lowerMessage.includes(word))) {
         responseType = 'time';
     }
@@ -694,7 +685,7 @@ function handleChatKeyPress(event) {
 function toggleChat() {
     const panel = document.getElementById('chat-panel');
     const button = document.getElementById('chat-toggle');
-    
+
     if (panel.classList.contains('active')) {
         panel.classList.remove('active');
         button.classList.remove('active');
@@ -706,4 +697,96 @@ function toggleChat() {
         }
     }
 }
+
+// ============================================
+// Condition Info Popup (50/50 Split)
+// ============================================
+
+let popupExpanded = false;
+
+function showConditionPopup() {
+    // Check if popup was dismissed this session
+    if (localStorage.getItem('conditionPopupDismissed') === 'true') {
+        return;
+    }
+
+    const popup = document.getElementById('condition-popup');
+    if (!popup) return;
+
+    popup.classList.add('visible');
+
+    // Reinitialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+function closeConditionPopup() {
+    const popup = document.getElementById('condition-popup');
+    if (!popup) return;
+
+    popup.classList.remove('visible');
+    popup.classList.remove('expanded');
+
+    // Remember dismissal for this session
+    localStorage.setItem('conditionPopupDismissed', 'true');
+
+    // Reset popup state
+    popupExpanded = false;
+    const btnText = document.getElementById('popup-btn-text');
+    if (btnText) btnText.textContent = 'Learn More';
+}
+
+function handlePopupButtonClick() {
+    if (!popupExpanded) {
+        // First click - expand popup
+        const popup = document.getElementById('condition-popup');
+        const btnText = document.getElementById('popup-btn-text');
+
+        popup.classList.add('expanded');
+        btnText.textContent = 'Get Free Valuation';
+        popupExpanded = true;
+
+        // Reinitialize icons for bullets
+        if (typeof lucide !== 'undefined') {
+            setTimeout(() => lucide.createIcons(), 100);
+        }
+    } else {
+        // Second click - open valuation modal
+        closeConditionPopup();
+        openModal();
+    }
+}
+
+// Make function globally available
+window.closeConditionPopup = closeConditionPopup;
+window.handlePopupButtonClick = handlePopupButtonClick;
+
+// Initialize popup timing
+let popupShown = false;
+let heroScrollPassed = false;
+
+// Show after 7 seconds
+setTimeout(() => {
+    if (!popupShown && !heroScrollPassed) {
+        showConditionPopup();
+        popupShown = true;
+    }
+}, 7000);
+
+// Show when scrolling past hero
+window.addEventListener('scroll', () => {
+    if (popupShown || heroScrollPassed) return;
+
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+
+    if (window.scrollY > heroBottom - 200) {
+        showConditionPopup();
+        popupShown = true;
+        heroScrollPassed = true;
+    }
+});
 
