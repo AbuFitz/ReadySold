@@ -300,6 +300,34 @@
         </div>
     </footer>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" id="chat-toggle" onclick="toggleChat()">
+            <i data-lucide="message-circle"></i>
+        </button>
+
+        <div class="chat-panel" id="chat-panel">
+            <div class="chat-header">
+                <h4>Chat with ReadySold</h4>
+                <button class="chat-close" onclick="toggleChat()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <div class="chat-body" id="chat-messages">
+                <!-- Messages will be inserted here dynamically -->
+            </div>
+
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Type your question..." onkeypress="handleChatKeyPress(event)">
+                <button class="chat-send-btn" onclick="sendMessage()">
+                    <i data-lucide="send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
     <script>
         lucide.createIcons();
 
