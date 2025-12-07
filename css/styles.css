@@ -186,6 +186,11 @@ section {
 .logo-sold {
     color: var(--sky-blue);
     transition: var(--transition);
+    font-size: 2.1rem;
+    font-weight: 900;
+    position: relative;
+    font-style: italic;
+    letter-spacing: -0.02em;
 }
 
 .header.scrolled .logo-ready {
@@ -330,7 +335,7 @@ section {
 .hero h1 {
     color: var(--white);
     margin-bottom: 1rem;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 4.5rem;
 }
 
@@ -344,10 +349,10 @@ section {
 /* Hero Form Card */
 .hero-form-card {
     background-color: var(--white);
-    padding: 2.5rem;
+    padding: 1.75rem 3rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
-    max-width: 1100px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 950px;
     width: 100%;
     margin: 0 auto;
     position: relative;
