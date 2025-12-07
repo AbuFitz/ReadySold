@@ -475,32 +475,80 @@ let chatInitialized = false;
 
 // Knowledge base for the chatbot
 const chatbotKnowledge = {
-    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'],
-    pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing'],
-    process: ['how', 'work', 'process', 'steps', 'procedure'],
-    driving: ['drive', 'driving', 'keep', 'use', 'car'],
-    coverage: ['area', 'location', 'where', 'cover', 'nationwide', 'region'],
-    time: ['long', 'quick', 'fast', 'duration', 'time'],
-    payment: ['pay', 'payment', 'when', 'upfront'],
-    photography: ['photo', 'picture', 'image'],
-    selling: ['sell', 'buyer', 'listing'],
-    contact: ['call', 'phone', 'email', 'reach', 'contact', 'talk', 'speak'],
-    valuation: ['value', 'worth', 'estimate', 'valuation']
+    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'thanks', 'thank you'],
+    pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing', 'fees', 'commission', 'percentage', 'cheap', 'affordable'],
+    process: ['how', 'work', 'process', 'steps', 'procedure', 'what happens', 'how does', 'explain', 'walk me through', 'works'],
+    driving: ['drive', 'driving', 'keep', 'use', 'car', 'still use', 'keep using', 'access', 'use my car'],
+    coverage: ['area', 'location', 'where', 'cover', 'nationwide', 'region', 'available', 'service', 'operate', 'uk'],
+    time: ['long', 'quick', 'fast', 'duration', 'time', 'how long', 'quickly', 'speed', 'when', 'timeline'],
+    payment: ['pay', 'payment', 'when', 'upfront', 'money', 'paid', 'paying', 'receive', 'get paid'],
+    photography: ['photo', 'picture', 'image', 'photos', 'pictures', 'photography', 'images'],
+    selling: ['sell', 'buyer', 'listing', 'advertise', 'market', 'list', 'platform', 'where listed', 'find buyers'],
+    contact: ['call', 'phone', 'email', 'reach', 'contact', 'talk', 'speak', 'get in touch', 'reach out', 'number'],
+    valuation: ['value', 'worth', 'estimate', 'valuation', 'what is my car worth', 'car value', 'quote', 'assessment']
 };
 
 const responses = {
-    greeting: ["👋 Hi there! I'm here to help you sell your car stress-free.", "Hello! How can I help you today?", "Hey! Got questions about selling your car?"],
-    pricing: ["We charge 10% of the sale price (minimum £350).\nYou only pay when your car sells.\nNo upfront costs or hidden fees.", "10% commission when sold (£350 minimum).\nZero upfront costs.\nYou pay nothing if it doesn't sell."],
-    process: ["Here's how it works:\n1. Free valuation - we call you within 2 hours\n2. Professional photos & listings on all platforms\n3. We handle viewings, calls & negotiations\n4. You get paid, we get our fee", "Simple process:\n• Get your free valuation\n• We photograph & list your car\n• Keep driving while we find buyers\n• We handle everything until sold"],
-    driving: ["Yes, you keep driving your car!\nWe coordinate viewings around your schedule.\nYour car stays with you until sold.", "Absolutely! Keep full use of your car.\nWe work around your availability for viewings."],
-    coverage: ["We cover the entire UK.\nNationwide service available.\nWherever you are, we can help.", "UK-wide coverage.\nCall us to confirm your specific area: 020 1234 5678"],
-    time: ["We respond within 2 hours for valuations.\nSale time varies by car & market.\nUsually 2-6 weeks for most vehicles.", "Quick response - 2 hours max.\nSelling time depends on your car.\nWe'll give you realistic timescales."],
-    payment: ["You only pay when your car sells.\nNo upfront costs ever.\nBuyer pays you directly, then you pay our fee.", "Zero upfront payment.\nPay only on successful sale.\n10% of sale price (£350 minimum)."],
-    photography: ["Professional photography is included.\nShowroom-quality images.\nMakes your car sell faster.", "We include pro photos at no extra cost.\nHigh-quality images for all listings."],
-    selling: ["We list on all major platforms.\nHandle all buyer communications.\nNegotiate on your behalf.\nYou approve the final sale.", "We manage the entire sale:\n• List everywhere\n• Screen buyers\n• Arrange viewings\n• Negotiate price\n• Handle paperwork"],
-    contact: ["📞 Call: 020 1234 5678\n📧 Email: hello@readysold.co.uk\n⏰ Mon-Sat: 9am-6pm", "Reach us:\nPhone: 020 1234 5678\nEmail: hello@readysold.co.uk\nHours: Mon-Sat, 9am-6pm"],
-    valuation: ["Get your free valuation now!\nEnter your reg above or call us.\nWe'll research the market & call you within 2 hours.", "Free valuation available.\nNo obligation.\nJust enter your registration and we'll be in touch."],
-    default: ["I'm not sure about that.\nWould you like to:\n• Talk about pricing?\n• Learn how it works?\n• Get a free valuation?\n• Speak to someone? 020 1234 5678", "Good question! Let me help:\n• Our fees: 10% when sold\n• How it works: We handle everything\n• Coverage: UK-wide\n• Call us: 020 1234 5678"]
+    greeting: [
+        "Hi there! I'm here to help you sell your car. What would you like to know?",
+        "Hello! Thanks for getting in touch. How can I assist with selling your car today?",
+        "Hey! Whether you're curious about pricing, the process, or just exploring your options, I'm happy to help."
+    ],
+    pricing: [
+        "Our pricing is straightforward - we charge 10% of the sale price with a minimum fee of £350. You only pay when your car actually sells, so there's zero risk and no upfront costs. If we don't sell it, you don't pay anything.",
+        "We work on a success-based model. You'll pay 10% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges - just a fair commission when we deliver results.",
+        "Think of it as risk-free selling. Our 10% commission (£350 minimum) only applies when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price because we only earn when you do."
+    ],
+    process: [
+        "The process is designed to be hassle-free for you. First, we provide a free valuation - typically within 2 hours of you contacting us. Then we arrange professional photography and create listings across all major platforms. While we handle viewings, calls, and negotiations, you keep driving your car as normal. Once we find the right buyer, we coordinate the sale and you receive your payment.",
+        "Here's what happens: After you request a valuation, we'll call you within 2 hours to discuss your car and give you an accurate estimate. We then photograph your vehicle and list it everywhere - AutoTrader, eBay Motors, Facebook Marketplace, you name it. We manage all the interested buyers, arrange viewings that suit your schedule, and negotiate on your behalf. You stay in the loop and approve the final sale.",
+        "It's a four-step journey. Step one: Free valuation where we assess your car's market value. Step two: Professional photos and comprehensive listings. Step three: We handle all buyer interactions and viewings while you keep using your car. Step four: We finalize the sale, you get paid, and we collect our commission. Simple as that."
+    ],
+    driving: [
+        "Yes, absolutely! Your car stays with you throughout the entire selling process. We work around your schedule for viewings, so you maintain full use of your vehicle until the moment it sells. There's no need to hand over keys or lose access - it's your car until someone buys it.",
+        "That's one of the best parts of our service. You keep driving your car normally. When potential buyers want to view it, we coordinate times that work for you. No inconvenience, no loss of mobility - your life continues as usual while we work on finding the right buyer.",
+        "Definitely! We understand you need your car, so it stays in your possession. We schedule viewings around your availability, whether that's evenings, weekends, or whenever suits you best. You're never without your vehicle until the sale completes."
+    ],
+    coverage: [
+        "We operate across the entire UK. Whether you're in London, Manchester, Edinburgh, Cardiff, or a small village in the countryside, we can help you sell your car. Our nationwide network means we reach buyers everywhere, maximizing your chances of a quick sale at the right price.",
+        "Our service covers all of the UK. We've successfully sold cars from the Scottish Highlands to Cornwall and everywhere in between. If you want to double-check coverage for your specific postcode, give us a call on 020 1234 5678.",
+        "Nationwide coverage - we're not limited by region. Our platform reaches potential buyers across England, Scotland, Wales, and Northern Ireland, which means more eyes on your listing and better competition for the sale."
+    ],
+    time: [
+        "For valuations, we're very responsive - you'll hear from us within 2 hours during business hours. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often go faster. We'll give you a realistic timeframe when we value your car.",
+        "We move quickly on valuations - expect a call within 2 hours. The actual selling time depends on market demand for your specific vehicle. A well-priced car in good condition might sell in days, while others take a few weeks. We'll be upfront about realistic expectations based on current market conditions.",
+        "Our response time for valuations is typically under 2 hours. Once listed, sale duration varies - factors like pricing, condition, mileage, and model popularity all play a role. We use real-time market data to price competitively, which helps most cars sell within a month. We'll keep you updated throughout."
+    ],
+    payment: [
+        "Payment is simple and secure. The buyer pays you directly for the car - we're not a middleman in the transaction. Once the sale completes and you've received your money, you then pay us our 10% commission (minimum £350). You're always in control of the funds.",
+        "No upfront costs at all. When your car sells, the buyer transfers money directly to you. After you receive the full payment, you pay our commission of 10% of the sale price (£350 minimum). It's straightforward and completely transparent.",
+        "Zero payment until your car sells. When it does, you receive the sale price from the buyer, then settle our 10% fee (minimum £350). We don't handle the buyer's money - it goes straight to you, keeping everything simple and secure."
+    ],
+    photography: [
+        "Professional photography is included in our service at no extra charge. High-quality images make a massive difference in attracting buyers and achieving the right price. We'll capture your car in the best light with showroom-quality photos that make it stand out from other listings.",
+        "We provide professional photography as standard - it's crucial for online listings. Quality images generate more interest, more viewings, and ultimately better offers. There's no additional cost; it's part of how we ensure your car sells quickly and for the best price.",
+        "Yes, professional photos are included. We know that great photography sells cars, so we make sure your vehicle looks its absolute best across all platforms. Crisp, well-lit images that highlight the car's condition and features - all part of the service."
+    ],
+    selling: [
+        "We handle the complete selling process. Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and other major platforms. We field all inquiries, pre-screen buyers, arrange viewings around your schedule, and negotiate to get you the best price. You stay informed and approve the final sale before anything is finalized.",
+        "Think of us as your personal car selling team. We create compelling listings with professional photos, manage all buyer communications, handle price negotiations, organize viewings, and deal with the paperwork. You're involved in the key decisions but free from the day-to-day hassle.",
+        "Our comprehensive service covers everything: multi-platform listings, buyer vetting, appointment scheduling, professional negotiation, and sale coordination. We only bring you serious, qualified buyers, and we always get your approval before accepting any offer. You get the results without the stress."
+    ],
+    contact: [
+        "You can reach us by phone at 020 1234 5678 or email hello@readysold.co.uk. We're available Monday to Saturday, 9am to 6pm. Whether you want to discuss a valuation, ask questions, or get started with selling your car, we're here to help.",
+        "Feel free to call us on 020 1234 5678 during business hours (Mon-Sat, 9am-6pm) or drop us an email anytime at hello@readysold.co.uk. We'll get back to you promptly with answers to your questions or to arrange your free valuation.",
+        "Contact details: Phone 020 1234 5678, Email hello@readysold.co.uk. Our team is available Monday through Saturday, 9am to 6pm. We're happy to chat about your car and explain how we can help you sell it hassle-free."
+    ],
+    valuation: [
+        "Getting a free valuation is easy. You can enter your registration number in the form at the top of this page, or simply give us a call on 020 1234 5678. Either way, we'll research current market conditions and get back to you within 2 hours with an accurate, honest valuation. No obligation whatsoever.",
+        "Ready for your free valuation? Just pop your reg number into the form above or call us directly. We'll analyze recent sales data, current market trends, and your car's specific details to provide a realistic valuation. You'll hear from us within 2 hours, and there's no pressure to proceed.",
+        "Free valuations are our starting point. Enter your registration details on this page, and we'll call you within 2 hours to discuss your car's value based on real market data. It's completely free and there's no commitment required - just helpful information to guide your decision."
+    ],
+    default: [
+        "That's a great question. While I might not have covered that specific point, I can help you with information about our pricing, how the process works, what areas we cover, or put you in touch with the team directly. What would be most helpful for you right now?",
+        "I want to make sure I give you accurate information. Could you tell me a bit more about what you'd like to know? I can explain our fees, walk you through the selling process, discuss timelines, or connect you with someone on the team at 020 1234 5678.",
+        "Thanks for asking. To give you the best answer, could you clarify what aspect of selling your car you're most curious about? Whether it's about costs, the process, timing, or something else entirely - I'm here to help or can get you speaking with our team."
+    ]
 };
 
 function initializeChat() {
@@ -510,9 +558,9 @@ function initializeChat() {
     chatMessages.innerHTML = '';
     
     // Welcome message
-    addBotMessage("👋 Hi! I'm the ReadySold assistant.", true);
+    addBotMessage("Hi! I'm the ReadySold assistant. I'm here to help you understand how we can sell your car hassle-free.", true);
     setTimeout(() => {
-        addBotMessage("Got questions about selling your car?\nI can help with pricing, process, or anything else!");
+        addBotMessage("I can answer questions about pricing, explain our process, or help you get started with a free valuation. What would you like to know?");
         setTimeout(() => {
             addQuickReplies();
         }, 500);
@@ -544,10 +592,10 @@ function addQuickReplies() {
     const quickRepliesDiv = document.createElement('div');
     quickRepliesDiv.className = 'quick-replies';
     quickRepliesDiv.innerHTML = `
-        <button class="quick-reply-btn" onclick="handleQuickReply('What are your fees?')">💰 Pricing</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('How does it work?')">📋 Process</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('Get valuation')">🚗 Get Valuation</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('Contact you')">📞 Contact</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('What are your fees?')">Pricing & Fees</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How does it work?')">How It Works</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('I want a free valuation')">Free Valuation</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How do I contact you?')">Contact Details</button>
     `;
     chatMessages.appendChild(quickRepliesDiv);
     scrollToBottom();
