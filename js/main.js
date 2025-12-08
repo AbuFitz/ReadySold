@@ -94,8 +94,8 @@ if (heroForm) {
             return;
         }
 
-        // Open modal
-        openModal();
+        // Open modal with contact-only mode
+        openModal(true);
     });
 }
 
@@ -104,30 +104,44 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get all form data
+        // Get contact form data
         const formData = new FormData(contactForm);
-        const completeData = {
-            registration: formData.get('registration'),
-            mileage: formData.get('mileage'),
-            price: formData.get('price'),
+        const contactData = {
             name: formData.get('name'),
             phone: formData.get('phone'),
             email: formData.get('email')
         };
 
-        // Validate registration format
-        const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
-        if (!regRegex.test(completeData.registration.replace(/\s/g, ''))) {
-            alert('Please enter a valid UK registration (e.g., AB12 CDE)');
-            return;
+        // Get car data (from hero form or modal)
+        let carData;
+        if (heroFormData && heroFormData.registration) {
+            // Data from hero form
+            carData = heroFormData;
+        } else {
+            // Data from modal
+            carData = {
+                registration: formData.get('registration'),
+                mileage: formData.get('mileage'),
+                price: formData.get('price')
+            };
+
+            // Validate registration format
+            const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
+            if (!regRegex.test(carData.registration.replace(/\s/g, ''))) {
+                alert('Please enter a valid UK registration (e.g., AB12 CDE)');
+                return;
+            }
         }
 
         // Validate UK phone number
         const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        if (!phoneRegex.test(completeData.phone.replace(/\s/g, ''))) {
+        if (!phoneRegex.test(contactData.phone.replace(/\s/g, ''))) {
             alert('Please enter a valid UK phone number (e.g., 07700 900000)');
             return;
         }
+
+        // Combine all data
+        const completeData = { ...carData, ...contactData };
 
         // Log data (in production, send to backend)
         console.log('Complete valuation request:', completeData);
@@ -157,7 +171,7 @@ if (contactForm) {
 }
 
 // Modal functions
-function openModal() {
+function openModal(fromHeroForm = false) {
     if (modalOverlay) {
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -166,9 +180,43 @@ function openModal() {
         if (modalStep1) modalStep1.style.display = 'block';
         if (modalStep2) modalStep2.classList.remove('active');
 
+        const carFields = document.querySelector('.modal-car-fields');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+
+        if (fromHeroForm) {
+            // Hide car fields, update text
+            if (carFields) carFields.style.display = 'none';
+            if (modalTitle) modalTitle.textContent = 'Almost there!';
+            if (modalSubtitle) modalSubtitle.textContent = "Enter your details and we'll call you within 2 hours.";
+
+            // Make car fields not required
+            const modalReg = document.getElementById('modal-registration');
+            const modalMileage = document.getElementById('modal-mileage');
+            const modalPrice = document.getElementById('modal-price');
+            if (modalReg) modalReg.removeAttribute('required');
+            if (modalMileage) modalMileage.removeAttribute('required');
+            if (modalPrice) modalPrice.removeAttribute('required');
+        } else {
+            // Show car fields, restore text
+            if (carFields) carFields.style.display = 'block';
+            if (modalTitle) modalTitle.textContent = 'Get Your Free Valuation';
+            if (modalSubtitle) modalSubtitle.textContent = "Tell us about your car and we'll call you within 2 hours.";
+
+            // Make car fields required
+            const modalReg = document.getElementById('modal-registration');
+            const modalMileage = document.getElementById('modal-mileage');
+            const modalPrice = document.getElementById('modal-price');
+            if (modalReg) modalReg.setAttribute('required', '');
+            if (modalMileage) modalMileage.setAttribute('required', '');
+            if (modalPrice) modalPrice.setAttribute('required', '');
+        }
+
         // Focus on first input
         setTimeout(() => {
-            const firstInput = contactForm.querySelector('input');
+            const firstInput = fromHeroForm ?
+                document.getElementById('contact-name') :
+                document.getElementById('modal-registration');
             if (firstInput) firstInput.focus();
         }, 300);
 
