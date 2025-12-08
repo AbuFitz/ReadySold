@@ -814,31 +814,13 @@ function handlePopupButtonClick() {
 window.closeConditionPopup = closeConditionPopup;
 window.handlePopupButtonClick = handlePopupButtonClick;
 
-// Initialize popup timing
+// Initialize popup timing - show after 8 seconds
 let popupShown = false;
-let heroScrollPassed = false;
 
-// Show after 7 seconds
 setTimeout(() => {
-    if (!popupShown && !heroScrollPassed) {
+    if (!popupShown) {
         showConditionPopup();
         popupShown = true;
     }
-}, 7000);
-
-// Show when scrolling past hero
-window.addEventListener('scroll', () => {
-    if (popupShown || heroScrollPassed) return;
-
-    const heroSection = document.querySelector('.hero');
-    if (!heroSection) return;
-
-    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-
-    if (window.scrollY > heroBottom - 200) {
-        showConditionPopup();
-        popupShown = true;
-        heroScrollPassed = true;
-    }
-});
+}, 8000);
 
