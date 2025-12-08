@@ -170,8 +170,8 @@ if (heroForm) {
             return;
         }
 
-        // Open modal
-        openModal();
+        // Open modal with hero data (contact info only mode)
+        openModal(true);
     });
 }
 
@@ -183,9 +183,9 @@ if (contactForm) {
         // Get all form data
         const formData = new FormData(contactForm);
         const completeData = {
-            registration: formData.get('registration'),
-            mileage: formData.get('mileage'),
-            price: formData.get('price'),
+            registration: formData.get('registration') || heroFormData.registration,
+            mileage: formData.get('mileage') || heroFormData.mileage,
+            price: formData.get('price') || heroFormData.price,
             name: formData.get('name'),
             phone: formData.get('phone'),
             email: formData.get('email')
@@ -233,7 +233,7 @@ if (contactForm) {
 }
 
 // Modal functions
-function openModal() {
+function openModal(fromHeroForm = false) {
     if (modalOverlay) {
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -242,11 +242,50 @@ function openModal() {
         if (modalStep1) modalStep1.style.display = 'block';
         if (modalStep2) modalStep2.classList.remove('active');
 
-        // Focus on first input
-        setTimeout(() => {
-            const firstInput = contactForm.querySelector('input');
-            if (firstInput) firstInput.focus();
-        }, 300);
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const vehicleFields = document.querySelectorAll('.vehicle-field');
+        
+        if (fromHeroForm) {
+            // Hide vehicle fields and update messaging
+            vehicleFields.forEach(field => {
+                field.style.display = 'none';
+                const input = field.querySelector('input');
+                if (input) input.removeAttribute('required');
+            });
+            
+            // Pre-fill hidden vehicle fields with hero data
+            if (modalRegistration) modalRegistration.value = heroFormData.registration || '';
+            if (modalMileage) modalMileage.value = heroFormData.mileage || '';
+            if (modalPrice) modalPrice.value = heroFormData.price || '';
+            
+            // Update modal text
+            if (modalTitle) modalTitle.textContent = 'Almost There!';
+            if (modalSubtitle) modalSubtitle.textContent = 'Just let us know how to reach you and we\'ll call within 2 hours.';
+            
+            // Focus on name field
+            setTimeout(() => {
+                const nameInput = document.getElementById('contact-name');
+                if (nameInput) nameInput.focus();
+            }, 300);
+        } else {
+            // Show all fields for normal modal opening
+            vehicleFields.forEach(field => {
+                field.style.display = 'block';
+                const input = field.querySelector('input');
+                if (input) input.setAttribute('required', 'required');
+            });
+            
+            // Reset modal text
+            if (modalTitle) modalTitle.textContent = 'Get Your Free Valuation';
+            if (modalSubtitle) modalSubtitle.textContent = 'Tell us about your car and we\'ll call you within 2 hours.';
+            
+            // Focus on first input
+            setTimeout(() => {
+                const firstInput = contactForm.querySelector('input');
+                if (firstInput) firstInput.focus();
+            }, 300);
+        }
 
         // Reinitialize icons
         if (typeof lucide !== 'undefined') {
