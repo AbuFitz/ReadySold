@@ -180,23 +180,30 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get contact form data
+        // Get all form data
         const formData = new FormData(contactForm);
-        const contactData = {
+        const completeData = {
+            registration: formData.get('registration'),
+            mileage: formData.get('mileage'),
+            price: formData.get('price'),
             name: formData.get('name'),
             phone: formData.get('phone'),
             email: formData.get('email')
         };
 
-        // Validate UK phone number
-        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        if (!phoneRegex.test(contactData.phone.replace(/\s/g, ''))) {
-            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
+        // Validate registration format
+        const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
+        if (!regRegex.test(completeData.registration.replace(/\s/g, ''))) {
+            alert('Please enter a valid UK registration (e.g., AB12 CDE)');
             return;
         }
 
-        // Combine all data
-        const completeData = { ...heroFormData, ...contactData };
+        // Validate UK phone number
+        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+        if (!phoneRegex.test(completeData.phone.replace(/\s/g, ''))) {
+            alert('Please enter a valid UK phone number (e.g., 07700 900000)');
+            return;
+        }
 
         // Log data (in production, send to backend)
         console.log('Complete valuation request:', completeData);
@@ -560,6 +567,51 @@ if (contactPhone) {
     });
 }
 
+// Auto-format modal registration
+const modalRegInput = document.getElementById('modal-registration');
+if (modalRegInput) {
+    modalRegInput.addEventListener('input', function() {
+        let value = this.value.toUpperCase().replace(/\s/g, '');
+
+        // Format as XX12 XXX
+        if (value.length > 4) {
+            value = value.slice(0, 4) + ' ' + value.slice(4, 7);
+        }
+
+        this.value = value;
+    });
+}
+
+// Auto-format modal mileage
+const modalMileageInput = document.getElementById('modal-mileage');
+if (modalMileageInput) {
+    modalMileageInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+
+        // Add commas for thousands
+        if (value) {
+            value = parseInt(value).toLocaleString('en-GB');
+        }
+
+        this.value = value;
+    });
+}
+
+// Auto-format modal price
+const modalPriceInput = document.getElementById('modal-price');
+if (modalPriceInput) {
+    modalPriceInput.addEventListener('input', function() {
+        let value = this.value.replace(/[^\d]/g, '');
+
+        // Add commas for thousands
+        if (value) {
+            value = '£' + parseInt(value).toLocaleString('en-GB');
+        }
+
+        this.value = value;
+    });
+}
+
 // ============================================
 // Smooth Scrolling
 // ============================================
@@ -842,9 +894,6 @@ function processMessage(message) {
     else if (chatbotKnowledge.driving.some(word => lowerMessage.includes(word))) {
         responseType = 'driving';
     }
-    else if (chatbotKnowledge.coverage.some(word => lowerMessage.includes(word))) {
-        responseType = 'coverage';
-    }
     else if (chatbotKnowledge.time.some(word => lowerMessage.includes(word))) {
         responseType = 'time';
     }
@@ -902,7 +951,7 @@ function handleChatKeyPress(event) {
 function toggleChat() {
     const panel = document.getElementById('chat-panel');
     const button = document.getElementById('chat-toggle');
-    
+
     if (panel.classList.contains('active')) {
         panel.classList.remove('active');
         button.classList.remove('active');
@@ -914,4 +963,78 @@ function toggleChat() {
         }
     }
 }
+
+// ============================================
+// Condition Info Popup (50/50 Split)
+// ============================================
+
+let popupExpanded = false;
+
+function showConditionPopup() {
+    // Check if popup was dismissed this session
+    if (localStorage.getItem('conditionPopupDismissed') === 'true') {
+        return;
+    }
+
+    const popup = document.getElementById('condition-popup');
+    if (!popup) return;
+
+    popup.classList.add('visible');
+
+    // Reinitialize icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+function closeConditionPopup() {
+    const popup = document.getElementById('condition-popup');
+    if (!popup) return;
+
+    popup.classList.remove('visible');
+    popup.classList.remove('expanded');
+
+    // Remember dismissal for this session
+    localStorage.setItem('conditionPopupDismissed', 'true');
+
+    // Reset popup state
+    popupExpanded = false;
+    const btnText = document.getElementById('popup-btn-text');
+    if (btnText) btnText.textContent = 'Learn More';
+}
+
+function handlePopupButtonClick() {
+    if (!popupExpanded) {
+        // First click - expand popup
+        const popup = document.getElementById('condition-popup');
+        const btnText = document.getElementById('popup-btn-text');
+
+        popup.classList.add('expanded');
+        btnText.textContent = 'Get Free Valuation';
+        popupExpanded = true;
+
+        // Reinitialize icons for bullets
+        if (typeof lucide !== 'undefined') {
+            setTimeout(() => lucide.createIcons(), 100);
+        }
+    } else {
+        // Second click - open valuation modal
+        closeConditionPopup();
+        openModal();
+    }
+}
+
+// Make function globally available
+window.closeConditionPopup = closeConditionPopup;
+window.handlePopupButtonClick = handlePopupButtonClick;
+
+// Initialize popup timing - show after 9 seconds
+let popupShown = false;
+
+setTimeout(() => {
+    if (!popupShown) {
+        showConditionPopup();
+        popupShown = true;
+    }
+}, 9000);
 

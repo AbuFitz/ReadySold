@@ -31,7 +31,7 @@
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#comparison">Why Choose Us</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><button class="btn-nav" onclick="openValuationModal()">Get Free Valuation</button></li>
+                <li><button class="btn-nav" onclick="openModal()">Get Free Valuation</button></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobile-toggle">
@@ -280,7 +280,7 @@
                         </div>
                     </div>
 
-                    <button class="btn-calculator" onclick="openValuationModal()">
+                    <button class="btn-calculator" onclick="openModal()">
                         Get Your Free Valuation
                     </button>
 
@@ -363,13 +363,12 @@
         <div class="container">
             <h2>Ready to Sell Without The Stress?</h2>
             <p>Get your free valuation today. No obligation, no upfront costs.</p>
-            <button class="btn-cta" onclick="openValuationModal()">
+            <button class="btn-cta" onclick="openModal()">
                 Get Free Valuation
                 <i data-lucide="arrow-right"></i>
             </button>
             <div class="cta-trust-line">
                 <span><i data-lucide="clock"></i> 2-hour response</span>
-                <span><i data-lucide="award"></i> Expert Service</span>
                 <span><i data-lucide="calendar"></i> Mon-Sat 9am-6pm</span>
             </div>
         </div>
@@ -409,7 +408,6 @@
                             <li><i data-lucide="phone" class="footer-icon"></i><a href="tel:02012345678">020 1234 5678</a></li>
                             <li><i data-lucide="mail" class="footer-icon"></i><a href="mailto:hello@readysold.co.uk">hello@readysold.co.uk</a></li>
                             <li><i data-lucide="clock" class="footer-icon"></i>Mon-Sat: 9am-6pm</li>
-                            <li><i data-lucide="zap" class="footer-icon"></i>Quick Response</li>
                         </ul>
                     </div>
                 </div>
@@ -438,10 +436,25 @@
             </button>
 
             <div class="modal-content" id="modal-step-1">
-                <h3>Almost there!</h3>
-                <p>Enter your details and we'll call you within 2 hours.</p>
+                <h3>Get Your Free Valuation</h3>
+                <p>Tell us about your car and we'll call you within 2 hours.</p>
 
                 <form id="contact-form">
+                    <div class="modal-field">
+                        <label>Registration</label>
+                        <input type="text" name="registration" id="modal-registration" placeholder="AB12 CDE" required maxlength="8">
+                    </div>
+
+                    <div class="modal-field">
+                        <label>Mileage</label>
+                        <input type="text" name="mileage" id="modal-mileage" placeholder="e.g. 45,000" required>
+                    </div>
+
+                    <div class="modal-field">
+                        <label>Your Expected Price</label>
+                        <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000" required>
+                    </div>
+
                     <div class="modal-field">
                         <label>Your Name</label>
                         <input type="text" name="name" id="contact-name" placeholder="John Smith" required>
@@ -478,101 +491,6 @@
         </div>
     </div>
 
-    <!-- Valuation Modal -->
-    <div class="modal-overlay" id="valuation-modal-overlay">
-        <div class="modal modal-large" id="valuation-modal">
-            <button class="modal-close" onclick="closeValuationModal()">
-                <i data-lucide="x"></i>
-            </button>
-
-            <div class="modal-content">
-                <h3>Get Your Free Valuation</h3>
-                <p>Fill in your car and contact details below - we'll call you within 2 hours.</p>
-
-                <form id="valuation-form">
-                    <div class="form-section">
-                        <h4>Vehicle Details</h4>
-                        <div class="modal-field">
-                            <label>Registration</label>
-                            <input type="text" name="registration" id="modal-registration" placeholder="AB12 CDE" required maxlength="8">
-                        </div>
-
-                        <div class="modal-field">
-                            <label>Mileage</label>
-                            <input type="text" name="mileage" id="modal-mileage" placeholder="e.g. 45,000" required>
-                        </div>
-
-                        <div class="modal-field">
-                            <label>Your Price</label>
-                            <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000" required>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h4>Your Contact Details</h4>
-                        <div class="modal-field">
-                            <label>Your Name</label>
-                            <input type="text" name="name" id="modal-name" placeholder="John Smith" required>
-                        </div>
-
-                        <div class="modal-field">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" id="modal-phone" placeholder="07700 900000" required>
-                        </div>
-
-                        <div class="modal-field">
-                            <label>Email Address</label>
-                            <input type="email" name="email" id="modal-email" placeholder="john@example.com" required>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-modal">Get My Free Valuation</button>
-
-                    <p class="modal-privacy">
-                        <i data-lucide="lock"></i>
-                        Your details are safe with us · No obligation · 2-hour response
-                    </p>
-                </form>
-            </div>
-
-            <div class="modal-content modal-success" id="valuation-success" style="display: none;">
-                <div class="success-icon">
-                    <i data-lucide="check-circle"></i>
-                </div>
-                <h3>Thanks!</h3>
-                <p>We'll call you within 2 hours.</p>
-                <p class="success-subtext">In the meantime, here's what happens next...</p>
-                <button class="btn-modal" onclick="closeValuationModal(); scrollToSection('how-it-works')">See How It Works</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 50/50 Split Floating Popup -->
-    <div class="floating-popup" id="floating-popup">
-        <button class="floating-popup-close" onclick="closeFloatingPopup()">
-            <i data-lucide="x"></i>
-        </button>
-        <div class="floating-popup-split">
-            <div class="floating-popup-content">
-                <p class="floating-popup-title">Your car doesn't need to be perfect.</p>
-                <p class="floating-popup-text">We sell vehicles in any condition.</p>
-                <ul class="floating-popup-list" id="floating-popup-list">
-                    <li><i data-lucide="check-circle"></i>Minor dents & scratches</li>
-                    <li><i data-lucide="check-circle"></i>High mileage</li>
-                    <li><i data-lucide="check-circle"></i>Wear and tear</li>
-                    <li><i data-lucide="check-circle"></i>Older vehicles</li>
-                </ul>
-                <button class="floating-popup-btn" id="floating-popup-btn" onclick="toggleFloatingPopupState()">
-                    Learn More
-                    <i data-lucide="arrow-right"></i>
-                </button>
-            </div>
-            <div class="floating-popup-image">
-                <img src="public/images/damaged.jpg" alt="Car condition" loading="lazy">
-            </div>
-        </div>
-    </div>
-
     <!-- Chat Widget -->
     <div class="chat-widget">
         <button class="chat-button" id="chat-toggle" onclick="toggleChat()">
@@ -597,6 +515,30 @@
                     <i data-lucide="send"></i>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Condition Info Popup -->
+    <div class="condition-popup" id="condition-popup">
+        <button class="popup-close" onclick="closeConditionPopup()">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="popup-content">
+            <h3>Your car doesn't need to be perfect.</h3>
+            <p class="popup-subtext">We sell vehicles in any condition.</p>
+            <div class="popup-bullets" id="popup-bullets">
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Minor dents & scratches</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> High mileage</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Wear and tear</div>
+                <div class="bullet-item"><i data-lucide="check-circle"></i> Older vehicles</div>
+            </div>
+            <button class="popup-btn" id="popup-btn" onclick="handlePopupButtonClick()">
+                <span id="popup-btn-text">Learn More</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+        <div class="popup-image">
+            <img src="images/damaged.jpg" alt="Car in any condition">
         </div>
     </div>
 
