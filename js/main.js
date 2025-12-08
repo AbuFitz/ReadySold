@@ -814,7 +814,7 @@ function handlePopupButtonClick() {
 window.closeConditionPopup = closeConditionPopup;
 window.handlePopupButtonClick = handlePopupButtonClick;
 
-// Initialize popup timing - show after 8 seconds
+// Initialize popup timing - show after 24 seconds
 let popupShown = false;
 
 setTimeout(() => {
@@ -822,5 +822,5 @@ setTimeout(() => {
         showConditionPopup();
         popupShown = true;
     }
-}, 8000);
+}, 24000);
 
