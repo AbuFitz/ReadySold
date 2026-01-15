@@ -454,21 +454,25 @@
                 <p id="modal-subtitle">Tell us about your car and we'll call you within 2 hours.</p>
 
                 <form id="contact-form">
-                    <div class="modal-field vehicle-field">
-                        <label>Registration</label>
-                        <input type="text" name="registration" id="modal-registration" placeholder="AB12 CDE" maxlength="8">
+                    <!-- Car details - shown when modal opened directly -->
+                    <div class="modal-car-fields">
+                        <div class="modal-field">
+                            <label>Registration</label>
+                            <input type="text" name="registration" id="modal-registration" placeholder="AB12 CDE" required maxlength="8">
+                        </div>
+
+                        <div class="modal-field">
+                            <label>Mileage</label>
+                            <input type="text" name="mileage" id="modal-mileage" placeholder="e.g. 45,000" required>
+                        </div>
+
+                        <div class="modal-field">
+                            <label>Your Expected Price</label>
+                            <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000" required>
+                        </div>
                     </div>
 
-                    <div class="modal-field vehicle-field">
-                        <label>Mileage</label>
-                        <input type="text" name="mileage" id="modal-mileage" placeholder="e.g. 45,000">
-                    </div>
-
-                    <div class="modal-field vehicle-field">
-                        <label>Your Expected Price</label>
-                        <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000">
-                    </div>
-
+                    <!-- Contact details - always shown -->
                     <div class="modal-field">
                         <label>Your Name</label>
                         <input type="text" name="name" id="contact-name" placeholder="John Smith" required>

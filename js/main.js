@@ -13,82 +13,6 @@ if (typeof lucide !== 'undefined') {
 }
 
 // ============================================
-// 50/50 Floating Popup (Two-State Design)
-// ============================================
-
-const floatingPopup = document.getElementById('floating-popup');
-const floatingPopupBtn = document.getElementById('floating-popup-btn');
-let popupTriggered = false;
-let hasScrolledPastHero = false;
-let popupExpanded = false;
-
-function showFloatingPopup() {
-    // Check if popup was previously dismissed
-    if (localStorage.getItem('floatingPopupDismissed') === 'true') {
-        return;
-    }
-
-    if (!popupTriggered && floatingPopup) {
-        popupTriggered = true;
-        floatingPopup.classList.add('active');
-        
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-}
-
-function closeFloatingPopup() {
-    if (floatingPopup) {
-        floatingPopup.classList.remove('active');
-        floatingPopup.classList.remove('expanded');
-        // Remember that user dismissed the popup
-        localStorage.setItem('floatingPopupDismissed', 'true');
-        popupExpanded = false;
-    }
-}
-
-function toggleFloatingPopupState() {
-    if (!popupExpanded) {
-        // State 1 → State 2: Expand and show bullet list
-        floatingPopup.classList.add('expanded');
-        popupExpanded = true;
-        
-        // Update button text and action
-        if (floatingPopupBtn) {
-            floatingPopupBtn.innerHTML = 'Get Free Valuation <i data-lucide="arrow-right"></i>';
-            floatingPopupBtn.onclick = function() {
-                closeFloatingPopup();
-                openValuationModal();
-            };
-        }
-        
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-}
-
-// Make functions globally available
-window.closeFloatingPopup = closeFloatingPopup;
-window.toggleFloatingPopupState = toggleFloatingPopupState;
-
-// Trigger popup after 7 seconds (if user hasn't scrolled past hero yet)
-setTimeout(() => {
-    if (!hasScrolledPastHero) {
-        showFloatingPopup();
-    }
-}, 7000);
-
-// Also trigger popup when user scrolls past hero section
-window.addEventListener('scroll', () => {
-    if (!hasScrolledPastHero && window.scrollY > window.innerHeight * 0.7) {
-        hasScrolledPastHero = true;
-        showFloatingPopup();
-    }
-});
-
-// ============================================
 // Navigation Scroll Behavior
 // ============================================
 
@@ -170,7 +94,7 @@ if (heroForm) {
             return;
         }
 
-        // Open modal with hero data (contact info only mode)
+        // Open modal with contact-only mode
         openModal(true);
     });
 }
@@ -180,30 +104,44 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Get all form data
+        // Get contact form data
         const formData = new FormData(contactForm);
-        const completeData = {
-            registration: formData.get('registration') || heroFormData.registration,
-            mileage: formData.get('mileage') || heroFormData.mileage,
-            price: formData.get('price') || heroFormData.price,
+        const contactData = {
             name: formData.get('name'),
             phone: formData.get('phone'),
             email: formData.get('email')
         };
 
-        // Validate registration format
-        const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
-        if (!regRegex.test(completeData.registration.replace(/\s/g, ''))) {
-            alert('Please enter a valid UK registration (e.g., AB12 CDE)');
-            return;
+        // Get car data (from hero form or modal)
+        let carData;
+        if (heroFormData && heroFormData.registration) {
+            // Data from hero form
+            carData = heroFormData;
+        } else {
+            // Data from modal
+            carData = {
+                registration: formData.get('registration'),
+                mileage: formData.get('mileage'),
+                price: formData.get('price')
+            };
+
+            // Validate registration format
+            const regRegex = /^[A-Z]{2}\d{2}\s?[A-Z]{3}$/i;
+            if (!regRegex.test(carData.registration.replace(/\s/g, ''))) {
+                alert('Please enter a valid UK registration (e.g., AB12 CDE)');
+                return;
+            }
         }
 
         // Validate UK phone number
         const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        if (!phoneRegex.test(completeData.phone.replace(/\s/g, ''))) {
+        if (!phoneRegex.test(contactData.phone.replace(/\s/g, ''))) {
             alert('Please enter a valid UK phone number (e.g., 07700 900000)');
             return;
         }
+
+        // Combine all data
+        const completeData = { ...carData, ...contactData };
 
         // Log data (in production, send to backend)
         console.log('Complete valuation request:', completeData);
@@ -242,50 +180,45 @@ function openModal(fromHeroForm = false) {
         if (modalStep1) modalStep1.style.display = 'block';
         if (modalStep2) modalStep2.classList.remove('active');
 
+        const carFields = document.querySelector('.modal-car-fields');
         const modalTitle = document.getElementById('modal-title');
         const modalSubtitle = document.getElementById('modal-subtitle');
-        const vehicleFields = document.querySelectorAll('.vehicle-field');
-        
+
         if (fromHeroForm) {
-            // Hide vehicle fields and update messaging
-            vehicleFields.forEach(field => {
-                field.style.display = 'none';
-                const input = field.querySelector('input');
-                if (input) input.removeAttribute('required');
-            });
-            
-            // Pre-fill hidden vehicle fields with hero data
-            if (modalRegistration) modalRegistration.value = heroFormData.registration || '';
-            if (modalMileage) modalMileage.value = heroFormData.mileage || '';
-            if (modalPrice) modalPrice.value = heroFormData.price || '';
-            
-            // Update modal text
-            if (modalTitle) modalTitle.textContent = 'Almost There!';
-            if (modalSubtitle) modalSubtitle.textContent = 'Just let us know how to reach you and we\'ll call within 2 hours.';
-            
-            // Focus on name field
-            setTimeout(() => {
-                const nameInput = document.getElementById('contact-name');
-                if (nameInput) nameInput.focus();
-            }, 300);
+            // Hide car fields, update text
+            if (carFields) carFields.style.display = 'none';
+            if (modalTitle) modalTitle.textContent = 'Almost there!';
+            if (modalSubtitle) modalSubtitle.textContent = "Enter your details and we'll call you within 2 hours.";
+
+            // Make car fields not required
+            const modalReg = document.getElementById('modal-registration');
+            const modalMileage = document.getElementById('modal-mileage');
+            const modalPrice = document.getElementById('modal-price');
+            if (modalReg) modalReg.removeAttribute('required');
+            if (modalMileage) modalMileage.removeAttribute('required');
+            if (modalPrice) modalPrice.removeAttribute('required');
         } else {
-            // Show all fields for normal modal opening
-            vehicleFields.forEach(field => {
-                field.style.display = 'block';
-                const input = field.querySelector('input');
-                if (input) input.setAttribute('required', 'required');
-            });
-            
-            // Reset modal text
+            // Show car fields, restore text
+            if (carFields) carFields.style.display = 'block';
             if (modalTitle) modalTitle.textContent = 'Get Your Free Valuation';
-            if (modalSubtitle) modalSubtitle.textContent = 'Tell us about your car and we\'ll call you within 2 hours.';
-            
-            // Focus on first input
-            setTimeout(() => {
-                const firstInput = contactForm.querySelector('input');
-                if (firstInput) firstInput.focus();
-            }, 300);
+            if (modalSubtitle) modalSubtitle.textContent = "Tell us about your car and we'll call you within 2 hours.";
+
+            // Make car fields required
+            const modalReg = document.getElementById('modal-registration');
+            const modalMileage = document.getElementById('modal-mileage');
+            const modalPrice = document.getElementById('modal-price');
+            if (modalReg) modalReg.setAttribute('required', '');
+            if (modalMileage) modalMileage.setAttribute('required', '');
+            if (modalPrice) modalPrice.setAttribute('required', '');
         }
+
+        // Focus on first input
+        setTimeout(() => {
+            const firstInput = fromHeroForm ?
+                document.getElementById('contact-name') :
+                document.getElementById('modal-registration');
+            if (firstInput) firstInput.focus();
+        }, 300);
 
         // Reinitialize icons
         if (typeof lucide !== 'undefined') {
@@ -335,148 +268,10 @@ if (modalOverlay) {
     });
 }
 
-// ============================================
-// Valuation Modal Functions
-// ============================================
-
-const valuationModalOverlay = document.getElementById('valuation-modal-overlay');
-const valuationForm = document.getElementById('valuation-form');
-const valuationSuccess = document.getElementById('valuation-success');
-const modalRegistration = document.getElementById('modal-registration');
-const modalMileage = document.getElementById('modal-mileage');
-const modalPrice = document.getElementById('modal-price');
-const modalName = document.getElementById('modal-name');
-const modalPhone = document.getElementById('modal-phone');
-const modalEmail = document.getElementById('modal-email');
-
-function openValuationModal() {
-    if (valuationModalOverlay) {
-        valuationModalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Reinitialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-}
-
-function closeValuationModal() {
-    if (valuationModalOverlay) {
-        valuationModalOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-
-        // Reset form
-        if (valuationForm) {
-            valuationForm.reset();
-            valuationForm.parentElement.style.display = 'block';
-            valuationSuccess.style.display = 'none';
-        }
-    }
-}
-
-function showValuationSuccess() {
-    if (valuationForm && valuationSuccess) {
-        valuationForm.parentElement.style.display = 'none';
-        valuationSuccess.style.display = 'block';
-
-        // Reinitialize icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
-}
-
-// Make functions globally available
-window.openValuationModal = openValuationModal;
-window.closeValuationModal = closeValuationModal;
-
-// Auto-format modal inputs
-if (modalRegistration) {
-    modalRegistration.addEventListener('input', function() {
-        let value = this.value.toUpperCase().replace(/\s/g, '');
-        if (value.length > 4) {
-            value = value.slice(0, 4) + ' ' + value.slice(4, 7);
-        }
-        this.value = value;
-    });
-}
-
-if (modalMileage) {
-    modalMileage.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, '');
-        if (value) {
-            value = parseInt(value).toLocaleString('en-GB');
-        }
-        this.value = value;
-    });
-}
-
-if (modalPrice) {
-    modalPrice.addEventListener('input', function() {
-        let value = this.value.replace(/[^\d]/g, '');
-        if (value) {
-            value = '£' + parseInt(value).toLocaleString('en-GB');
-        }
-        this.value = value;
-    });
-}
-
-if (modalPhone) {
-    modalPhone.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, '');
-        if (value.length > 5) {
-            value = value.slice(0, 5) + ' ' + value.slice(5, 11);
-        }
-        this.value = value;
-    });
-}
-
-// Handle valuation form submission
-if (valuationForm) {
-    valuationForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = {
-            registration: modalRegistration.value,
-            mileage: modalMileage.value,
-            price: modalPrice.value,
-            name: modalName.value,
-            phone: modalPhone.value,
-            email: modalEmail.value
-        };
-
-        console.log('Valuation Form Data:', formData);
-
-        // Show success step
-        showValuationSuccess();
-    });
-}
-
-// Close valuation modal on overlay click
-if (valuationModalOverlay) {
-    valuationModalOverlay.addEventListener('click', (e) => {
-        if (e.target === valuationModalOverlay) {
-            closeValuationModal();
-        }
-    });
-}
-
-// ============================================
-// Escape Key Handler for Modals
-// ============================================
-
+// Close modal on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        if (modalOverlay && modalOverlay.classList.contains('active')) {
-            closeModal();
-        }
-        if (valuationModalOverlay && valuationModalOverlay.classList.contains('active')) {
-            closeValuationModal();
-        }
-        if (floatingPopup && floatingPopup.classList.contains('active')) {
-            closeFloatingPopup();
-        }
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+        closeModal();
     }
 });
 
