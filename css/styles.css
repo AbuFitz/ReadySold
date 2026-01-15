@@ -443,9 +443,8 @@ section {
 .btn-hero {
     background-color: var(--sky-blue-light);
     color: var(--white);
-    padding: 0 1.75rem;
+    padding: 1.125rem 1.75rem;
     height: auto;
-    min-height: 64px;
     width: 220px;
     border: none;
     border-radius: var(--radius-lg);
@@ -467,8 +466,6 @@ section {
     letter-spacing: 0.3px;
     text-transform: uppercase;
     line-height: 1.3;
-    grid-column: auto;
-    align-self: auto;
 }
 
 .btn-hero svg {
