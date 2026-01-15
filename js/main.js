@@ -919,22 +919,22 @@ const stepDetails = {
             <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Sit back and relax. We take complete control of the sale.</p>
             
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">📸 Professional Photography</h4>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Professional Photography</h4>
                 <p style="margin: 0; color: var(--gray-600);">Showroom-quality images that make your car stand out from competitors. We capture every angle, inside and out.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">📱 Multi-Platform Advertising</h4>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Multi-Platform Advertising</h4>
                 <p style="margin: 0; color: var(--gray-600);">Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and more. Maximum exposure = faster sale.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">💬 Buyer Screening</h4>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Buyer Screening</h4>
                 <p style="margin: 0; color: var(--gray-600);">We filter out time-wasters and lowballers. Only serious, qualified buyers get through to viewings.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">🚗 Viewings & Test Drives</h4>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Viewings & Test Drives</h4>
                 <p style="margin: 0; color: var(--gray-600);">We coordinate all viewings around your schedule. You're present but we handle the conversations and negotiations.</p>
             </div>
 

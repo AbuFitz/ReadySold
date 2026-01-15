@@ -314,7 +314,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.25);
+    background: transparent;
     z-index: 1;
 }
 
@@ -330,6 +330,7 @@ section {
     flex-direction: column;
     gap: 2.5rem;
     justify-content: center;
+    align-items: center;
 }
 
 .hero-text-content {
@@ -373,7 +374,7 @@ section {
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     padding: 2rem 2.5rem;
-    padding-right: 1.5rem;
+    padding-right: 2rem;
     border-radius: var(--radius-xl);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.25);
     max-width: 1100px;
@@ -428,25 +429,28 @@ section {
 .btn-hero {
     background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%);
     color: var(--white);
-    padding: 1.375rem 2.25rem;
+    padding: 1.375rem 2.5rem;
     border: none;
     border-radius: var(--radius-md);
     font-size: 1.063rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4), 
-                0 4px 8px rgba(14, 165, 233, 0.2),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 10px 25px rgba(14, 165, 233, 0.35),
+        0 5px 10px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.15);
     white-space: nowrap;
     position: absolute;
-    right: -30px;
-    transform: perspective(500px) rotateY(-5deg) translateZ(20px);
+    right: -50px;
+    transform: perspective(800px) rotateY(-8deg) translateZ(40px) translateX(10px);
     transform-style: preserve-3d;
+    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.25));
 }
 
 .btn-hero::before {
@@ -456,20 +460,28 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
     border-radius: var(--radius-md);
     z-index: 1;
 }
 
 .btn-hero:hover {
-    transform: perspective(500px) rotateY(-5deg) translateZ(30px) translateY(-5px);
-    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.5),
-                0 8px 15px rgba(14, 165, 233, 0.3),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    transform: perspective(800px) rotateY(-8deg) translateZ(50px) translateX(10px) translateY(-5px);
+    box-shadow: 
+        0 15px 40px rgba(14, 165, 233, 0.45),
+        0 8px 15px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.3));
 }
 
 .btn-hero:active {
-    transform: perspective(500px) rotateY(-5deg) translateZ(25px) translateY(-2px);
+    transform: perspective(800px) rotateY(-8deg) translateZ(35px) translateX(10px) translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(14, 165, 233, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .hero-form-note {
@@ -556,85 +568,72 @@ section {
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .section-subtitle {
-    color: var(--primary);
+    color: var(--sky-blue);
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 0.813rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
 }
 
 .section-header h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
 }
 
 .how-tagline {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--gray-600);
-    font-weight: 500;
-    margin-top: 0.5rem;
+    font-weight: 400;
+    margin-top: 0.25rem;
 }
 
 .steps-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 2rem;
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .step-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--sky-blue);
-    font-size: 2rem;
-    flex-shrink: 0;
-    opacity: 0.7;
-}
-
-.step-arrow svg {
-    width: 32px;
-    height: 32px;
+    display: none;
 }
 
 .step-card {
     background-color: var(--white);
-    padding: 2.75rem 2.5rem;
-    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-md);
     border: 2px solid var(--gray-100);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     position: relative;
-    flex: 1;
-    min-width: 300px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .step-card:hover {
     border-color: var(--sky-blue);
-    transform: translateY(-12px);
-    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.1);
 }
 
 .step-number {
-    position: absolute;
-    top: -28px;
-    left: 2.5rem;
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-light) 100%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%);
     color: var(--white);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    font-size: 1.75rem;
-    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.25);
     border: 5px solid var(--white);
 }
 
@@ -2276,7 +2275,7 @@ section {
     }
 
     section {
-        padding: 3rem 0;
+        padding: 2.5rem 0;
     }
 
     h1 {
@@ -2309,38 +2308,39 @@ section {
 
     /* Hero Mobile */
     .hero {
-        padding: 6rem 0 3rem;
+        padding: 5rem 0 2.5rem;
         min-height: auto;
     }
 
     .hero-content {
-        gap: 2.5rem;
-        padding: 1.25rem;
+        gap: 2rem;
+        padding: 1rem;
     }
-
-    .hero-badge {
-        font-size: 0.75rem;
-        padding: 0.5rem 1rem;
+    
+    .hero-text-content {
+        padding: 1rem;
     }
 
     .hero h1 {
-        font-size: clamp(2rem, 7vw, 2.5rem);
-        margin-bottom: 1.25rem;
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
+        margin-bottom: 1rem;
+        line-height: 1.15;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
+        font-size: 0.938rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
     }
 
     .hero-form-card {
-        padding: 1.75rem 1.5rem;
+        padding: 1.5rem 1.25rem;
         overflow: visible;
     }
     
     .hero-form {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1rem;
     }
     
     .btn-hero {
@@ -2349,10 +2349,19 @@ section {
         transform: none;
         width: 100%;
         justify-content: center;
+        padding: 1.125rem 1.5rem;
+        filter: none;
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
     }
     
     .btn-hero:hover {
         transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+    }
+    
+    .hero-form-note {
+        font-size: 0.75rem;
+        margin-top: 1rem;
     }
 
     .form-header {
@@ -2419,31 +2428,35 @@ section {
     /* Step Cards Mobile */
     .steps-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.25rem;
         max-width: 100%;
     }
 
     .step-card {
-        padding: 2rem 1.5rem;
+        padding: 1.25rem 1rem;
     }
 
     .step-number {
-        width: 48px;
-        height: 48px;
-        font-size: 1.25rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     .step-card h3 {
-        font-size: 1.125rem;
+        font-size: 1rem;
+        margin-bottom: 0.375rem;
     }
 
     .step-intro {
-        font-size: 0.875rem;
+        font-size: 0.813rem;
+        margin-bottom: 0.75rem;
     }
 
     .step-expand-btn {
-        font-size: 0.813rem;
+        font-size: 0.75rem;
         padding: 0.5rem 0.875rem;
+        margin-top: 0.75rem;
     }
 
     /* Image Divider Mobile */
