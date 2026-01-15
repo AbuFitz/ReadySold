@@ -887,19 +887,19 @@ const stepDetails = {
                 <h4 style="margin-bottom: 1rem; color: var(--navy);">What We Do:</h4>
                 <ul style="list-style: none; padding: 0;">
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
-                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
                         <span>Analyze recent sales data for your exact make and model</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
-                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
                         <span>Review current market demand and pricing trends</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
-                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
                         <span>Consider your car's condition, mileage, and service history</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
-                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
                         <span>Provide a realistic price that will actually sell</span>
                     </li>
                 </ul>
@@ -957,7 +957,7 @@ const stepDetails = {
                 </ol>
             </div>
 
-            <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 2rem; border-radius: var(--radius-md); color: white; text-align: center;">
+            <div style="background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%); padding: 2rem; border-radius: var(--radius-md); color: white; text-align: center;">
                 <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">No Sale, No Fee</h4>
                 <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.063rem;">You only pay if we successfully sell your car</p>
             </div>
