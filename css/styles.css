@@ -1884,6 +1884,29 @@ section {
     transform: scale(1.2);
 }
 
+/* ============================================
+   Laptop/Small Desktop Responsive (969px - 1440px)
+   ============================================ */
+
+@media (min-width: 969px) and (max-width: 1440px) {
+    .hero {
+        min-height: 70vh;
+        padding-bottom: 2rem;
+    }
+
+    .hero-content {
+        gap: 2rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+    }
+
+    .hero-form-card {
+        max-width: 95%;
+    }
+}
+
 /* Responsive Footer */
 @media (max-width: 968px) {
     .footer-main {
