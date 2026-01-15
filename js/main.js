@@ -872,3 +872,146 @@ setTimeout(() => {
     }
 }, 9000);
 
+// ============================================
+// Step Detail Modal System
+// ============================================
+
+const stepDetails = {
+    1: {
+        title: "Get Your Free Valuation",
+        content: `
+            <h3>Step 1: Get Your Valuation</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">We provide honest, market-based valuations — no inflated promises.</p>
+            
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">What We Do:</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>Analyze recent sales data for your exact make and model</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>Review current market demand and pricing trends</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>Consider your car's condition, mileage, and service history</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>Provide a realistic price that will actually sell</span>
+                    </li>
+                </ul>
+            </div>
+
+            <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Response time:</strong> We typically call you back within 2 hours during business hours (Mon-Sat, 9am-6pm)</p>
+            
+            <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
+                Get Free Valuation Now
+            </button>
+        `
+    },
+    2: {
+        title: "We Handle Everything",
+        content: `
+            <h3>Step 2: We Handle Everything</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Sit back and relax. We take complete control of the sale.</p>
+            
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">📸 Professional Photography</h4>
+                <p style="margin: 0; color: var(--gray-600);">Showroom-quality images that make your car stand out from competitors. We capture every angle, inside and out.</p>
+            </div>
+
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">📱 Multi-Platform Advertising</h4>
+                <p style="margin: 0; color: var(--gray-600);">Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and more. Maximum exposure = faster sale.</p>
+            </div>
+
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">💬 Buyer Screening</h4>
+                <p style="margin: 0; color: var(--gray-600);">We filter out time-wasters and lowballers. Only serious, qualified buyers get through to viewings.</p>
+            </div>
+
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">🚗 Viewings & Test Drives</h4>
+                <p style="margin: 0; color: var(--gray-600);">We coordinate all viewings around your schedule. You're present but we handle the conversations and negotiations.</p>
+            </div>
+
+            <p style="font-size: 0.938rem; color: var(--gray-500); margin-top: 2rem;"><strong>Best part:</strong> You keep driving your car the entire time. It stays with you until sold.</p>
+        `
+    },
+    3: {
+        title: "Get Paid",
+        content: `
+            <h3>Step 3: Get Paid</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Simple, secure, and completely transparent.</p>
+            
+            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Payment Process:</h4>
+                <ol style="padding-left: 1.5rem; color: var(--gray-700);">
+                    <li style="margin-bottom: 1rem;"><strong>Sale Agreed:</strong> Once we negotiate the best price with a buyer</li>
+                    <li style="margin-bottom: 1rem;"><strong>Buyer Pays You:</strong> Money transfers directly to your account (we never handle the funds)</li>
+                    <li style="margin-bottom: 1rem;"><strong>Paperwork Sorted:</strong> We handle V5C transfer and all documentation</li>
+                    <li style="margin-bottom: 1rem;"><strong>Our Fee:</strong> You pay us 10% of the sale price (£350 minimum)</li>
+                </ol>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 2rem; border-radius: var(--radius-md); color: white; text-align: center;">
+                <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">No Sale, No Fee</h4>
+                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.063rem;">You only pay if we successfully sell your car</p>
+            </div>
+
+            <p style="font-size: 0.938rem; color: var(--gray-500); margin-top: 2rem;"><strong>Timeline:</strong> Most cars sell within 2-6 weeks, depending on make, model, and market conditions.</p>
+            
+            <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
+                Start Selling Today
+            </button>
+        `
+    }
+};
+
+function openStepModal(stepNumber) {
+    const overlay = document.getElementById('step-modal-overlay');
+    const content = document.getElementById('step-modal-content');
+    
+    if (overlay && content && stepDetails[stepNumber]) {
+        content.innerHTML = stepDetails[stepNumber].content;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Reinitialize icons
+        if (typeof lucide !== 'undefined') {
+            setTimeout(() => lucide.createIcons(), 100);
+        }
+    }
+}
+
+function closeStepModal() {
+    const overlay = document.getElementById('step-modal-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close step modal on overlay click
+const stepModalOverlay = document.getElementById('step-modal-overlay');
+if (stepModalOverlay) {
+    stepModalOverlay.addEventListener('click', (e) => {
+        if (e.target === stepModalOverlay) {
+            closeStepModal();
+        }
+    });
+}
+
+// Close step modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && stepModalOverlay && stepModalOverlay.classList.contains('active')) {
+        closeStepModal();
+    }
+});
+
+// Make functions globally available
+window.openStepModal = openStepModal;
+window.closeStepModal = closeStepModal;

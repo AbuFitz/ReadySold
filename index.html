@@ -110,58 +110,39 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-subtitle">THE PROCESS</p>
-                <h2>Three simple steps. Zero stress.</h2>
-                <p class="how-tagline">Sell your car without the calls, time-wasters, or hassle.</p>
+                <h2>Three simple steps</h2>
+                <p class="how-tagline">Professional car selling made effortless</p>
             </div>
 
             <div class="steps-container">
-                <div class="step-card">
+                <div class="step-card" onclick="openStepModal(1)">
                     <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i data-lucide="search-check"></i>
-                    </div>
-                    <h3>Get Your Valuation</h3>
-                    <p class="step-intro">Tell us about your car.</p>
-                    <p class="step-detail">We analyse the market and give you a realistic, achievable price — no inflated promises, no pressure.</p>
+                    <h3>Get Valuation</h3>
+                    <p class="step-intro">We analyze the market and provide a realistic, achievable price for your car.</p>
+                    <button class="step-expand-btn">
+                        <span>View Details</span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-
-                <div class="step-card">
+                <div class="step-card" onclick="openStepModal(2)">
                     <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i data-lucide="sparkles"></i>
-                    </div>
-                    <h3>We Handle Everything</h3>
-                    <p class="step-intro">We take full control of the sale:</p>
-                    <ul class="step-list">
-                        <li><i data-lucide="check"></i> Professional photos & listings</li>
-                        <li><i data-lucide="check"></i> Advertising across major platforms</li>
-                        <li><i data-lucide="check"></i> Buyer enquiries & screening</li>
-                        <li><i data-lucide="check"></i> Viewings, test drives & negotiation</li>
-                    </ul>
-                    <p class="step-detail">You stay hands-off. We do the work.</p>
+                    <h3>We Handle Sales</h3>
+                    <p class="step-intro">Professional photos, listings, viewings, and negotiations — all managed by us.</p>
+                    <button class="step-expand-btn">
+                        <span>View Details</span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-
-                <div class="step-card">
+                <div class="step-card" onclick="openStepModal(3)">
                     <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i data-lucide="badge-pound-sterling"></i>
-                    </div>
                     <h3>Get Paid</h3>
-                    <p class="step-intro">Once the deal is agreed:</p>
-                    <ul class="step-list">
-                        <li><i data-lucide="check"></i> The buyer pays you directly</li>
-                        <li><i data-lucide="check"></i> We handle the paperwork</li>
-                        <li><i data-lucide="check"></i> You pay our fee only after the car is sold</li>
-                    </ul>
-                    <p class="step-highlight">No sale, no fee.</p>
+                    <p class="step-intro">Buyer pays you directly. We handle paperwork. You pay us only when sold.</p>
+                    <button class="step-expand-btn">
+                        <span>View Details</span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -505,6 +486,19 @@
                 <p>We'll call you within 2 hours.</p>
                 <p class="success-subtext">In the meantime, here's what happens next...</p>
                 <button class="btn-modal" onclick="closeModal(); scrollToSection('how-it-works')">See How It Works</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step Detail Modal -->
+    <div class="modal-overlay" id="step-modal-overlay">
+        <div class="modal" id="step-modal">
+            <button class="modal-close" onclick="closeStepModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="modal-content" id="step-modal-content">
+                <!-- Content will be dynamically inserted -->
             </div>
         </div>
     </div>
