@@ -153,25 +153,51 @@ section {
     background-color: transparent;
 }
 
-.header.scrolled,
+.header.scrolled {
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+/* Legal pages navigation - start with hero color, then white on scroll */
 body.non-home-page .header {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+body.non-home-page.scrolled .header {
     background-color: var(--white);
     box-shadow: var(--shadow-md);
 }
 
 body.non-home-page .nav-container {
+    padding: 1.5rem 2rem;
+}
+
+body.non-home-page.scrolled .nav-container {
     padding: 1rem 2rem;
 }
 
 body.non-home-page .logo-ready {
+    color: var(--white);
+}
+
+body.non-home-page.scrolled .logo-ready {
     color: var(--navy);
 }
 
 body.non-home-page .logo-sold {
+    color: var(--sky-blue-light);
+}
+
+body.non-home-page.scrolled .logo-sold {
     color: var(--sky-blue);
 }
 
 body.non-home-page .nav-menu a {
+    color: var(--white);
+}
+
+body.non-home-page.scrolled .nav-menu a {
     color: var(--gray-700);
 }
 
@@ -2746,47 +2772,48 @@ body.non-home-page .nav-menu a {
         flex-wrap: wrap;
     }
 
-    /* Trust Bar Mobile - Simple Horizontal Scroll with Badges */
+    /* Trust Bar Mobile - Two Best Items Only */
     .trust-bar {
-        padding: 1.25rem 0;
-        background: var(--white);
-        border-bottom: 1px solid var(--gray-100);
+        padding: 1.5rem 0;
+        background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
     }
 
     .trust-container {
-        padding: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .trust-container::-webkit-scrollbar {
-        display: none;
+        padding: 0 1rem;
     }
 
     .trust-grid {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
-        padding: 0 1rem;
-        min-width: min-content;
+        max-width: 100%;
     }
 
     .trust-item {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         gap: 0.5rem;
-        background: var(--gray-50);
-        padding: 0.75rem 1rem;
-        border-radius: var(--radius-full);
-        white-space: nowrap;
-        flex-shrink: 0;
-        border: 1px solid var(--gray-200);
+        background: var(--white);
+        padding: 1rem 0.75rem;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        border: 2px solid var(--gray-100);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s ease;
+    }
+
+    .trust-item:nth-child(n+3) {
+        display: none;
+    }
+
+    .trust-item:active {
+        transform: scale(0.98);
+        border-color: var(--sky-blue-light);
     }
 
     .trust-icon {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
         border-radius: var(--radius-full);
         display: flex;
@@ -2796,16 +2823,16 @@ body.non-home-page .nav-menu a {
     }
 
     .trust-icon svg {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         color: var(--white);
     }
 
     .trust-text {
         font-size: 0.8125rem;
-        line-height: 1;
+        line-height: 1.2;
         font-weight: 600;
-        color: var(--gray-700);
+        color: var(--navy);
     }
 
     /* Section Headers Mobile */
@@ -2938,22 +2965,24 @@ body.non-home-page .nav-menu a {
     .comparison-mobile-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0 1rem;
+        gap: 1.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
     }
 
     .comparison-mobile-card {
         background: var(--white);
-        border: 2px solid var(--gray-100);
+        border: 2px solid var(--gray-200);
         border-radius: var(--radius-lg);
-        padding: 1.25rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        padding: 1.5rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     .comparison-mobile-card.readysold {
         border-color: var(--sky-blue);
-        background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, var(--white) 100%);
-        box-shadow: 0 4px 16px rgba(56, 189, 248, 0.15);
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, var(--white) 100%);
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+        margin-bottom: 0.5rem;
     }
 
     .comparison-mobile-card h3 {

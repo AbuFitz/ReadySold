@@ -21,8 +21,10 @@ const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
         header.classList.add('scrolled');
+        document.body.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
+        document.body.classList.remove('scrolled');
     }
 });
 
