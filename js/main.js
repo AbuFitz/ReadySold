@@ -33,10 +33,23 @@ window.addEventListener('scroll', () => {
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
+// Create overlay element
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
 if (mobileMenuToggle && navMenu) {
     mobileMenuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 
     // Close mobile menu when clicking nav links
@@ -45,18 +58,17 @@ if (mobileMenuToggle && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             mobileMenuToggle.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (event) => {
-        const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnToggle = mobileMenuToggle.contains(event.target);
-
-        if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            mobileMenuToggle.classList.remove('active');
-        }
+    // Close mobile menu when clicking overlay
+    navOverlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 }
 
