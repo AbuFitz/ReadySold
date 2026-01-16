@@ -572,6 +572,99 @@ window.addEventListener('error', (e) => {
 });
 
 // ============================================
+// Mobile Comparison Cards (Dynamic Generation)
+// ============================================
+
+function createMobileComparisonCards() {
+    if (window.innerWidth > 640) return;
+    
+    const comparisonSection = document.querySelector('.comparison-section');
+    if (!comparisonSection) return;
+    
+    const existingMobileGrid = comparisonSection.querySelector('.comparison-mobile-grid');
+    if (existingMobileGrid) return; // Already created
+    
+    const container = comparisonSection.querySelector('.comparison-container');
+    if (!container) return;
+    
+    // Create mobile grid
+    const mobileGrid = document.createElement('div');
+    mobileGrid.className = 'comparison-mobile-grid';
+    
+    // ReadySold card
+    const readysoldCard = `
+        <div class="comparison-mobile-card readysold">
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                ReadySold
+            </h3>
+            <div class="comparison-mobile-features">
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Get full market value</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>No time wasters</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Keep your car while selling</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Professional photography</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Handle viewings & test drives</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Expert negotiation</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>All paperwork handled</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Other options summary
+    const othersCard = `
+        <div class="comparison-mobile-card">
+            <h3>Other Options</h3>
+            <div class="comparison-mobile-features">
+                <div class="comparison-feature-item">
+                    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Lower prices (dealers/buyers)</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Time wasters (private sale)</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>No professional help</span>
+                </div>
+                <div class="comparison-feature-item">
+                    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <span>Handle everything yourself</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    mobileGrid.innerHTML = readysoldCard + othersCard;
+    container.appendChild(mobileGrid);
+}
+
+// Initialize mobile comparison on load and resize
+document.addEventListener('DOMContentLoaded', createMobileComparisonCards);
+window.addEventListener('resize', createMobileComparisonCards);
+
+// ============================================
 // Console Info
 // ============================================
 
