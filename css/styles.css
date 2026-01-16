@@ -2511,28 +2511,6 @@ body.non-home-page .nav-menu a {
         border-radius: var(--radius-lg);
     }
 
-    .comparison-container::after {
-        content: '← Swipe to see more →';
-        position: absolute;
-        bottom: 0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(14, 165, 233, 0.9);
-        color: var(--white);
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius-full);
-        font-size: 0.75rem;
-        font-weight: 700;
-        pointer-events: none;
-        z-index: 10;
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.6; }
-    }
-
     .comparison-table {
         font-size: 0.875rem;
         min-width: 750px;
@@ -2768,61 +2746,66 @@ body.non-home-page .nav-menu a {
         flex-wrap: wrap;
     }
 
-    /* Trust Bar Mobile - Stats Cards Design */
+    /* Trust Bar Mobile - Simple Horizontal Scroll with Badges */
     .trust-bar {
-        padding: 2rem 0;
-        background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+        padding: 1.25rem 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--gray-100);
     }
 
     .trust-container {
-        padding: 0 1rem;
+        padding: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .trust-container::-webkit-scrollbar {
+        display: none;
     }
 
     .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.875rem;
-        max-width: 100%;
+        display: flex;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        min-width: min-content;
     }
 
     .trust-item {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 0.625rem;
-        background: var(--white);
-        padding: 1.25rem 0.75rem;
-        border-radius: var(--radius-lg);
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-        border: 1px solid var(--gray-100);
-        text-align: center;
-        transition: transform 0.2s ease;
-    }
-
-    .trust-item:active {
-        transform: scale(0.97);
+        gap: 0.5rem;
+        background: var(--gray-50);
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+        flex-shrink: 0;
+        border: 1px solid var(--gray-200);
     }
 
     .trust-icon {
-        width: 36px;
-        height: 36px;
+        width: 24px;
+        height: 24px;
         background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
         border-radius: var(--radius-full);
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .trust-icon svg {
-        width: 20px;
-        height: 20px;
+        width: 14px;
+        height: 14px;
         color: var(--white);
     }
 
     .trust-text {
         font-size: 0.8125rem;
-        line-height: 1.3;
+        line-height: 1;
         font-weight: 600;
-        color: var(--navy);
+        color: var(--gray-700);
     }
 
     /* Section Headers Mobile */
