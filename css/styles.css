@@ -2772,10 +2772,11 @@ body.non-home-page.scrolled .nav-menu a {
         flex-wrap: wrap;
     }
 
-    /* Trust Bar Mobile - Two Best Items Only */
+    /* Trust Bar Mobile - Compact Banner Style */
     .trust-bar {
-        padding: 1.5rem 0;
-        background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+        padding: 0.875rem 0;
+        background: var(--gray-50);
+        border-bottom: 1px solid var(--gray-100);
     }
 
     .trust-container {
@@ -2783,37 +2784,30 @@ body.non-home-page.scrolled .nav-menu a {
     }
 
     .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
     }
 
     .trust-item {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 0.5rem;
-        background: var(--white);
-        padding: 1rem 0.75rem;
-        border-radius: var(--radius-lg);
-        text-align: center;
-        border: 2px solid var(--gray-100);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        transition: all 0.3s ease;
+        background: transparent;
+        padding: 0;
+        border: none;
+        box-shadow: none;
     }
 
-    .trust-item:nth-child(n+3) {
+    .trust-item:nth-child(2),
+    .trust-item:nth-child(4) {
         display: none;
     }
 
-    .trust-item:active {
-        transform: scale(0.98);
-        border-color: var(--sky-blue-light);
-    }
-
     .trust-icon {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         background: linear-gradient(135deg, var(--sky-blue-light), var(--sky-blue));
         border-radius: var(--radius-full);
         display: flex;
@@ -2823,16 +2817,17 @@ body.non-home-page.scrolled .nav-menu a {
     }
 
     .trust-icon svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
         color: var(--white);
     }
 
     .trust-text {
         font-size: 0.8125rem;
-        line-height: 1.2;
+        line-height: 1;
         font-weight: 600;
-        color: var(--navy);
+        color: var(--gray-700);
+        white-space: nowrap;
     }
 
     /* Section Headers Mobile */
