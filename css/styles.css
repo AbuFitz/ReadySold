@@ -321,8 +321,7 @@ body.non-home-page .nav-menu a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1000;
     display: none;
     opacity: 0;
@@ -1927,7 +1926,13 @@ body.non-home-page .nav-menu a {
 
 @media (max-width: 640px) {
     .footer {
-        padding: 3rem 0 0;
+        padding: 2.5rem 0 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .footer::before {
+        display: none;
     }
 
     .footer-main {
@@ -2329,13 +2334,13 @@ body.non-home-page .nav-menu a {
         right: -100%;
         height: 100vh;
         width: 100%;
-        max-width: 380px;
-        background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+        max-width: 320px;
+        background: var(--white);
         flex-direction: column;
         align-items: stretch;
-        padding: 7rem 2rem 2rem;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
-        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 6rem 1.5rem 2rem;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s ease;
         gap: 0;
         z-index: 1001;
         overflow-y: auto;
@@ -2346,23 +2351,21 @@ body.non-home-page .nav-menu a {
     }
 
     .nav-menu li {
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-100);
     }
 
     .nav-menu li:last-child {
         border-bottom: none;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
     }
 
     .nav-menu a {
         color: var(--navy);
-        font-size: 1.125rem;
+        font-size: 1rem;
         font-weight: 600;
         width: 100%;
-        padding: 1rem 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        padding: 1rem 0.5rem;
+        display: block;
     }
 
     .nav-menu a::after {
@@ -2371,7 +2374,6 @@ body.non-home-page .nav-menu a {
 
     .nav-menu a:hover {
         color: var(--sky-blue);
-        padding-left: 0.5rem;
     }
 
     .btn-nav {
@@ -2598,13 +2600,13 @@ body.non-home-page .nav-menu a {
         font-size: clamp(1.5rem, 6vw, 2rem);
     }
 
-    /* Logo Mobile */
+    /* Logo Mobile - Smaller */
     .logo {
-        font-size: 1.875rem;
+        font-size: 1.5rem;
     }
 
     .logo-sold {
-        font-size: 2.25rem;
+        font-size: 1.75rem;
     }
 
     /* Navigation Mobile */
@@ -2754,37 +2756,53 @@ body.non-home-page .nav-menu a {
         flex-wrap: wrap;
     }
 
-    /* Trust Bar Mobile */
+    /* Trust Bar Mobile - Single Row */
     .trust-bar {
-        padding: 1.5rem 0;
+        padding: 1.25rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trust-container {
+        padding: 0;
     }
 
     .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        padding: 0 1rem;
+        min-width: min-content;
     }
 
     .trust-item {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        align-items: center;
         gap: 0.5rem;
+        flex-shrink: 0;
+        background: var(--white);
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-full);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--gray-100);
     }
 
     .trust-icon {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
 
     .trust-icon svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
 
     .trust-text {
-        font-size: 0.75rem;
-        white-space: normal;
-        line-height: 1.3;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        line-height: 1.2;
+        font-weight: 600;
     }
 
     /* Section Headers Mobile */
@@ -2801,10 +2819,14 @@ body.non-home-page .nav-menu a {
         font-size: 1rem;
     }
 
-    /* Step Cards Mobile - Complete Redesign */
+    /* Step Cards Mobile - Compact Design */
+    .how-it-works {
+        padding: 2rem 0;
+    }
+
     .steps-container {
         grid-template-columns: 1fr;
-        gap: 1.75rem;
+        gap: 1.25rem;
         max-width: 100%;
         padding: 0;
     }
@@ -2815,51 +2837,47 @@ body.non-home-page .nav-menu a {
     }
 
     .step-card {
-        padding: 2.25rem 1.75rem;
+        padding: 1.5rem 1.25rem;
         background: var(--white);
-        border: 2px solid var(--gray-100);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        border-radius: var(--radius-xl);
-        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1.5px solid var(--gray-200);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        border-radius: var(--radius-lg);
+        transition: all 0.3s ease;
     }
     
-    .step-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12);
+    .step-card:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .step-number {
-        width: 52px;
-        height: 52px;
-        font-size: 1.375rem;
-        margin-bottom: 1.25rem;
-        box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
-    }
-    
-    .step-card:hover .step-number {
-        transform: scale(1.08) rotate(3deg);
+        width: 44px;
+        height: 44px;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
     }
 
     .step-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-        line-height: 1.25;
-        font-weight: 800;
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        font-weight: 700;
     }
 
     .step-intro {
-        font-size: 0.9375rem;
-        margin-bottom: 1rem;
-        line-height: 1.6;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
         color: var(--gray-600);
     }
 
     .step-expand-btn {
-        font-size: 0.875rem;
-        padding: 0.75rem 1.25rem;
-        margin-top: 1rem;
+        font-size: 0.8125rem;
+        padding: 0.625rem 1rem;
+        margin-top: 0.75rem;
         width: 100%;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
     }
 
     /* Image Divider Mobile */
@@ -2880,13 +2898,67 @@ body.non-home-page .nav-menu a {
         font-size: 1.125rem;
     }
 
-    /* Comparison Section Mobile */
+    /* Comparison Section Mobile - Redesigned */
+    .comparison-section {
+        padding: 2rem 0;
+    }
+
+    .comparison-section .section-header {
+        margin-bottom: 2rem;
+    }
+
     .comparison-container {
-        padding: 1.5rem 1rem;
+        position: relative;
+        padding: 0;
+        margin: 0 -1rem;
+        background: var(--white);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .comparison-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .comparison-container::before {
+        content: 'Swipe to compare →';
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        background: var(--sky-blue);
+        color: var(--white);
+        padding: 0.375rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        z-index: 10;
+        animation: fadeInOut 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
     }
 
     .comparison-table {
-        min-width: 700px;
+        min-width: 650px;
+        font-size: 0.8125rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+        position: sticky;
+        left: 0;
+        background: var(--white);
+        z-index: 5;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        font-size: 0.75rem;
     }
 
     /* Pricing Calculator Mobile */
@@ -2902,18 +2974,44 @@ body.non-home-page .nav-menu a {
         padding: 1.5rem;
     }
 
-    /* Testimonials Mobile */
+    /* Testimonials Mobile - Swipe Feature */
+    .testimonials-section {
+        padding: 2rem 0;
+    }
+
+    .testimonials-section .section-header {
+        margin-bottom: 1.5rem;
+    }
+
     .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 0 1rem 1rem;
+        margin: 0 -1rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .testimonial-card {
-        padding: 2rem 1.5rem;
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+        padding: 1.75rem 1.25rem;
+        margin-top: 1.5rem;
     }
 
     .testimonial-text {
-        font-size: 1rem;
+        font-size: 0.9375rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial-card:hover {
+        transform: none;
     }
 
     /* CTA Section Mobile */
