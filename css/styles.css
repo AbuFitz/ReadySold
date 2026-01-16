@@ -159,6 +159,22 @@ body.non-home-page .header {
     box-shadow: var(--shadow-md);
 }
 
+body.non-home-page .nav-container {
+    padding: 1rem 2rem;
+}
+
+body.non-home-page .logo-ready {
+    color: var(--navy);
+}
+
+body.non-home-page .logo-sold {
+    color: var(--sky-blue);
+}
+
+body.non-home-page .nav-menu a {
+    color: var(--gray-700);
+}
+
 .nav-container {
     transition: all 0.3s ease;
 }
@@ -642,29 +658,6 @@ body.non-home-page .header {
     position: relative;
 }
 
-/* Connecting arrows between steps */
-.steps-container::before,
-.steps-container::after {
-    content: '';
-    position: absolute;
-    top: 80px;
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--sky-blue-light), transparent);
-}
-
-.steps-container::before {
-    left: calc(33.33% - 30px);
-}
-
-.steps-container::after {
-    right: calc(33.33% - 30px);
-}
-
-.step-arrow {
-    display: none;
-}
-
 .step-card {
     background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
     padding: 2.5rem 2rem;
@@ -679,22 +672,6 @@ body.non-home-page .header {
     align-items: center;
     text-align: center;
     overflow: hidden;
-}
-
-.step-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--sky-blue-light), var(--sky-blue));
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-}
-
-.step-card:hover::before {
-    transform: scaleX(1);
 }
 
 .step-card:hover {
@@ -1352,8 +1329,8 @@ body.non-home-page .header {
 }
 
 .chat-button {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: var(--radius-full);
     background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-light));
     color: var(--white);
@@ -1376,16 +1353,16 @@ body.non-home-page .header {
 }
 
 .chat-button svg {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
 }
 
 .chat-panel {
     position: absolute;
     bottom: 80px;
     right: 0;
-    width: 340px;
-    height: 480px;
+    width: 320px;
+    height: 420px;
     background-color: var(--white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
@@ -2273,6 +2250,30 @@ body.non-home-page .header {
    Responsive Design - Comprehensive Mobile Fixes
    ============================================ */
 
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+    .chat-panel {
+        width: 360px;
+        height: 500px;
+    }
+}
+
+/* Standard Desktop (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .chat-panel {
+        width: 340px;
+        height: 450px;
+    }
+}
+
+/* Laptop (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .chat-panel {
+        width: 320px;
+        height: 420px;
+    }
+}
+
 /* Smaller laptops (1024px - 1366px) */
 @media (max-width: 1366px) and (min-width: 1024px) {
     .hero {
@@ -2551,15 +2552,20 @@ body.non-home-page .header {
     }
 
     .chat-panel {
-        width: 340px;
+        width: 300px;
         max-width: calc(100vw - 2rem);
-        height: 450px;
+        height: 400px;
         bottom: 75px;
     }
 
     .chat-button {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .chat-button svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -2817,10 +2823,6 @@ body.non-home-page .header {
         transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
-    .step-card::before {
-        height: 3px;
-    }
-    
     .step-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12);
@@ -2971,10 +2973,10 @@ body.non-home-page .header {
     }
 
     .chat-panel {
-        width: calc(100vw - 1.5rem);
-        max-width: 340px;
-        height: 420px;
-        max-height: calc(100vh - 140px);
+        width: calc(100vw - 2rem);
+        max-width: 300px;
+        height: 380px;
+        max-height: calc(100vh - 150px);
         bottom: 70px;
         right: 0.75rem;
     }
@@ -3509,22 +3511,21 @@ button:active::after {
    ============================================ */
 
 .legal-hero {
-    background: var(--white);
+    background: var(--navy);
     padding: 8rem 0 3rem;
     text-align: center;
-    color: var(--navy);
-    border-bottom: 1px solid var(--gray-200);
+    color: var(--white);
 }
 
 .legal-hero h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
-    color: var(--navy);
+    color: var(--white);
 }
 
 .legal-subtitle {
     font-size: 1rem;
-    color: var(--gray-500);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .legal-content {
