@@ -2788,6 +2788,7 @@ body.non-home-page.scrolled .nav-menu a {
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        flex-wrap: nowrap;
     }
 
     .trust-item {
@@ -2798,6 +2799,7 @@ body.non-home-page.scrolled .nav-menu a {
         padding: 0;
         border: none;
         box-shadow: none;
+        flex-shrink: 0;
     }
 
     .trust-item:nth-child(2),
