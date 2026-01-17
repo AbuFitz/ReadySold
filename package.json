@@ -1,0 +1,10 @@
+{
+  "name": "readysold-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ReadySold email backend using Resend",
+  "dependencies": {
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {}
+}

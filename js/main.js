@@ -157,30 +157,15 @@ if (contactForm) {
         // Combine all data
         const completeData = { ...carData, ...contactData };
 
-        // Log data (in production, send to backend)
-        console.log('Complete valuation request:', completeData);
-
-        // Show success step
-        showSuccessStep();
-
-        // In production, send to backend:
-        /*
-        fetch('/api/valuation', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(completeData)
-        })
-        .then(response => response.json())
-        .then(result => {
-            showSuccessStep();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Sorry, there was an error. Please try again or call us directly.');
-        });
-        */
+        // Send to backend via Resend API
+        sendEmailNotification('valuation', completeData)
+            .then(() => {
+                showSuccessStep();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error. Please try again or call us directly.');
+            });
     });
 }
 
@@ -978,6 +963,64 @@ function sendMessage() {
     setTimeout(() => processMessage(message), 600);
 }
 
+// Handle mobile keyboard behavior
+let originalChatPanelBottom = null;
+
+function toggleChat() {
+    const chatPanel = document.getElementById('chat-panel');
+    const chatButton = document.getElementById('chat-toggle');
+    
+    if (!chatPanel || !chatButton) return;
+    
+    chatPanel.classList.toggle('active');
+    chatButton.classList.toggle('active');
+    
+    if (chatPanel.classList.contains('active')) {
+        if (!chatInitialized) {
+            initializeChat();
+        }
+        
+        // Handle mobile viewport adjustment
+        if (window.innerWidth <= 640) {
+            // Store original position
+            if (!originalChatPanelBottom) {
+                const computedStyle = window.getComputedStyle(chatPanel);
+                originalChatPanelBottom = computedStyle.bottom;
+            }
+            
+            // Adjust for mobile keyboard
+            const input = document.getElementById('chat-input');
+            if (input) {
+                input.addEventListener('focus', handleMobileFocus);
+                input.addEventListener('blur', handleMobileBlur);
+            }
+        }
+    } else {
+        // Clean up event listeners
+        const input = document.getElementById('chat-input');
+        if (input) {
+            input.removeEventListener('focus', handleMobileFocus);
+            input.removeEventListener('blur', handleMobileBlur);
+        }
+    }
+}
+
+function handleMobileFocus() {
+    const chatPanel = document.getElementById('chat-panel');
+    if (chatPanel && window.innerWidth <= 640) {
+        // Scroll panel into view when keyboard opens
+        setTimeout(() => {
+            chatPanel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 300);
+    }
+}
+
+function handleMobileBlur() {
+    const chatPanel = document.getElementById('chat-panel');
+    if (chatPanel && window.innerWidth <= 640 && originalChatPanelBottom) {
+        chatPanel.style.bottom = originalChatPanelBottom;
+    }
+}
 function handleChatKeyPress(event) {
     if (event.key === 'Enter') {
         sendMessage();
@@ -1184,6 +1227,39 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ============================================
+// Email API Integration (Resend)
+// ============================================
+
+async function sendEmailNotification(type, data) {
+    try {
+        const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                type: type,
+                data: data
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to send email');
+        }
+
+        const result = await response.json();
+        console.log('Email sent successfully:', result.messageId);
+        return result;
+
+    } catch (error) {
+        console.error('Email sending error:', error);
+        throw error;
+    }
+}
+
 // Make functions globally available
 window.openStepModal = openStepModal;
 window.closeStepModal = closeStepModal;
+window.sendEmailNotification = sendEmailNotification;
