@@ -851,7 +851,7 @@ body.non-home-page.scrolled .nav-menu a {
 
 .image-divider {
     height: 500px;
-    background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop');
+    background-image: url('../images/photograph.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

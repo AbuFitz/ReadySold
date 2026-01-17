@@ -1,7 +1,7 @@
 // Vercel Serverless Function for Resend Email
 import { Resend } from 'resend';
 
-const resend = new Resend('re_RmcnCA7U_KzJqYoqerAFpFMSk5wshwViY');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -67,333 +67,254 @@ export default async function handler(req, res) {
 
 // Generate HTML email for valuation requests
 function generateValuationEmail(data) {
-  const baseUrl = 'https://readysold.vercel.app'; // Update with your actual domain
-  
   return `
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>New Valuation Request - ReadySold</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
       line-height: 1.6; 
-      color: #1e293b; 
+      color: #334155; 
       margin: 0; 
       padding: 0; 
       background-color: #f1f5f9;
-      -webkit-font-smoothing: antialiased;
+      width: 100%;
     }
-    .email-wrapper { 
-      width: 100%; 
-      background-color: #f1f5f9; 
-      padding: 40px 0; 
+    .email-wrapper {
+      width: 100%;
+      background-color: #f1f5f9;
+      padding: 40px 20px;
     }
-    .email-container { 
-      max-width: 680px; 
+    .container { 
+      max-width: 650px; 
       margin: 0 auto; 
-      background-color: #ffffff; 
-      border-radius: 12px;
+      background-color: #ffffff;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .header { 
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
       padding: 50px 40px; 
-      text-align: center;
-      position: relative;
+      text-align: center; 
     }
-    .logo { 
+    .logo {
+      font-size: 36px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .logo-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
       margin-bottom: 20px;
-    }
-    .logo img { 
-      max-width: 200px; 
-      height: auto; 
-      display: inline-block;
     }
     .header h1 { 
       color: #ffffff; 
-      margin: 20px 0 10px 0; 
+      margin: 20px 0 0 0; 
       font-size: 32px; 
       font-weight: 700; 
-      letter-spacing: -0.5px;
-    }
-    .header p { 
-      color: rgba(255, 255, 255, 0.9); 
-      font-size: 16px; 
-      margin: 0;
-    }
-    .banner-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .banner-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.9;
     }
     .content { 
       padding: 50px 40px; 
     }
-    .priority-badge { 
-      display: inline-block; 
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      color: white; 
-      padding: 8px 20px; 
-      border-radius: 20px; 
-      font-size: 13px; 
-      font-weight: 700; 
-      text-transform: uppercase; 
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
+    .info-section { 
+      margin-bottom: 35px; 
     }
-    .section { 
-      margin-bottom: 40px; 
-    }
-    .section:last-child {
-      margin-bottom: 0;
-    }
-    .section-title { 
+    .info-section h2 { 
       color: #0f172a; 
-      font-size: 20px; 
-      font-weight: 700; 
+      font-size: 22px; 
       margin-bottom: 20px; 
-      padding-bottom: 12px;
-      border-bottom: 3px solid #0ea5e9;
-    }
-    .info-grid {
-      display: table;
-      width: 100%;
-      border-collapse: collapse;
+      border-bottom: 3px solid #0ea5e9; 
+      padding-bottom: 10px;
+      font-weight: 700;
     }
     .info-row { 
-      display: table-row;
+      display: table;
+      width: 100%;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
     }
     .info-label { 
       display: table-cell;
       font-weight: 600; 
-      color: #475569; 
-      padding: 12px 20px 12px 0;
-      width: 40%;
+      color: #0f172a; 
+      width: 160px;
       vertical-align: top;
+      padding-right: 20px;
     }
     .info-value { 
       display: table-cell;
-      color: #0f172a;
-      padding: 12px 0;
-      font-weight: 500;
+      color: #475569;
       vertical-align: top;
     }
     .info-value strong {
-      color: #0ea5e9;
+      color: #0f172a;
       font-size: 18px;
     }
     .highlight-box { 
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      border-left: 4px solid #0ea5e9; 
+      border-left: 5px solid #0ea5e9; 
       padding: 25px; 
       margin: 30px 0; 
-      border-radius: 8px;
+      border-radius: 6px;
     }
     .highlight-box p {
       margin: 0;
       color: #0f172a;
       line-height: 1.7;
     }
-    .message-box {
-      background-color: #f8fafc;
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 25px;
-      margin: 20px 0;
-    }
-    .message-box p {
-      margin: 0;
-      color: #334155;
-      line-height: 1.8;
-      font-size: 15px;
-    }
     .footer { 
       background-color: #0f172a; 
       padding: 40px 40px 30px 40px; 
-      text-align: center;
+      text-align: center; 
+      color: rgba(255, 255, 255, 0.8);
     }
     .footer-logo {
-      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #0ea5e9;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
     }
-    .footer-logo img {
-      max-width: 150px;
-      height: auto;
-      opacity: 0.9;
-    }
-    .footer-text {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 14px;
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .footer-tagline {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
     }
     .footer-links {
       margin: 25px 0 20px 0;
-      padding: 0;
+      font-size: 14px;
     }
     .footer-links a {
       color: #0ea5e9;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color 0.2s;
+      margin: 0 8px;
+      transition: color 0.3s ease;
     }
     .footer-links a:hover {
       color: #38bdf8;
+      text-decoration: underline;
     }
-    .footer-divider {
-      color: rgba(255, 255, 255, 0.3);
-      margin: 0 10px;
+    .footer-links span {
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 8px;
     }
     .footer-copyright {
+      font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
-    .timestamp {
-      background-color: #fef3c7;
-      border-left: 4px solid #f59e0b;
-      padding: 20px 25px;
-      border-radius: 8px;
-      margin-top: 30px;
-    }
-    .timestamp p {
-      margin: 0;
-      color: #92400e;
-      font-weight: 600;
-      font-size: 15px;
+    .priority-badge { 
+      display: inline-block; 
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white; 
+      padding: 8px 18px; 
+      border-radius: 20px; 
+      font-size: 13px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(14, 165, 233, 0.3);
     }
     @media only screen and (max-width: 600px) {
-      .email-wrapper { padding: 20px 0; }
-      .email-container { border-radius: 0; }
-      .header { padding: 40px 25px; }
+      .email-wrapper { padding: 20px 10px; }
+      .header { padding: 40px 30px; }
+      .content { padding: 40px 30px; }
+      .footer { padding: 35px 30px 25px 30px; }
+      .logo { font-size: 30px; }
       .header h1 { font-size: 26px; }
-      .content { padding: 35px 25px; }
-      .footer { padding: 35px 25px 25px 25px; }
-      .info-label, .info-value { display: block; width: 100%; padding: 8px 0; }
-      .info-label { font-weight: 700; color: #0f172a; }
+      .info-label, .info-value { display: block; width: 100%; }
+      .info-label { margin-bottom: 5px; }
+      .info-row { margin-bottom: 20px; }
     }
   </style>
 </head>
 <body>
   <div class="email-wrapper">
-    <div class="email-container">
-      <!-- Header -->
+    <div class="container">
       <div class="header">
-        <div class="logo">
-          <img src="${baseUrl}/images/photograph.png" alt="ReadySold Logo">
-        </div>
+        <div class="logo">ReadySold</div>
+        <div class="logo-tagline">Professional Car Selling Service</div>
         <h1>🚗 New Valuation Request</h1>
-        <p>A potential customer is ready to sell their vehicle</p>
       </div>
-
-      <!-- Banner Image -->
-      <div class="banner-image">
-        <img src="${baseUrl}/images/photograph.png" alt="ReadySold Vehicle">
-      </div>
-
-      <!-- Content -->
+      
       <div class="content">
-        <span class="priority-badge">⚡ New Lead</span>
-
-        <!-- Vehicle Details -->
-        <div class="section">
-          <h2 class="section-title">Vehicle Details</h2>
-          <div class="info-grid">
-            <div class="info-row">
-              <div class="info-label">Registration:</div>
-              <div class="info-value"><strong>${data.registration || 'Not provided'}</strong></div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Mileage:</div>
-              <div class="info-value">${data.mileage ? Number(data.mileage).toLocaleString() + ' miles' : 'Not provided'}</div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Asking Price:</div>
-              <div class="info-value">${data.expectedPrice ? '£' + Number(data.expectedPrice).toLocaleString() : 'Not provided'}</div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Condition:</div>
-              <div class="info-value">${data.condition || 'Not specified'}</div>
-            </div>
+        <span class="priority-badge">New Lead</span>
+        
+        <div class="info-section">
+          <h2>Vehicle Details</h2>
+          <div class="info-row">
+            <span class="info-label">Registration:</span>
+            <span class="info-value"><strong>${data.registration || 'Not provided'}</strong></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Mileage:</span>
+            <span class="info-value">${data.mileage ? Number(data.mileage).toLocaleString() + ' miles' : 'Not provided'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Asking Price:</span>
+            <span class="info-value">${data.expectedPrice ? '£' + Number(data.expectedPrice).toLocaleString() : 'Not provided'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Condition:</span>
+            <span class="info-value">${data.condition || 'Not specified'}</span>
           </div>
         </div>
 
-        <!-- Contact Information -->
-        <div class="section">
-          <h2 class="section-title">Contact Information</h2>
-          <div class="info-grid">
-            <div class="info-row">
-              <div class="info-label">Name:</div>
-              <div class="info-value">${data.name || 'Not provided'}</div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Email:</div>
-              <div class="info-value"><a href="mailto:${data.email}" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">${data.email || 'Not provided'}</a></div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Phone:</div>
-              <div class="info-value"><a href="tel:${data.phone}" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">${data.phone || 'Not provided'}</a></div>
-            </div>
+        <div class="info-section">
+          <h2>Contact Information</h2>
+          <div class="info-row">
+            <span class="info-label">Name:</span>
+            <span class="info-value">${data.name || 'Not provided'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email:</span>
+            <span class="info-value"><a href="mailto:${data.email}" style="color: #0ea5e9; text-decoration: none;">${data.email || 'Not provided'}</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone:</span>
+            <span class="info-value"><a href="tel:${data.phone}" style="color: #0ea5e9; text-decoration: none;">${data.phone || 'Not provided'}</a></span>
           </div>
         </div>
 
         ${data.message ? `
-        <!-- Additional Information -->
-        <div class="section">
-          <h2 class="section-title">Additional Information</h2>
-          <div class="message-box">
+        <div class="info-section">
+          <h2>Additional Information</h2>
+          <div class="highlight-box">
             <p>${data.message}</p>
           </div>
         </div>
         ` : ''}
 
-        <!-- Timestamp -->
-        <div class="timestamp">
-          <p>⏰ Submitted: ${new Date().toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
-        </div>
-
-        <!-- Action Box -->
         <div class="highlight-box">
-          <p><strong>Next Steps:</strong> Contact this lead promptly to provide their free valuation and discuss the 30-day exclusive listing process.</p>
+          <p style="font-weight: 600; color: #0f172a;">⏰ Submitted: ${new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' })}</p>
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="footer">
-        <div class="footer-logo">
-          <img src="${baseUrl}/images/photograph.png" alt="ReadySold">
-        </div>
-        <p class="footer-text">
-          <strong>ReadySold</strong><br>
-          Professional car selling service - Keep driving while we sell
-        </p>
+        <div class="footer-logo">ReadySold</div>
+        <div class="footer-tagline">Keep driving while we sell — Pay only when sold</div>
+        
         <div class="footer-links">
-          <a href="${baseUrl}/terms.html">Terms & Conditions</a>
-          <span class="footer-divider">•</span>
-          <a href="${baseUrl}/privacy.html">Privacy Policy</a>
-          <span class="footer-divider">•</span>
-          <a href="${baseUrl}/contact.html">Contact Us</a>
+          <a href="https://readysold.co.uk/terms.html">Terms & Conditions</a>
+          <span>•</span>
+          <a href="https://readysold.co.uk/privacy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="https://readysold.co.uk/contact.html">Contact Us</a>
         </div>
-        <p class="footer-copyright">
+        
+        <div class="footer-copyright">
           © ${new Date().getFullYear()} ReadySold. All rights reserved.
-        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -404,322 +325,234 @@ function generateValuationEmail(data) {
 
 // Generate HTML email for hero form submissions
 function generateHeroFormEmail(data) {
-  const baseUrl = 'https://readysold.vercel.app'; // Update with your actual domain
-  
   return `
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Quick Enquiry - ReadySold</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
       line-height: 1.6; 
-      color: #1e293b; 
+      color: #334155; 
       margin: 0; 
       padding: 0; 
       background-color: #f1f5f9;
-      -webkit-font-smoothing: antialiased;
+      width: 100%;
     }
-    .email-wrapper { 
-      width: 100%; 
-      background-color: #f1f5f9; 
-      padding: 40px 0; 
+    .email-wrapper {
+      width: 100%;
+      background-color: #f1f5f9;
+      padding: 40px 20px;
     }
-    .email-container { 
-      max-width: 680px; 
+    .container { 
+      max-width: 650px; 
       margin: 0 auto; 
-      background-color: #ffffff; 
-      border-radius: 12px;
+      background-color: #ffffff;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .header { 
-      background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%); 
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
       padding: 50px 40px; 
-      text-align: center;
-      position: relative;
+      text-align: center; 
     }
-    .logo { 
+    .logo {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0ea5e9;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .logo-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 400;
       margin-bottom: 20px;
-    }
-    .logo img { 
-      max-width: 200px; 
-      height: auto; 
-      display: inline-block;
     }
     .header h1 { 
       color: #ffffff; 
-      margin: 20px 0 10px 0; 
+      margin: 20px 0 0 0; 
       font-size: 32px; 
       font-weight: 700; 
-      letter-spacing: -0.5px;
-    }
-    .header p { 
-      color: rgba(255, 255, 255, 0.95); 
-      font-size: 16px; 
-      margin: 0;
-    }
-    .banner-image {
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .banner-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.85;
     }
     .content { 
       padding: 50px 40px; 
     }
-    .priority-badge { 
-      display: inline-block; 
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: white; 
-      padding: 8px 20px; 
-      border-radius: 20px; 
-      font-size: 13px; 
-      font-weight: 700; 
-      text-transform: uppercase; 
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
+    .info-section { 
+      margin-bottom: 35px; 
     }
-    .section { 
-      margin-bottom: 40px; 
-    }
-    .section:last-child {
-      margin-bottom: 0;
-    }
-    .section-title { 
+    .info-section h2 { 
       color: #0f172a; 
-      font-size: 20px; 
-      font-weight: 700; 
+      font-size: 22px; 
       margin-bottom: 20px; 
-      padding-bottom: 12px;
-      border-bottom: 3px solid #0ea5e9;
-    }
-    .info-grid {
-      display: table;
-      width: 100%;
-      border-collapse: collapse;
+      border-bottom: 3px solid #0ea5e9; 
+      padding-bottom: 10px;
+      font-weight: 700;
     }
     .info-row { 
-      display: table-row;
+      display: table;
+      width: 100%;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
     }
     .info-label { 
       display: table-cell;
       font-weight: 600; 
-      color: #475569; 
-      padding: 12px 20px 12px 0;
-      width: 40%;
+      color: #0f172a; 
+      width: 160px;
       vertical-align: top;
+      padding-right: 20px;
     }
     .info-value { 
       display: table-cell;
-      color: #0f172a;
-      padding: 12px 0;
-      font-weight: 500;
+      color: #475569;
       vertical-align: top;
     }
     .info-value strong {
-      color: #0ea5e9;
+      color: #0f172a;
       font-size: 18px;
     }
     .highlight-box { 
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border-left: 4px solid #f59e0b; 
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 5px solid #0ea5e9; 
       padding: 25px; 
       margin: 30px 0; 
-      border-radius: 8px;
+      border-radius: 6px;
     }
     .highlight-box p {
       margin: 0;
-      color: #78350f;
+      color: #0f172a;
       line-height: 1.7;
-      font-weight: 600;
     }
     .footer { 
       background-color: #0f172a; 
       padding: 40px 40px 30px 40px; 
-      text-align: center;
+      text-align: center; 
+      color: rgba(255, 255, 255, 0.8);
     }
     .footer-logo {
-      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #0ea5e9;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
     }
-    .footer-logo img {
-      max-width: 150px;
-      height: auto;
-      opacity: 0.9;
-    }
-    .footer-text {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 14px;
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .footer-tagline {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
     }
     .footer-links {
       margin: 25px 0 20px 0;
-      padding: 0;
+      font-size: 14px;
     }
     .footer-links a {
       color: #0ea5e9;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color 0.2s;
+      margin: 0 8px;
+      transition: color 0.3s ease;
     }
     .footer-links a:hover {
       color: #38bdf8;
+      text-decoration: underline;
     }
-    .footer-divider {
-      color: rgba(255, 255, 255, 0.3);
-      margin: 0 10px;
+    .footer-links span {
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 8px;
     }
     .footer-copyright {
+      font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
-    .timestamp {
-      background-color: #f0f9ff;
-      border-left: 4px solid #0ea5e9;
-      padding: 20px 25px;
-      border-radius: 8px;
-      margin-top: 30px;
-    }
-    .timestamp p {
-      margin: 0;
-      color: #075985;
-      font-weight: 600;
-      font-size: 15px;
-    }
-    .quick-lead-badge {
-      text-align: center;
-      padding: 30px;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      border-radius: 8px;
-      margin-bottom: 30px;
-    }
-    .quick-lead-badge h3 {
-      color: #0ea5e9;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    .quick-lead-badge p {
-      color: #475569;
-      margin: 0;
-      font-size: 14px;
+    .priority-badge { 
+      display: inline-block; 
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white; 
+      padding: 8px 18px; 
+      border-radius: 20px; 
+      font-size: 13px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
     }
     @media only screen and (max-width: 600px) {
-      .email-wrapper { padding: 20px 0; }
-      .email-container { border-radius: 0; }
-      .header { padding: 40px 25px; }
+      .email-wrapper { padding: 20px 10px; }
+      .header { padding: 40px 30px; }
+      .content { padding: 40px 30px; }
+      .footer { padding: 35px 30px 25px 30px; }
+      .logo { font-size: 30px; }
       .header h1 { font-size: 26px; }
-      .content { padding: 35px 25px; }
-      .footer { padding: 35px 25px 25px 25px; }
-      .info-label, .info-value { display: block; width: 100%; padding: 8px 0; }
-      .info-label { font-weight: 700; color: #0f172a; }
+      .info-label, .info-value { display: block; width: 100%; }
+      .info-label { margin-bottom: 5px; }
+      .info-row { margin-bottom: 20px; }
     }
   </style>
 </head>
 <body>
   <div class="email-wrapper">
-    <div class="email-container">
-      <!-- Header -->
+    <div class="container">
       <div class="header">
-        <div class="logo">
-          <img src="${baseUrl}/images/photograph.png" alt="ReadySold Logo">
-        </div>
+        <div class="logo">ReadySold</div>
+        <div class="logo-tagline">Professional Car Selling Service</div>
         <h1>⚡ Quick Enquiry</h1>
-        <p>Fast response needed - Hero form submission</p>
       </div>
-
-      <!-- Banner Image -->
-      <div class="banner-image">
-        <img src="${baseUrl}/images/photograph.png" alt="ReadySold Vehicle">
-      </div>
-
-      <!-- Content -->
+      
       <div class="content">
-        <span class="priority-badge">🔥 Hot Lead</span>
-
-        <!-- Quick Lead Notice -->
-        <div class="quick-lead-badge">
-          <h3>Priority Lead</h3>
-          <p>This customer used the quick form - they want fast action!</p>
-        </div>
-
-        <!-- Vehicle Information -->
-        <div class="section">
-          <h2 class="section-title">Vehicle Information</h2>
-          <div class="info-grid">
-            <div class="info-row">
-              <div class="info-label">Registration:</div>
-              <div class="info-value"><strong>${data.registration || 'Not provided'}</strong></div>
-            </div>
+        <span class="priority-badge">Hero Form • Fast Response Required</span>
+        
+        <div class="info-section">
+          <h2>Vehicle Information</h2>
+          <div class="info-row">
+            <span class="info-label">Registration:</span>
+            <span class="info-value"><strong>${data.registration || 'Not provided'}</strong></span>
           </div>
         </div>
 
-        <!-- Contact Details -->
-        <div class="section">
-          <h2 class="section-title">Contact Details</h2>
-          <div class="info-grid">
-            <div class="info-row">
-              <div class="info-label">Name:</div>
-              <div class="info-value">${data.name || 'Not provided'}</div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Email:</div>
-              <div class="info-value"><a href="mailto:${data.email}" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">${data.email || 'Not provided'}</a></div>
-            </div>
-            <div class="info-row">
-              <div class="info-label">Phone:</div>
-              <div class="info-value"><a href="tel:${data.phone}" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">${data.phone || 'Not provided'}</a></div>
-            </div>
+        <div class="info-section">
+          <h2>Contact Details</h2>
+          <div class="info-row">
+            <span class="info-label">Name:</span>
+            <span class="info-value">${data.name || 'Not provided'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email:</span>
+            <span class="info-value"><a href="mailto:${data.email}" style="color: #0ea5e9; text-decoration: none;">${data.email || 'Not provided'}</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone:</span>
+            <span class="info-value"><a href="tel:${data.phone}" style="color: #0ea5e9; text-decoration: none;">${data.phone || 'Not provided'}</a></span>
           </div>
         </div>
 
-        <!-- Timestamp -->
-        <div class="timestamp">
-          <p>⏰ Submitted: ${new Date().toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
-        </div>
-
-        <!-- Action Box -->
         <div class="highlight-box">
-          <p>⚡ Quick Action Required: Respond within 30 minutes for best conversion rates. This lead came from the hero section - high intent!</p>
+          <p style="font-weight: 600; color: #0f172a;">⏰ Submitted: ${new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' })}</p>
+          <p style="margin-top: 10px; color: #d97706; font-weight: 600;">💡 Quick lead - Follow up promptly for best conversion!</p>
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="footer">
-        <div class="footer-logo">
-          <img src="${baseUrl}/images/photograph.png" alt="ReadySold">
-        </div>
-        <p class="footer-text">
-          <strong>ReadySold</strong><br>
-          Professional car selling service - Keep driving while we sell
-        </p>
+        <div class="footer-logo">ReadySold</div>
+        <div class="footer-tagline">Keep driving while we sell — Pay only when sold</div>
+        
         <div class="footer-links">
-          <a href="${baseUrl}/terms.html">Terms & Conditions</a>
-          <span class="footer-divider">•</span>
-          <a href="${baseUrl}/privacy.html">Privacy Policy</a>
-          <span class="footer-divider">•</span>
-          <a href="${baseUrl}/contact.html">Contact Us</a>
+          <a href="https://readysold.co.uk/terms.html">Terms & Conditions</a>
+          <span>•</span>
+          <a href="https://readysold.co.uk/privacy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="https://readysold.co.uk/contact.html">Contact Us</a>
         </div>
-        <p class="footer-copyright">
+        
+        <div class="footer-copyright">
           © ${new Date().getFullYear()} ReadySold. All rights reserved.
-        </p>
+        </div>
       </div>
     </div>
   </div>
