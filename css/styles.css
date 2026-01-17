@@ -850,11 +850,12 @@ body.non-home-page.scrolled .nav-menu a {
    ============================================ */
 
 .image-divider {
-    height: 500px;
+    height: 400px;
     background-image: url('../images/photograph.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
@@ -868,7 +869,7 @@ body.non-home-page.scrolled .nav-menu a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(14, 165, 233, 0.3));
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(14, 165, 233, 0.4));
 }
 
 .image-divider-content {

@@ -27,33 +27,49 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    let emailContent;
-    let subject;
+    let companyEmailContent;
+    let customerEmailContent;
+    let companySubject;
+    let customerSubject;
     let recipientEmail = 'hello@readysold.co.uk'; // Your company email
 
-    // Generate email based on form type
+    // Generate emails based on form type
     if (type === 'valuation') {
-      subject = `New Valuation Request - ${data.registration || 'N/A'}`;
-      emailContent = generateValuationEmail(data);
+      companySubject = `New Valuation Request - ${data.registration || 'N/A'}`;
+      companyEmailContent = generateValuationEmail(data);
+      customerSubject = 'Thank You for Your Valuation Request';
+      customerEmailContent = generateCustomerConfirmationEmail(data);
     } else if (type === 'hero-form') {
-      subject = `New Lead - ${data.name || 'Quick Enquiry'}`;
-      emailContent = generateHeroFormEmail(data);
+      companySubject = `New Lead - ${data.name || 'Quick Enquiry'}`;
+      companyEmailContent = generateHeroFormEmail(data);
+      customerSubject = 'Thank You for Contacting ReadySold';
+      customerEmailContent = generateCustomerConfirmationEmail(data);
     } else {
       return res.status(400).json({ error: 'Invalid form type' });
     }
 
-    // Send email using Resend
-    const emailResponse = await resend.emails.send({
-      from: 'ReadySold <noreply@readysold.co.uk>', // Update with your verified domain
+    // Send email to company
+    const companyEmailResponse = await resend.emails.send({
+      from: 'ReadySold <noreply@readysold.co.uk>',
       to: recipientEmail,
-      subject: subject,
-      html: emailContent,
+      subject: companySubject,
+      html: companyEmailContent,
       replyTo: data.email || undefined,
     });
 
+    // Send confirmation email to customer
+    if (data.email) {
+      await resend.emails.send({
+        from: 'ReadySold <noreply@readysold.co.uk>',
+        to: data.email,
+        subject: customerSubject,
+        html: customerEmailContent,
+      });
+    }
+
     return res.status(200).json({ 
       success: true, 
-      messageId: emailResponse.id 
+      messageId: companyEmailResponse.id 
     });
 
   } catch (error) {
@@ -553,6 +569,268 @@ function generateHeroFormEmail(data) {
         <div class="footer-copyright">
           © ${new Date().getFullYear()} ReadySold. All rights reserved.
         </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+// Generate customer confirmation email - Clean Spotify-style design
+function generateCustomerConfirmationEmail(data) {
+  const firstName = data.name ? data.name.split(' ')[0] : 'there';
+  
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+      line-height: 1.6; 
+      color: #1e293b; 
+      margin: 0; 
+      padding: 0; 
+      background-color: #ffffff;
+    }
+    .container { 
+      max-width: 600px; 
+      margin: 0 auto; 
+      background-color: #ffffff;
+    }
+    .header { 
+      padding: 50px 40px 40px 40px; 
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .logo {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0;
+      letter-spacing: -0.5px;
+    }
+    .content { 
+      padding: 50px 40px; 
+    }
+    .greeting {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .message {
+      font-size: 16px;
+      color: #475569;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+    .highlight-section {
+      border-left: 4px solid #0ea5e9;
+      padding: 25px 30px;
+      margin: 35px 0;
+      background-color: #ffffff;
+    }
+    .highlight-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+    .highlight-section p {
+      font-size: 15px;
+      color: #475569;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .info-box {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 25px 30px;
+      margin: 30px 0;
+    }
+    .info-box h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 15px;
+    }
+    .info-item {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+    .info-label {
+      font-weight: 600;
+      color: #0f172a;
+      min-width: 120px;
+    }
+    .info-value {
+      color: #475569;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .divider {
+      height: 1px;
+      background-color: #e2e8f0;
+      margin: 40px 0;
+    }
+    .footer { 
+      padding: 40px 40px 50px 40px; 
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0ea5e9;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .footer-links {
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .footer-links a {
+      color: #64748b;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+    .footer-links span {
+      color: #cbd5e1;
+      margin: 0 8px;
+    }
+    .footer-text {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 20px;
+    }
+    @media only screen and (max-width: 600px) {
+      .header { padding: 40px 30px 30px 30px; }
+      .content { padding: 40px 30px; }
+      .footer { padding: 35px 30px 40px 30px; }
+      .greeting { font-size: 24px; }
+      .highlight-section { padding: 20px 25px; }
+      .info-box { padding: 20px 25px; }
+      .info-item { flex-direction: column; }
+      .info-label { margin-bottom: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">ReadySold</div>
+    </div>
+    
+    <div class="content">
+      <h1 class="greeting">Thanks ${firstName}, we've received your request</h1>
+      
+      <p class="message">
+        We're excited to help you sell your car. Our team will review your details and get back to you shortly with a comprehensive valuation.
+      </p>
+
+      ${data.registration ? `
+      <div class="info-box">
+        <h3>Your Submission Details</h3>
+        <div class="info-item">
+          <span class="info-label">Vehicle:</span>
+          <span class="info-value">${data.registration}</span>
+        </div>
+        ${data.mileage ? `
+        <div class="info-item">
+          <span class="info-label">Mileage:</span>
+          <span class="info-value">${Number(data.mileage).toLocaleString()} miles</span>
+        </div>
+        ` : ''}
+      </div>
+      ` : ''}
+
+      <div class="highlight-section">
+        <h3>What Happens Next?</h3>
+        <p>
+          Our specialists will analyse current market conditions and comparable sales to provide you with an accurate, honest valuation. We'll reach out to you directly to discuss the details and answer any questions you may have.
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; text-align: center;">
+        Why Choose ReadySold?
+      </h3>
+
+      <div style="margin: 30px 0;">
+        <div style="margin-bottom: 25px;">
+          <div style="font-weight: 600; color: #0f172a; margin-bottom: 5px; font-size: 15px;">
+            Keep Your Car
+          </div>
+          <div style="color: #64748b; font-size: 14px; line-height: 1.6;">
+            Continue driving while we handle all viewings, negotiations, and paperwork
+          </div>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <div style="font-weight: 600; color: #0f172a; margin-bottom: 5px; font-size: 15px;">
+            Pay Only When Sold
+          </div>
+          <div style="color: #64748b; font-size: 14px; line-height: 1.6;">
+            8% commission (£350 minimum) — No upfront costs, no hidden fees
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight: 600; color: #0f172a; margin-bottom: 5px; font-size: 15px;">
+            Professional Service
+          </div>
+          <div style="color: #64748b; font-size: 14px; line-height: 1.6;">
+            Quality photos, multi-platform listings, and expert negotiation included
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <a href="https://readysold.co.uk" class="cta-button">Visit Our Website</a>
+      </div>
+
+      <p class="message" style="text-align: center; color: #64748b; font-size: 14px; margin-top: 40px;">
+        Questions? Reply to this email or visit our website for more information.
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">ReadySold</div>
+      
+      <div class="footer-links">
+        <a href="https://readysold.co.uk/terms.html">Terms & Conditions</a>
+        <span>•</span>
+        <a href="https://readysold.co.uk/privacy.html">Privacy Policy</a>
+        <span>•</span>
+        <a href="https://readysold.co.uk/contact.html">Contact Us</a>
+      </div>
+      
+      <div class="footer-text">
+        © ${new Date().getFullYear()} ReadySold. All rights reserved.
       </div>
     </div>
   </div>
