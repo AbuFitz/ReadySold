@@ -202,7 +202,7 @@ function openModal(fromHeroForm = false) {
             // Hide car fields, update text
             if (carFields) carFields.style.display = 'none';
             if (modalTitle) modalTitle.textContent = 'Almost there!';
-            if (modalSubtitle) modalSubtitle.textContent = "Enter your details and we'll call you within 2 hours.";
+            if (modalSubtitle) modalSubtitle.textContent = "Enter your details and we'll get back to you promptly.";
 
             // Make car fields not required
             const modalReg = document.getElementById('modal-registration');
@@ -215,7 +215,7 @@ function openModal(fromHeroForm = false) {
             // Show car fields, restore text
             if (carFields) carFields.style.display = 'block';
             if (modalTitle) modalTitle.textContent = 'Get Your Free Valuation';
-            if (modalSubtitle) modalSubtitle.textContent = "Tell us about your car and we'll call you within 2 hours.";
+            if (modalSubtitle) modalSubtitle.textContent = "Tell us about your car and we'll get back to you promptly.";
 
             // Make car fields required
             const modalReg = document.getElementById('modal-registration');
@@ -695,12 +695,12 @@ const responses = {
     greeting: [
         "Hi there! I'm here to help you sell your car. What would you like to know?",
         "Hello! Thanks for getting in touch. How can I assist with selling your car today?",
-        "Hey! Whether you're curious about pricing, the process, or just exploring your options, I'm happy to help."
+        "Hey! Whether you're curious about pricing, the process, or exploring your options, I'm here to help."
     ],
     pricing: [
-        "Our pricing is straightforward - we charge 10% of the sale price with a minimum fee of £350. You only pay when your car actually sells, so there's zero risk and no upfront costs. If we don't sell it, you don't pay anything.",
-        "We work on a success-based model. You'll pay 10% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges - just a fair commission when we deliver results.",
-        "Think of it as risk-free selling. Our 10% commission (£350 minimum) only applies when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price because we only earn when you do."
+        "Our pricing is straightforward - we charge 10% of the sale price with a minimum fee of £350. You only pay when your car sells, so there's zero risk and no upfront costs.",
+        "We work on a success-based model. You'll pay 10% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges.",
+        "We charge 10% commission (£350 minimum) only when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price."
     ],
     process: [
         "The process is designed to be hassle-free for you. First, we provide a free valuation - typically within 2 hours of you contacting us. Then we arrange professional photography and create listings across all major platforms. While we handle viewings, calls, and negotiations, you keep driving your car as normal. Once we find the right buyer, we coordinate the sale and you receive your payment.",
@@ -713,9 +713,9 @@ const responses = {
         "Definitely! We understand you need your car, so it stays in your possession. We schedule viewings around your availability, whether that's evenings, weekends, or whenever suits you best. You're never without your vehicle until the sale completes."
     ],
     time: [
-        "For valuations, we're very responsive - you'll hear from us within 2 hours during business hours. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often go faster. We'll give you a realistic timeframe when we value your car.",
-        "We move quickly on valuations - expect a call within 2 hours. The actual selling time depends on market demand for your specific vehicle. A well-priced car in good condition might sell in days, while others take a few weeks. We'll be upfront about realistic expectations based on current market conditions.",
-        "Our response time for valuations is typically under 2 hours. Once listed, sale duration varies - factors like pricing, condition, mileage, and model popularity all play a role. We use real-time market data to price competitively, which helps most cars sell within a month. We'll keep you updated throughout."
+        "We aim to respond promptly to all valuation requests. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often move faster.",
+        "We respond quickly to valuations. The actual selling time depends on market demand for your specific vehicle. A well-priced car in good condition might sell in days, while others take a few weeks. We'll be upfront about realistic expectations.",
+        "Our response time for valuations is typically quick. Once listed, sale duration varies - factors like pricing, condition, mileage, and model popularity all play a role. Most cars sell within a month with proper pricing."
     ],
     payment: [
         "Payment is simple and secure. The buyer pays you directly for the car - we're not a middleman in the transaction. Once the sale completes and you've received your money, you then pay us our 10% commission (minimum £350). You're always in control of the funds.",
@@ -738,9 +738,9 @@ const responses = {
         "Contact details: Phone 020 1234 5678, Email hello@readysold.co.uk. Our team is available Monday through Saturday, 9am to 6pm. We're happy to chat about your car and explain how we can help you sell it hassle-free."
     ],
     valuation: [
-        "Getting a free valuation is easy. You can enter your registration number in the form at the top of this page, or simply give us a call on 020 1234 5678. Either way, we'll research current market conditions and get back to you within 2 hours with an accurate, honest valuation. No obligation whatsoever.",
-        "Ready for your free valuation? Just pop your reg number into the form above or call us directly. We'll analyze recent sales data, current market trends, and your car's specific details to provide a realistic valuation. You'll hear from us within 2 hours, and there's no pressure to proceed.",
-        "Free valuations are our starting point. Enter your registration details on this page, and we'll call you within 2 hours to discuss your car's value based on real market data. It's completely free and there's no commitment required - just helpful information to guide your decision."
+        "Getting a free valuation is easy. Enter your registration number in the form at the top of this page, or call us on 020 1234 5678. We'll research current market conditions and get back to you with an accurate, honest valuation. No obligation whatsoever.",
+        "Ready for your free valuation? Just enter your reg number in the form above or call us directly. We'll analyze recent sales data, current market trends, and your car's specific details to provide a realistic valuation. No pressure to proceed.",
+        "Free valuations are our starting point. Enter your registration details on this page, and we'll contact you to discuss your car's value based on real market data. It's completely free with no commitment required."
     ],
     default: [
         "That's a great question. While I might not have covered that specific point, I can help you with information about our pricing, how the process works, what areas we cover, or put you in touch with the team directly. What would be most helpful for you right now?",
@@ -1009,7 +1009,7 @@ const stepDetails = {
                 </ul>
             </div>
 
-            <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Response time:</strong> We typically call you back within 2 hours during business hours (Mon-Sat, 9am-6pm)</p>
+            <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Response time:</strong> We aim to respond promptly during business hours (Mon-Sat, 9am-6pm)</p>
             
             <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
                 Get Free Valuation Now
