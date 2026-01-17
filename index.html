@@ -449,27 +449,52 @@
         </div>
     </div>
 
-    <!-- Condition Info Popup -->
+    <!-- Condition Info Popup - Redesigned -->
     <div class="condition-popup" id="condition-popup">
         <button class="popup-close" onclick="closeConditionPopup()">
             <i data-lucide="x"></i>
         </button>
-        <div class="popup-content">
-            <h3>Your car doesn't need to be perfect.</h3>
-            <p class="popup-subtext">We sell vehicles in any condition.</p>
-            <div class="popup-bullets" id="popup-bullets">
-                <div class="bullet-item"><i data-lucide="check-circle"></i> Minor dents & scratches</div>
-                <div class="bullet-item"><i data-lucide="check-circle"></i> High mileage</div>
-                <div class="bullet-item"><i data-lucide="check-circle"></i> Wear and tear</div>
-                <div class="bullet-item"><i data-lucide="check-circle"></i> Older vehicles</div>
+        <div class="popup-inner">
+            <div class="popup-header">
+                <div class="popup-icon-badge">
+                    <i data-lucide="car"></i>
+                </div>
+                <h3>Sell Your Car As-Is</h3>
+                <p class="popup-description">We handle vehicles in any condition. No need for repairs or detailing before selling.</p>
             </div>
-            <button class="popup-btn" id="popup-btn" onclick="handlePopupButtonClick()">
-                <span id="popup-btn-text">Learn More</span>
+            <div class="popup-features">
+                <div class="popup-feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>Minor Damage</h4>
+                        <p>Dents, scratches, or cosmetic issues</p>
+                    </div>
+                </div>
+                <div class="popup-feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>High Mileage</h4>
+                        <p>We sell cars with any mileage history</p>
+                    </div>
+                </div>
+                <div class="popup-feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>Wear & Tear</h4>
+                        <p>Normal age-related condition accepted</p>
+                    </div>
+                </div>
+            </div>
+            <button class="popup-cta-btn" onclick="closeConditionPopup(); openModal();">
+                Get Free Valuation
                 <i data-lucide="arrow-right"></i>
             </button>
-        </div>
-        <div class="popup-image">
-            <img src="public/images/damaged.jpg" alt="Car in any condition">
         </div>
     </div>
 

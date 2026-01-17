@@ -903,10 +903,8 @@ function toggleChat() {
 }
 
 // ============================================
-// Condition Info Popup (50/50 Split)
+// Condition Info Popup - Redesigned
 // ============================================
-
-let popupExpanded = false;
 
 function showConditionPopup() {
     // Check if popup was dismissed this session
@@ -930,43 +928,15 @@ function closeConditionPopup() {
     if (!popup) return;
 
     popup.classList.remove('visible');
-    popup.classList.remove('expanded');
 
     // Remember dismissal for this session
     localStorage.setItem('conditionPopupDismissed', 'true');
-
-    // Reset popup state
-    popupExpanded = false;
-    const btnText = document.getElementById('popup-btn-text');
-    if (btnText) btnText.textContent = 'Learn More';
-}
-
-function handlePopupButtonClick() {
-    if (!popupExpanded) {
-        // First click - expand popup
-        const popup = document.getElementById('condition-popup');
-        const btnText = document.getElementById('popup-btn-text');
-
-        popup.classList.add('expanded');
-        btnText.textContent = 'Get Free Valuation';
-        popupExpanded = true;
-
-        // Reinitialize icons for bullets
-        if (typeof lucide !== 'undefined') {
-            setTimeout(() => lucide.createIcons(), 100);
-        }
-    } else {
-        // Second click - open valuation modal
-        closeConditionPopup();
-        openModal();
-    }
 }
 
 // Make function globally available
 window.closeConditionPopup = closeConditionPopup;
-window.handlePopupButtonClick = handlePopupButtonClick;
 
-// Initialize popup timing - show after 9 seconds
+// Initialize popup timing - show after 10 seconds
 let popupShown = false;
 
 setTimeout(() => {
@@ -974,7 +944,7 @@ setTimeout(() => {
         showConditionPopup();
         popupShown = true;
     }
-}, 9000);
+}, 10000);
 
 // ============================================
 // Step Detail Modal System
