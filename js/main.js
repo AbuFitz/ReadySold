@@ -258,6 +258,77 @@ function closeModal() {
     }
 }
 
+// Learn More modal function
+function openLearnMoreModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay active';
+    modal.id = 'learn-more-modal';
+    modal.innerHTML = `
+        <div class="modal-container" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeLearnMoreModal()">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-content">
+                <h2 style="color: var(--navy); margin-bottom: 1rem; font-size: 2rem;">Your Car Doesn't Need to Be Perfect</h2>
+                <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">We sell cars in any condition - you'd be surprised what buyers are looking for.</p>
+                
+                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--navy); margin-bottom: 1rem; font-size: 1.25rem;">We Handle:</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                            <i data-lucide="check-circle" style="color: var(--primary-color); flex-shrink: 0;"></i>
+                            <span>High mileage vehicles</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                            <i data-lucide="check-circle" style="color: var(--primary-color); flex-shrink: 0;"></i>
+                            <span>Cars with minor cosmetic damage</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                            <i data-lucide="check-circle" style="color: var(--primary-color); flex-shrink: 0;"></i>
+                            <span>Vehicles with wear and tear</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                            <i data-lucide="check-circle" style="color: var(--primary-color); flex-shrink: 0;"></i>
+                            <span>Older models with service history gaps</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; color: var(--gray-700);">
+                            <i data-lucide="check-circle" style="color: var(--primary-color); flex-shrink: 0;"></i>
+                            <span>Cars needing minor repairs</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--sky-blue-dark) 100%); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem; color: white;">
+                    <p style="margin: 0; font-size: 1.063rem; color: rgba(255,255,255,0.95);">
+                        <strong style="color: white;">Honest listings attract serious buyers.</strong> We're transparent about condition, which means you get realistic offers from people who actually want your car - not time-wasters expecting perfection.
+                    </p>
+                </div>
+
+                <button onclick="closeLearnMoreModal(); openModal();" class="btn-hero" style="width: 100%; margin: 0;">
+                    Get Free Valuation
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Initialize Lucide icons in modal
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+function closeLearnMoreModal() {
+    const modal = document.getElementById('learn-more-modal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+}
+
 function showSuccessStep() {
     if (modalStep1) modalStep1.style.display = 'none';
     if (modalStep2) modalStep2.classList.add('active');
@@ -679,73 +750,91 @@ let chatInitialized = false;
 
 // Knowledge base for the chatbot
 const chatbotKnowledge = {
-    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'thanks', 'thank you'],
-    pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing', 'fees', 'commission', 'percentage', 'cheap', 'affordable'],
-    process: ['how', 'work', 'process', 'steps', 'procedure', 'what happens', 'how does', 'explain', 'walk me through', 'works'],
-    driving: ['drive', 'driving', 'keep', 'use', 'car', 'still use', 'keep using', 'access', 'use my car'],
-    time: ['long', 'quick', 'fast', 'duration', 'time', 'how long', 'quickly', 'speed', 'when', 'timeline'],
-    payment: ['pay', 'payment', 'when', 'upfront', 'money', 'paid', 'paying', 'receive', 'get paid'],
-    photography: ['photo', 'picture', 'image', 'photos', 'pictures', 'photography', 'images'],
-    selling: ['sell', 'buyer', 'listing', 'advertise', 'market', 'list', 'platform', 'where listed', 'find buyers'],
-    contact: ['call', 'phone', 'email', 'reach', 'contact', 'talk', 'speak', 'get in touch', 'reach out', 'number'],
-    valuation: ['value', 'worth', 'estimate', 'valuation', 'what is my car worth', 'car value', 'quote', 'assessment']
+    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'thanks', 'thank you', 'appreciate', 'cheers'],
+    pricing: ['price', 'cost', 'fee', 'charge', 'expensive', 'how much', 'pricing', 'fees', 'commission', 'percentage', 'cheap', 'affordable', '8%', 'eight percent', 'minimum', '£350', 'rates', 'what do you charge'],
+    process: ['how', 'work', 'process', 'steps', 'procedure', 'what happens', 'how does', 'explain', 'walk me through', 'works', 'start', 'begin', 'get started', 'sign up', 'register'],
+    driving: ['drive', 'driving', 'keep', 'use', 'car', 'still use', 'keep using', 'access', 'use my car', 'keep my car', 'can i drive', 'will i lose'],
+    time: ['long', 'quick', 'fast', 'duration', 'time', 'how long', 'quickly', 'speed', 'when', 'timeline', 'days', 'weeks', 'months', 'soon', 'timeframe'],
+    payment: ['pay', 'payment', 'when', 'upfront', 'money', 'paid', 'paying', 'receive', 'get paid', 'payout', 'cash', 'transfer', 'bank transfer'],
+    photography: ['photo', 'picture', 'image', 'photos', 'pictures', 'photography', 'images', 'camera', 'take photos', 'pictures taken'],
+    selling: ['sell', 'buyer', 'listing', 'advertise', 'market', 'list', 'platform', 'where listed', 'find buyers', 'autotrader', 'ebay', 'facebook', 'advertised'],
+    condition: ['damage', 'damaged', 'scratches', 'dent', 'dents', 'condition', 'perfect', 'worn', 'old', 'mileage', 'high mileage', 'issues', 'problems', 'faults', 'mechanical', 'cosmetic', 'repair', 'needs work'],
+    locations: ['area', 'location', 'where', 'cover', 'service', 'region', 'city', 'near me', 'local', 'available'],
+    paperwork: ['paperwork', 'documents', 'v5c', 'logbook', 'registration', 'mot', 'service history', 'documentation'],
+    viewings: ['viewing', 'viewings', 'show', 'appointment', 'meet', 'look at', 'see the car', 'inspection', 'test drive'],
+    valuation: ['value', 'worth', 'estimate', 'valuation', 'what is my car worth', 'car value', 'quote', 'assessment', 'appraisal', 'free valuation']
 };
 
 const responses = {
     greeting: [
-        "Hi there! I'm here to help you sell your car. What would you like to know?",
-        "Hello! Thanks for getting in touch. How can I assist with selling your car today?",
-        "Hey! Whether you're curious about pricing, the process, or exploring your options, I'm here to help."
+        "Hi! Thanks for stopping by. Whether you're curious about selling or just browsing, I'm here to help answer your questions.",
+        "Hello! I can help you understand how selling with us works, answer questions about pricing, or guide you through getting started.",
+        "Hey there! Feel free to ask me anything about selling your car - from how our process works to what happens with payment."
     ],
     pricing: [
-        "Our pricing is straightforward - we charge 8% of the sale price with a minimum fee of £350. You only pay when your car sells, so there's zero risk and no upfront costs.",
-        "We work on a success-based model. You'll pay 8% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges.",
-        "We charge 8% commission (£350 minimum) only when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price."
+        "We charge 8% of the final sale price, with a minimum fee of £350. You only pay when your car sells - no upfront costs, no hidden fees. If we don't sell it, you don't pay anything.",
+        "Our fee is straightforward: 8% commission with a £350 minimum, and you only pay after your car sells. Zero risk on your part. We're motivated to get you the best price because we only earn when you do.",
+        "It's 8% of whatever we sell your car for (minimum £350), but here's the key - you don't pay a penny until the sale completes. No listing fees, no photography charges, nothing upfront."
     ],
     process: [
-        "The process is designed to be hassle-free for you. First, we provide a free valuation. Then we take quality photos covering all angles and create listings across all major platforms. While we handle viewings, calls, and negotiations, you keep driving your car as normal. Once we find the right buyer, we coordinate the sale and you receive your payment.",
-        "Here's what happens: After you request a valuation, we'll get back to you promptly to discuss your car and give you an accurate estimate. We then photograph your vehicle from all angles and list it everywhere - AutoTrader, eBay Motors, Facebook Marketplace, you name it. We manage all the interested buyers, arrange viewings that suit your schedule, and negotiate on your behalf. You stay in the loop and approve the final sale.",
-        "It's a four-step journey. Step one: Free valuation where we assess your car's market value. Step two: Quality photos and comprehensive listings. Step three: We handle all buyer interactions and viewings while you keep using your car. Step four: We finalize the sale, you get paid, and we collect our commission. Simple as that."
+        "Here's how it works: First, you submit your car details and we provide a free valuation. Then we arrange to take photos covering all angles and create listings on AutoTrader, eBay Motors, Facebook Marketplace, and more. While we handle all buyer enquiries, viewings, and negotiations, you keep driving your car as normal. Once we find the right buyer and the sale completes, you get paid and we collect our 8% commission.",
+        "It's pretty simple. Step 1: Free valuation (no obligation). Step 2: We photograph your car and list it everywhere. Step 3: We manage buyers, viewings, and negotiations while you go about your life. Step 4: Sale completes, money goes to your account, you pay our 8%. That's it.",
+        "Think of it as us doing all the hard work while you relax. After the free valuation, we handle photography, create listings across multiple platforms, filter out time-wasters, coordinate viewings around your schedule, and negotiate with buyers. Your car stays with you the whole time until it sells."
     ],
     driving: [
-        "Yes, absolutely! Your car stays with you throughout the entire selling process. We work around your schedule for viewings, so you maintain full use of your vehicle until the moment it sells. There's no need to hand over keys or lose access - it's your car until someone buys it.",
-        "That's one of the best parts of our service. You keep driving your car normally. When potential buyers want to view it, we coordinate times that work for you. No inconvenience, no loss of mobility - your life continues as usual while we work on finding the right buyer.",
-        "Definitely! We understand you need your car, so it stays in your possession. We schedule viewings around your availability, whether that's evenings, weekends, or whenever suits you best. You're never without your vehicle until the sale completes."
+        "Absolutely! Your car stays with you throughout. You keep the keys, keep driving, keep using it normally. We just schedule viewings around your availability. You're never without your car until it actually sells.",
+        "Yes, 100%. We work around your schedule - you keep full use of your vehicle. When someone wants to view it, we coordinate a time that suits you. No loss of mobility, no inconvenience.",
+        "That's one of the best parts - you maintain complete access to your car. We're not one of those services where you hand over the keys. It stays in your possession and you keep driving until the moment it sells."
     ],
     time: [
-        "We aim to respond promptly to all valuation requests. As for selling time, it varies depending on your car's make, model, condition, and price point. Most vehicles sell within 2-6 weeks, though popular models in good condition often move faster.",
-        "We respond quickly to valuations. The actual selling time depends on market demand for your specific vehicle. A well-priced car in good condition might sell in days, while others take a few weeks. We'll be upfront about realistic expectations.",
-        "Our response time for valuations is typically quick. Once listed, sale duration varies - factors like pricing, condition, mileage, and model popularity all play a role. Most cars sell within a month with proper pricing."
+        "Most cars sell within 2-6 weeks, though it varies based on make, model, condition, and pricing. Popular models in good condition can move in days, while others might take a bit longer. We give realistic expectations based on your specific car and current market demand.",
+        "Timeline depends on your vehicle and the market. A well-priced car in decent condition typically sells within a month. Some move faster, some take longer. We'll be honest about realistic timeframes when we value your car.",
+        "Selling time varies - factors like make, model, mileage, condition, and price all matter. Most vehicles sell within 4-6 weeks. We respond quickly to valuations (usually same day), and then it's about finding the right buyer at the right price."
     ],
     payment: [
-        "Payment is simple and secure. The buyer pays you directly for the car - we're not a middleman in the transaction. Once the sale completes and you've received your money, you then pay us our 8% commission (minimum £350). You're always in control of the funds.",
-        "No upfront costs at all. When your car sells, the buyer transfers money directly to you. After you receive the full payment, you pay our commission of 8% of the sale price (£350 minimum). It's straightforward and completely transparent.",
-        "Zero payment until your car sells. When it does, you receive the sale price from the buyer, then settle our 8% fee (minimum £350). We don't handle the buyer's money - it goes straight to you, keeping everything simple and secure."
+        "Payment is direct and secure. The buyer pays you directly - the money goes straight into your account, not through us. Once you've received the full amount and the sale is complete, you then pay our 8% commission (£350 minimum). You're always in control of the funds.",
+        "Here's the payment flow: Buyer transfers money directly to your bank account → You confirm receipt → Sale paperwork completed → You pay our 8% commission. Simple, transparent, secure. We never touch the buyer's money.",
+        "When your car sells, the buyer pays you directly. You get the cash in your account first. After you've been paid and the sale is finalized, you settle our 8% fee. Zero upfront costs, you're in control throughout."
     ],
     photography: [
-        "Quality photos are included in our service at no extra charge. We take detailed images covering all angles of your vehicle - exterior, interior, engine bay, and any notable features. High-quality images make a massive difference in attracting buyers and achieving the right price.",
-        "We provide quality photography as standard - it's crucial for online listings. We capture your car from every angle to give buyers a complete view. Quality images generate more interest, more viewings, and ultimately better offers. There's no additional cost.",
-        "Yes, quality photos are included. We know that good photography sells cars, so we make sure your vehicle is captured from all angles across all platforms. Clear, well-lit images that highlight the car's condition and features - all part of the service."
+        "Photos are included at no extra cost. We take detailed images from all angles - exterior, interior, engine bay, boot, any features or notable details. Quality photos make a huge difference in attracting serious buyers and getting better offers.",
+        "We handle the photography as part of our service. We'll capture your car from every angle to give buyers a complete picture. Exterior shots, interior condition, engine bay - everything they need to see. No additional charge.",
+        "Yes, photos are included. We know good images sell cars, so we make sure to cover all angles: outside, inside, under the bonnet, any features worth highlighting. It's all part of getting you the best result."
     ],
     selling: [
-        "We handle the complete selling process. Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and other major platforms. We field all inquiries, pre-screen buyers, arrange viewings around your schedule, and negotiate to get you the best price. You stay informed and approve the final sale before anything is finalized.",
-        "Think of us as your personal car selling team. We create compelling listings with quality photos, manage all buyer communications, handle price negotiations, organize viewings, and deal with the paperwork. You're involved in the key decisions but free from the day-to-day hassle.",
-        "Our comprehensive service covers everything: multi-platform listings, buyer vetting, appointment scheduling, professional negotiation, and sale coordination. We only bring you serious, qualified buyers, and we always get your approval before accepting any offer. You get the results without the stress."
+        "We list your car on all major platforms: AutoTrader, eBay Motors, Facebook Marketplace, and others. We create compelling listings, field all enquiries, pre-screen buyers to filter out time-wasters, coordinate viewings, and handle negotiations. You stay informed and approve the final sale price.",
+        "Think of us as your personal sales team. We advertise your car across multiple platforms, manage all buyer communications, vet potential buyers, arrange viewings around your schedule, and negotiate to get the best price. You're involved in key decisions but free from the daily hassle.",
+        "Complete end-to-end service. Multi-platform listings, buyer screening, viewing coordination, expert negotiation, paperwork handling. We bring you serious buyers only, keep you updated throughout, and always get your approval before finalizing any sale."
     ],
-    contact: [
-        "You can reach us by phone at 020 1234 5678 or email hello@readysold.co.uk. We're available Monday to Saturday, 9am to 6pm. Whether you want to discuss a valuation, ask questions, or get started with selling your car, we're here to help.",
-        "Feel free to call us on 020 1234 5678 during business hours (Mon-Sat, 9am-6pm) or drop us an email anytime at hello@readysold.co.uk. We'll get back to you promptly with answers to your questions or to arrange your free valuation.",
-        "Contact details: Phone 020 1234 5678, Email hello@readysold.co.uk. Our team is available Monday through Saturday, 9am to 6pm. We're happy to chat about your car and explain how we can help you sell it hassle-free."
+    condition: [
+        "Your car doesn't need to be perfect. We sell vehicles in all conditions - minor damage, scratches, high mileage, wear and tear, it doesn't matter. We're honest about condition in our listings, which actually attracts more realistic buyers. As long as your car runs and has valid documentation, we can sell it.",
+        "Honestly, condition doesn't need to be perfect at all. High mileage? Fine. A few dents or scratches? Not a problem. We handle cars as-is. Being upfront about condition in our listings means we attract buyers who are genuinely interested, not time-wasters expecting showroom perfection.",
+        "Don't worry about minor imperfections. We sell cars in any condition - high mileage, cosmetic damage, worn interiors, you name it. We're transparent about condition with buyers, which builds trust and leads to faster sales. If it's roadworthy with proper docs, we can work with it."
+    ],
+    locations: [
+        "We currently operate across [regions/cities]. When you request a valuation, we can confirm if we cover your area. We're expanding our service areas regularly, so even if we're not in your location yet, it's worth checking with us.",
+        "Our coverage depends on where you're located. Submit your car details for a free valuation and we'll let you know if we service your area. We're growing our reach, so we might be expanding to your region soon.",
+        "Coverage varies by location. The best way to find out is to request a free valuation - we'll confirm whether we can help with your specific area. No obligation either way."
+    ],
+    paperwork: [
+        "We handle all the paperwork for you - V5C logbook transfer, any required documentation, everything needed to complete the sale legally. You'll need to provide your V5C, and we take care of the rest. Makes the whole process smooth and stress-free.",
+        "All documentation is sorted by us. We manage the V5C transfer, ensure everything is legal and above board, and handle the admin. You just need your logbook and any service history you have (helps with valuation). We do the rest.",
+        "Paperwork is part of our service. When the car sells, we coordinate the V5C transfer and make sure all documents are in order. You provide the logbook and we handle the administrative side of completing the sale."
+    ],
+    viewings: [
+        "We coordinate all viewings around your schedule. When a buyer wants to see the car, we arrange a time that works for you. We're present during viewings to handle conversations and questions, but you're there too since it's your car. We manage the interaction professionally while respecting your time.",
+        "Viewings work around you. We schedule them at times that suit your availability - evenings, weekends, whenever. We accompany the viewing to handle buyer questions and negotiations. You're present, but we do the talking and managing. Makes it easy and low-pressure.",
+        "We manage the viewing process. Interested buyers go through us first, then we coordinate a time that fits your schedule. We're there with you during the viewing to handle discussions, answer questions, and deal with any negotiations. You're involved but not burdened."
     ],
     valuation: [
-        "Getting a free valuation is easy. Enter your registration number in the form at the top of this page, or call us on 020 1234 5678. We'll research current market conditions and get back to you with an accurate, honest valuation. No obligation whatsoever.",
-        "Ready for your free valuation? Just enter your reg number in the form above or call us directly. We'll analyze recent sales data, current market trends, and your car's specific details to provide a realistic valuation. No pressure to proceed.",
-        "Free valuations are our starting point. Enter your registration details on this page, and we'll contact you to discuss your car's value based on real market data. It's completely free with no commitment required."
+        "Getting a free valuation is easy. Just fill in the form on this page with your reg number and a few details, or if you prefer, you can reach out directly. We'll research current market values, look at comparable sales, and get back to you with an honest assessment. Zero obligation to proceed.",
+        "Free valuations are our starting point. Enter your registration and details in the form above, and we'll analyze market data, recent sales, and your car's specifics to provide a realistic valuation. It's completely free with no pressure to sell through us.",
+        "You can request a free valuation right on this page - just enter your registration number and we'll take it from there. We look at current market conditions, comparable vehicles, and your car's details to give you an accurate figure. No commitment required."
     ],
     default: [
-        "That's a great question. While I might not have covered that specific point, I can help you with information about our pricing, how the process works, what areas we cover, or put you in touch with the team directly. What would be most helpful for you right now?",
-        "I want to make sure I give you accurate information. Could you tell me a bit more about what you'd like to know? I can explain our fees, walk you through the selling process, discuss timelines, or connect you with someone on the team at 020 1234 5678.",
-        "Thanks for asking. To give you the best answer, could you clarify what aspect of selling your car you're most curious about? Whether it's about costs, the process, timing, or something else entirely - I'm here to help or can get you speaking with our team."
+        "That's a good question. Let me know specifically what you'd like to know more about - I can explain our pricing, walk you through how it works, discuss timeline expectations, talk about car conditions we accept, or anything else about the selling process.",
+        "I want to make sure I give you the right information. Could you tell me more about what you're curious about? Whether it's fees, process, timelines, paperwork, or something else - I'm here to help.",
+        "I can help with that - just need a bit more detail. Are you wondering about pricing, how the process works, how long things take, whether we accept cars in certain conditions, or something else? Let me know and I'll give you a proper answer."
     ]
 };
 
@@ -790,10 +879,10 @@ function addQuickReplies() {
     const quickRepliesDiv = document.createElement('div');
     quickRepliesDiv.className = 'quick-replies';
     quickRepliesDiv.innerHTML = `
-        <button class="quick-reply-btn" onclick="handleQuickReply('What are your fees?')">Pricing & Fees</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('How does it work?')">How It Works</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('I want a free valuation')">Free Valuation</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('How do I contact you?')">Contact Details</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How much do you charge?')">Pricing</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How does the process work?')">How It Works</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('Can I still drive my car?')">Keep Driving?</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('I want a free valuation')">Get Valuation</button>
     `;
     chatMessages.appendChild(quickRepliesDiv);
     scrollToBottom();
@@ -822,7 +911,19 @@ function processMessage(message) {
     if (chatbotKnowledge.greetings.some(word => lowerMessage.includes(word))) {
         responseType = 'greeting';
     }
-    // Check other categories
+    // Check other categories with priority to more specific topics
+    else if (chatbotKnowledge.condition.some(word => lowerMessage.includes(word))) {
+        responseType = 'condition';
+    }
+    else if (chatbotKnowledge.paperwork.some(word => lowerMessage.includes(word))) {
+        responseType = 'paperwork';
+    }
+    else if (chatbotKnowledge.viewings.some(word => lowerMessage.includes(word))) {
+        responseType = 'viewings';
+    }
+    else if (chatbotKnowledge.locations.some(word => lowerMessage.includes(word))) {
+        responseType = 'locations';
+    }
     else if (chatbotKnowledge.pricing.some(word => lowerMessage.includes(word))) {
         responseType = 'pricing';
     }
@@ -843,9 +944,6 @@ function processMessage(message) {
     }
     else if (chatbotKnowledge.selling.some(word => lowerMessage.includes(word))) {
         responseType = 'selling';
-    }
-    else if (chatbotKnowledge.contact.some(word => lowerMessage.includes(word))) {
-        responseType = 'contact';
     }
     else if (chatbotKnowledge.valuation.some(word => lowerMessage.includes(word))) {
         responseType = 'valuation';
@@ -993,8 +1091,8 @@ const stepDetails = {
             <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Sit back and relax. We take complete control of the sale.</p>
             
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Professional Photography</h4>
-                <p style="margin: 0; color: var(--gray-600);">Showroom-quality images that make your car stand out from competitors. We capture every angle, inside and out.</p>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Quality Photos</h4>
+                <p style="margin: 0; color: var(--gray-600);">Detailed images covering all angles of your vehicle. We capture exterior, interior, engine bay, and any notable features to showcase your car effectively.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
