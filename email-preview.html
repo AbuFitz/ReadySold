@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template Preview - ReadySold</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f1f5f9;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+        .email-preview {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .email-preview h2 {
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav-buttons button {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.2s;
+        }
+        .nav-buttons button:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+        .nav-buttons button.active {
+            background: #0f172a;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <h1>📧 ReadySold Email Templates Preview</h1>
+        
+        <div class="nav-buttons">
+            <button onclick="showValuation()" id="btnValuation" class="active">Valuation Request Email</button>
+            <button onclick="showHero()" id="btnHero">Hero Form Email</button>
+        </div>
+
+        <div class="email-preview" id="valuationPreview">
+            <h2>Full Valuation Request Email</h2>
+            <p style="color: #64748b; margin-bottom: 20px;">This is what you'll receive when someone fills out the complete valuation form</p>
+            <iframe srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #1e293b; margin: 0; padding: 0; background-color: #f1f5f9; }
+    .email-wrapper { width: 100%; background-color: #f1f5f9; padding: 40px 0; }
+    .email-container { max-width: 680px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 50px 40px; text-align: center; }
+    .logo { margin-bottom: 20px; }
+    .logo img { max-width: 200px; height: auto; }
+    .header h1 { color: #ffffff; margin: 20px 0 10px 0; font-size: 32px; font-weight: 700; }
+    .header p { color: rgba(255, 255, 255, 0.9); font-size: 16px; }
+    .banner-image { width: 100%; height: 200px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); display: flex; align-items: center; justify-content: center; }
+    .banner-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+    .content { padding: 50px 40px; }
+    .priority-badge { display: inline-block; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
+    .section { margin-bottom: 40px; }
+    .section-title { color: #0f172a; font-size: 20px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid #0ea5e9; }
+    .info-grid { display: table; width: 100%; }
+    .info-row { display: table-row; }
+    .info-label { display: table-cell; font-weight: 600; color: #475569; padding: 12px 20px 12px 0; width: 40%; }
+    .info-value { display: table-cell; color: #0f172a; padding: 12px 0; font-weight: 500; }
+    .info-value strong { color: #0ea5e9; font-size: 18px; }
+    .timestamp { background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px 25px; border-radius: 8px; margin-top: 30px; }
+    .timestamp p { margin: 0; color: #92400e; font-weight: 600; }
+    .highlight-box { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0ea5e9; padding: 25px; margin: 30px 0; border-radius: 8px; }
+    .footer { background-color: #0f172a; padding: 40px; text-align: center; }
+    .footer-logo img { max-width: 150px; opacity: 0.9; margin-bottom: 20px; }
+    .footer-text { color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 20px; }
+    .footer-links a { color: #0ea5e9; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .footer-divider { color: rgba(255, 255, 255, 0.3); margin: 0 10px; }
+    .footer-copyright { color: rgba(255, 255, 255, 0.5); font-size: 12px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+      <div class="header">
+        <div class="logo">
+          <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold Logo">
+        </div>
+        <h1>🚗 New Valuation Request</h1>
+        <p>A potential customer is ready to sell their vehicle</p>
+      </div>
+      <div class="banner-image">
+        <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold Vehicle">
+      </div>
+      <div class="content">
+        <span class="priority-badge">⚡ New Lead</span>
+        <div class="section">
+          <h2 class="section-title">Vehicle Details</h2>
+          <div class="info-grid">
+            <div class="info-row">
+              <div class="info-label">Registration:</div>
+              <div class="info-value"><strong>AB12 CDE</strong></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Mileage:</div>
+              <div class="info-value">45,000 miles</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Asking Price:</div>
+              <div class="info-value">£12,500</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Condition:</div>
+              <div class="info-value">Good</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h2 class="section-title">Contact Information</h2>
+          <div class="info-grid">
+            <div class="info-row">
+              <div class="info-label">Name:</div>
+              <div class="info-value">John Smith</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Email:</div>
+              <div class="info-value"><a href="mailto:john@example.com" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">john@example.com</a></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Phone:</div>
+              <div class="info-value"><a href="tel:07700900000" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">07700 900000</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="timestamp">
+          <p>⏰ Submitted: Friday, 17 January 2026, 18:45</p>
+        </div>
+        <div class="highlight-box">
+          <p><strong>Next Steps:</strong> Contact this lead promptly to provide their free valuation and discuss the 30-day exclusive listing process.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-logo">
+          <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold">
+        </div>
+        <p class="footer-text"><strong>ReadySold</strong><br>Professional car selling service - Keep driving while we sell</p>
+        <div class="footer-links">
+          <a href="https://readysold.vercel.app/terms.html">Terms & Conditions</a>
+          <span class="footer-divider">•</span>
+          <a href="https://readysold.vercel.app/privacy.html">Privacy Policy</a>
+          <span class="footer-divider">•</span>
+          <a href="https://readysold.vercel.app/contact.html">Contact Us</a>
+        </div>
+        <p class="footer-copyright">© 2026 ReadySold. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>'></iframe>
+        </div>
+
+        <div class="email-preview" id="heroPreview" style="display: none;">
+            <h2>Hero Form Quick Lead Email</h2>
+            <p style="color: #64748b; margin-bottom: 20px;">This is what you'll receive when someone uses the quick form in the hero section</p>
+            <iframe srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #1e293b; margin: 0; padding: 0; background-color: #f1f5f9; }
+    .email-wrapper { width: 100%; background-color: #f1f5f9; padding: 40px 0; }
+    .email-container { max-width: 680px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .header { background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%); padding: 50px 40px; text-align: center; }
+    .logo { margin-bottom: 20px; }
+    .logo img { max-width: 200px; height: auto; }
+    .header h1 { color: #ffffff; margin: 20px 0 10px 0; font-size: 32px; font-weight: 700; }
+    .header p { color: rgba(255, 255, 255, 0.95); font-size: 16px; }
+    .banner-image { width: 100%; height: 180px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); display: flex; align-items: center; justify-content: center; }
+    .banner-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+    .content { padding: 50px 40px; }
+    .priority-badge { display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
+    .quick-lead-badge { text-align: center; padding: 30px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; margin-bottom: 30px; }
+    .quick-lead-badge h3 { color: #0ea5e9; font-size: 24px; margin-bottom: 10px; }
+    .quick-lead-badge p { color: #475569; margin: 0; font-size: 14px; }
+    .section { margin-bottom: 40px; }
+    .section-title { color: #0f172a; font-size: 20px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid #0ea5e9; }
+    .info-grid { display: table; width: 100%; }
+    .info-row { display: table-row; }
+    .info-label { display: table-cell; font-weight: 600; color: #475569; padding: 12px 20px 12px 0; width: 40%; }
+    .info-value { display: table-cell; color: #0f172a; padding: 12px 0; font-weight: 500; }
+    .info-value strong { color: #0ea5e9; font-size: 18px; }
+    .timestamp { background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 20px 25px; border-radius: 8px; margin-top: 30px; }
+    .timestamp p { margin: 0; color: #075985; font-weight: 600; }
+    .highlight-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b; padding: 25px; margin: 30px 0; border-radius: 8px; }
+    .highlight-box p { margin: 0; color: #78350f; font-weight: 600; }
+    .footer { background-color: #0f172a; padding: 40px; text-align: center; }
+    .footer-logo img { max-width: 150px; opacity: 0.9; margin-bottom: 20px; }
+    .footer-text { color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 20px; }
+    .footer-links a { color: #0ea5e9; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .footer-divider { color: rgba(255, 255, 255, 0.3); margin: 0 10px; }
+    .footer-copyright { color: rgba(255, 255, 255, 0.5); font-size: 12px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+      <div class="header">
+        <div class="logo">
+          <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold Logo">
+        </div>
+        <h1>⚡ Quick Enquiry</h1>
+        <p>Fast response needed - Hero form submission</p>
+      </div>
+      <div class="banner-image">
+        <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold Vehicle">
+      </div>
+      <div class="content">
+        <span class="priority-badge">🔥 Hot Lead</span>
+        <div class="quick-lead-badge">
+          <h3>Priority Lead</h3>
+          <p>This customer used the quick form - they want fast action!</p>
+        </div>
+        <div class="section">
+          <h2 class="section-title">Vehicle Information</h2>
+          <div class="info-grid">
+            <div class="info-row">
+              <div class="info-label">Registration:</div>
+              <div class="info-value"><strong>AB12 CDE</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h2 class="section-title">Contact Details</h2>
+          <div class="info-grid">
+            <div class="info-row">
+              <div class="info-label">Name:</div>
+              <div class="info-value">John Smith</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Email:</div>
+              <div class="info-value"><a href="mailto:john@example.com" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">john@example.com</a></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Phone:</div>
+              <div class="info-value"><a href="tel:07700900000" style="color: #0ea5e9; text-decoration: none; font-weight: 600;">07700 900000</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="timestamp">
+          <p>⏰ Submitted: Friday, 17 January 2026, 18:45</p>
+        </div>
+        <div class="highlight-box">
+          <p>⚡ Quick Action Required: Respond within 30 minutes for best conversion rates. This lead came from the hero section - high intent!</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-logo">
+          <img src="https://readysold.vercel.app/images/photograph.png" alt="ReadySold">
+        </div>
+        <p class="footer-text"><strong>ReadySold</strong><br>Professional car selling service - Keep driving while we sell</p>
+        <div class="footer-links">
+          <a href="https://readysold.vercel.app/terms.html">Terms & Conditions</a>
+          <span class="footer-divider">•</span>
+          <a href="https://readysold.vercel.app/privacy.html">Privacy Policy</a>
+          <span class="footer-divider">•</span>
+          <a href="https://readysold.vercel.app/contact.html">Contact Us</a>
+        </div>
+        <p class="footer-copyright">© 2026 ReadySold. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>'></iframe>
+        </div>
+    </div>
+
+    <script>
+        function showValuation() {
+            document.getElementById('valuationPreview').style.display = 'block';
+            document.getElementById('heroPreview').style.display = 'none';
+            document.getElementById('btnValuation').classList.add('active');
+            document.getElementById('btnHero').classList.remove('active');
+        }
+
+        function showHero() {
+            document.getElementById('valuationPreview').style.display = 'none';
+            document.getElementById('heroPreview').style.display = 'block';
+            document.getElementById('btnValuation').classList.remove('active');
+            document.getElementById('btnHero').classList.add('active');
+        }
+    </script>
+</body>
+</html>
