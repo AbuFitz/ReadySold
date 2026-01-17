@@ -612,7 +612,7 @@ function createMobileComparisonCards() {
                 </div>
                 <div class="comparison-feature-item">
                     <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Professional photography</span>
+                    <span>Quality photos (all angles)</span>
                 </div>
                 <div class="comparison-feature-item">
                     <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -698,14 +698,14 @@ const responses = {
         "Hey! Whether you're curious about pricing, the process, or exploring your options, I'm here to help."
     ],
     pricing: [
-        "Our pricing is straightforward - we charge 10% of the sale price with a minimum fee of £350. You only pay when your car sells, so there's zero risk and no upfront costs.",
-        "We work on a success-based model. You'll pay 10% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges.",
-        "We charge 10% commission (£350 minimum) only when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price."
+        "Our pricing is straightforward - we charge 8% of the sale price with a minimum fee of £350. You only pay when your car sells, so there's zero risk and no upfront costs.",
+        "We work on a success-based model. You'll pay 8% of whatever we sell your car for (minimum £350), but only once the sale completes. No hidden fees, no upfront charges.",
+        "We charge 8% commission (£350 minimum) only when your car sells. Until then, you're not out of pocket at all. We're motivated to get you the best price."
     ],
     process: [
-        "The process is designed to be hassle-free for you. First, we provide a free valuation - typically within 2 hours of you contacting us. Then we arrange professional photography and create listings across all major platforms. While we handle viewings, calls, and negotiations, you keep driving your car as normal. Once we find the right buyer, we coordinate the sale and you receive your payment.",
-        "Here's what happens: After you request a valuation, we'll call you within 2 hours to discuss your car and give you an accurate estimate. We then photograph your vehicle and list it everywhere - AutoTrader, eBay Motors, Facebook Marketplace, you name it. We manage all the interested buyers, arrange viewings that suit your schedule, and negotiate on your behalf. You stay in the loop and approve the final sale.",
-        "It's a four-step journey. Step one: Free valuation where we assess your car's market value. Step two: Professional photos and comprehensive listings. Step three: We handle all buyer interactions and viewings while you keep using your car. Step four: We finalize the sale, you get paid, and we collect our commission. Simple as that."
+        "The process is designed to be hassle-free for you. First, we provide a free valuation. Then we take quality photos covering all angles and create listings across all major platforms. While we handle viewings, calls, and negotiations, you keep driving your car as normal. Once we find the right buyer, we coordinate the sale and you receive your payment.",
+        "Here's what happens: After you request a valuation, we'll get back to you promptly to discuss your car and give you an accurate estimate. We then photograph your vehicle from all angles and list it everywhere - AutoTrader, eBay Motors, Facebook Marketplace, you name it. We manage all the interested buyers, arrange viewings that suit your schedule, and negotiate on your behalf. You stay in the loop and approve the final sale.",
+        "It's a four-step journey. Step one: Free valuation where we assess your car's market value. Step two: Quality photos and comprehensive listings. Step three: We handle all buyer interactions and viewings while you keep using your car. Step four: We finalize the sale, you get paid, and we collect our commission. Simple as that."
     ],
     driving: [
         "Yes, absolutely! Your car stays with you throughout the entire selling process. We work around your schedule for viewings, so you maintain full use of your vehicle until the moment it sells. There's no need to hand over keys or lose access - it's your car until someone buys it.",
@@ -718,18 +718,18 @@ const responses = {
         "Our response time for valuations is typically quick. Once listed, sale duration varies - factors like pricing, condition, mileage, and model popularity all play a role. Most cars sell within a month with proper pricing."
     ],
     payment: [
-        "Payment is simple and secure. The buyer pays you directly for the car - we're not a middleman in the transaction. Once the sale completes and you've received your money, you then pay us our 10% commission (minimum £350). You're always in control of the funds.",
-        "No upfront costs at all. When your car sells, the buyer transfers money directly to you. After you receive the full payment, you pay our commission of 10% of the sale price (£350 minimum). It's straightforward and completely transparent.",
-        "Zero payment until your car sells. When it does, you receive the sale price from the buyer, then settle our 10% fee (minimum £350). We don't handle the buyer's money - it goes straight to you, keeping everything simple and secure."
+        "Payment is simple and secure. The buyer pays you directly for the car - we're not a middleman in the transaction. Once the sale completes and you've received your money, you then pay us our 8% commission (minimum £350). You're always in control of the funds.",
+        "No upfront costs at all. When your car sells, the buyer transfers money directly to you. After you receive the full payment, you pay our commission of 8% of the sale price (£350 minimum). It's straightforward and completely transparent.",
+        "Zero payment until your car sells. When it does, you receive the sale price from the buyer, then settle our 8% fee (minimum £350). We don't handle the buyer's money - it goes straight to you, keeping everything simple and secure."
     ],
     photography: [
-        "Professional photography is included in our service at no extra charge. High-quality images make a massive difference in attracting buyers and achieving the right price. We'll capture your car in the best light with showroom-quality photos that make it stand out from other listings.",
-        "We provide professional photography as standard - it's crucial for online listings. Quality images generate more interest, more viewings, and ultimately better offers. There's no additional cost; it's part of how we ensure your car sells quickly and for the best price.",
-        "Yes, professional photos are included. We know that great photography sells cars, so we make sure your vehicle looks its absolute best across all platforms. Crisp, well-lit images that highlight the car's condition and features - all part of the service."
+        "Quality photos are included in our service at no extra charge. We take detailed images covering all angles of your vehicle - exterior, interior, engine bay, and any notable features. High-quality images make a massive difference in attracting buyers and achieving the right price.",
+        "We provide quality photography as standard - it's crucial for online listings. We capture your car from every angle to give buyers a complete view. Quality images generate more interest, more viewings, and ultimately better offers. There's no additional cost.",
+        "Yes, quality photos are included. We know that good photography sells cars, so we make sure your vehicle is captured from all angles across all platforms. Clear, well-lit images that highlight the car's condition and features - all part of the service."
     ],
     selling: [
         "We handle the complete selling process. Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and other major platforms. We field all inquiries, pre-screen buyers, arrange viewings around your schedule, and negotiate to get you the best price. You stay informed and approve the final sale before anything is finalized.",
-        "Think of us as your personal car selling team. We create compelling listings with professional photos, manage all buyer communications, handle price negotiations, organize viewings, and deal with the paperwork. You're involved in the key decisions but free from the day-to-day hassle.",
+        "Think of us as your personal car selling team. We create compelling listings with quality photos, manage all buyer communications, handle price negotiations, organize viewings, and deal with the paperwork. You're involved in the key decisions but free from the day-to-day hassle.",
         "Our comprehensive service covers everything: multi-platform listings, buyer vetting, appointment scheduling, professional negotiation, and sale coordination. We only bring you serious, qualified buyers, and we always get your approval before accepting any offer. You get the results without the stress."
     ],
     contact: [
@@ -1027,7 +1027,7 @@ const stepDetails = {
                     <li style="margin-bottom: 1rem;"><strong>Sale Agreed:</strong> Once we negotiate the best price with a buyer</li>
                     <li style="margin-bottom: 1rem;"><strong>Buyer Pays You:</strong> Money transfers directly to your account (we never handle the funds)</li>
                     <li style="margin-bottom: 1rem;"><strong>Paperwork Sorted:</strong> We handle V5C transfer and all documentation</li>
-                    <li style="margin-bottom: 1rem;"><strong>Our Fee:</strong> You pay us 10% of the sale price (£350 minimum)</li>
+                    <li style="margin-bottom: 1rem;"><strong>Our Fee:</strong> You pay us 8% of the sale price (£350 minimum)</li>
                 </ol>
             </div>
 
