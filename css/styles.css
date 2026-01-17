@@ -1074,6 +1074,7 @@ body.non-home-page.scrolled .nav-menu a {
     background: linear-gradient(to right, var(--sky-blue-light), var(--sky-blue));
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
     margin-bottom: 2rem;
 }
 

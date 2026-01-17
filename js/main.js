@@ -346,7 +346,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// Pricing Calculator (10% Fee)
+// Pricing Calculator (8% Fee)
 // ============================================
 
 const calcPrice = document.getElementById('calc-price');
@@ -355,7 +355,7 @@ const resultPrice = document.getElementById('result-price');
 const resultFee = document.getElementById('result-fee');
 const resultReceive = document.getElementById('result-receive');
 
-const FEE_PERCENTAGE = 0.10; // 10%
+const FEE_PERCENTAGE = 0.08; // 8%
 const MINIMUM_FEE = 350; // £350 minimum
 
 function updateCalculator(price) {
@@ -365,7 +365,7 @@ function updateCalculator(price) {
         return;
     }
 
-    // Calculate fee (10% with minimum £350)
+    // Calculate fee (8% with minimum £350)
     let fee = salePrice * FEE_PERCENTAGE;
     if (fee < MINIMUM_FEE) {
         fee = MINIMUM_FEE;
