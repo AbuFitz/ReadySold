@@ -223,48 +223,103 @@
             <div class="pricing-wrapper">
                 <div class="pricing-content">
                     <p class="section-subtitle">PRICING</p>
-                    <h2>Transparent Pricing</h2>
-                    <p class="pricing-intro">One simple fee. No upfront costs. No hidden charges. You pay only when your car sells.</p>
+                    <h2>Pricing, explained clearly</h2>
+                    <p class="pricing-intro">Simple fees. No commission pressure. No surprises.</p>
 
                     <ul class="pricing-features">
-                        <li><i data-lucide="check-circle"></i><span>No hidden charges or surprise fees</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Payment only on successful sale</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Includes all professional services</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Quality photos, listings, viewings included</span></li>
-                        <li><i data-lucide="check-circle"></i><span>Expert negotiation for maximum price</span></li>
+                        <li><i data-lucide="check-circle"></i><span>No percentage commission</span></li>
+                        <li><i data-lucide="check-circle"></i><span>No pressure to accept offers</span></li>
+                        <li><i data-lucide="check-circle"></i><span>Fixed, transparent fees</span></li>
+                        <li><i data-lucide="check-circle"></i><span>Optional prep & repairs quoted separately</span></li>
+                        <li><i data-lucide="check-circle"></i><span>You keep your car while selling</span></li>
                     </ul>
                 </div>
 
-                <div class="calculator-card">
-                <h3>Calculate Your Fee</h3>
-                <div class="calculator-body">
-                    <label>Expected Sale Price</label>
-                    <div class="price-input-wrapper">
-                        <span class="currency">£</span>
-                        <input type="number" id="calc-price" value="8000" min="1000" max="100000" step="100">
-                    </div>
-                    <input type="range" id="calc-slider" min="1000" max="100000" value="8000" step="100" class="price-slider">
+                <div class="fee-breakdown-card">
+                <h3>Sell-Ready Fee Breakdown</h3>
 
-                    <div class="calc-results">
-                        <div class="calc-row">
-                            <span>Sale Price</span>
-                            <strong id="result-price">£8,000</strong>
-                        </div>
-                        <div class="calc-row">
-                            <span>Our Fee (8%)</span>
-                            <strong id="result-fee">£640</strong>
-                        </div>
-                        <div class="calc-row calc-total">
-                            <span>You Receive</span>
-                            <strong id="result-receive">£7,200</strong>
+                <div class="fee-breakdown-body">
+                    <!-- Step Navigation -->
+                    <div class="step-navigation">
+                        <p class="step-title">Your sale journey</p>
+                        <div class="step-buttons">
+                            <button class="step-btn active" data-step="1">
+                                <span class="step-number">1</span>
+                                <span class="step-label">Sell-Ready Preparation</span>
+                            </button>
+                            <button class="step-btn" data-step="2">
+                                <span class="step-number">2</span>
+                                <span class="step-label">Sale Completion</span>
+                            </button>
                         </div>
                     </div>
 
-                    <button class="btn-calculator" onclick="openModal()">
-                        Get Your Free Valuation
+                    <!-- Step Content Container -->
+                    <div class="step-content-wrapper">
+                        <!-- Step 1: Sell-Ready Service Fee -->
+                        <div class="step-content active" id="step-1">
+                            <div class="fee-header">
+                                <h4>Sell-Ready Service Fee</h4>
+                                <div class="fee-amount" id="service-fee-amount">£495</div>
+                                <p class="fee-label">one-off</p>
+                            </div>
+
+                            <div class="fee-includes">
+                                <p class="includes-title">Includes:</p>
+                                <ul class="includes-list">
+                                    <li><i data-lucide="check"></i><span>Vehicle eligibility & history checks</span></li>
+                                    <li><i data-lucide="check"></i><span>Visual inspection & condition report</span></li>
+                                    <li><i data-lucide="check"></i><span>Professional listing & photography</span></li>
+                                    <li><i data-lucide="check"></i><span>Buyer enquiries handled</span></li>
+                                    <li><i data-lucide="check"></i><span>Managed viewings & guidance</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fee-tooltip">
+                                <i data-lucide="info"></i>
+                                <p>Covers preparation and management whether or not the car sells.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Success Fee -->
+                        <div class="step-content" id="step-2">
+                            <div class="fee-header">
+                                <h4>Success Fee</h4>
+                                <p class="fee-subtitle">(only if your car sells)</p>
+                                <div class="fee-amount" id="success-fee-amount">£395</div>
+                                <p class="fee-label">paid on completion</p>
+                            </div>
+
+                            <div class="fee-includes">
+                                <p class="includes-title">Includes:</p>
+                                <ul class="includes-list">
+                                    <li><i data-lucide="check"></i><span>Deal coordination</span></li>
+                                    <li><i data-lucide="check"></i><span>Buyer communication</span></li>
+                                    <li><i data-lucide="check"></i><span>Handover guidance</span></li>
+                                    <li><i data-lucide="check"></i><span>Completion support</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fee-tooltip">
+                                <i data-lucide="info"></i>
+                                <p>Only payable if a sale completes through ReadySold.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Block -->
+                    <div class="fee-summary">
+                        <h5>What this means for you</h5>
+                        <p>You pay a fixed Sell-Ready Service Fee for professional preparation and management.</p>
+                        <p>If your car sells through ReadySold, a flat success fee applies.</p>
+                        <p><strong>You stay in control of your minimum price at all times.</strong></p>
+                    </div>
+
+                    <button class="btn-primary-cta" onclick="openModal()">
+                        Book an Inspection
                     </button>
 
-                    <p class="calc-note">* Minimum fee £350</p>
+                    <p class="cta-secondary">See how ReadySold works</p>
                 </div>
                 </div>
             </div>

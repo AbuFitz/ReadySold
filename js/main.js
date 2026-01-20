@@ -346,66 +346,80 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// Pricing Calculator (8% Fee)
+// Fee Breakdown - Step Navigation
 // ============================================
 
-const calcPrice = document.getElementById('calc-price');
-const calcSlider = document.getElementById('calc-slider');
-const resultPrice = document.getElementById('result-price');
-const resultFee = document.getElementById('result-fee');
-const resultReceive = document.getElementById('result-receive');
+// Fee amounts (configurable)
+const SELL_READY_FEE = 495; // £495
+const SUCCESS_FEE = 395; // £395
 
-const FEE_PERCENTAGE = 0.08; // 8%
-const MINIMUM_FEE = 350; // £350 minimum
+// Step navigation functionality
+const stepButtons = document.querySelectorAll('.step-btn');
+const stepContents = document.querySelectorAll('.step-content');
 
-function updateCalculator(price) {
-    const salePrice = parseFloat(price);
+if (stepButtons.length > 0) {
+    stepButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const stepNumber = this.getAttribute('data-step');
 
-    if (isNaN(salePrice) || salePrice < 0) {
-        return;
-    }
+            // Remove active class from all buttons and content
+            stepButtons.forEach(btn => btn.classList.remove('active'));
+            stepContents.forEach(content => content.classList.remove('active'));
 
-    // Calculate fee (8% with minimum £350)
-    let fee = salePrice * FEE_PERCENTAGE;
-    if (fee < MINIMUM_FEE) {
-        fee = MINIMUM_FEE;
-    }
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active');
+            const targetContent = document.getElementById(`step-${stepNumber}`);
+            if (targetContent) {
+                targetContent.classList.add('active');
 
-    const received = salePrice - fee;
-
-    // Update display
-    if (resultPrice) resultPrice.textContent = formatCurrency(salePrice);
-    if (resultFee) resultFee.textContent = formatCurrency(fee);
-    if (resultReceive) resultReceive.textContent = formatCurrency(received);
-}
-
-// Sync price input and slider
-if (calcPrice && calcSlider) {
-    calcPrice.addEventListener('input', function() {
-        const value = this.value;
-        calcSlider.value = value;
-        updateCalculator(value);
+                // Trigger number animation
+                animateFeeAmount(targetContent);
+            }
+        });
     });
-
-    calcSlider.addEventListener('input', function() {
-        const value = this.value;
-        calcPrice.value = value;
-        updateCalculator(value);
-    });
-
-    // Initialize calculator
-    updateCalculator(calcPrice.value);
 }
 
-// Format number to currency (UK pounds)
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('en-GB', {
-        style: 'currency',
-        currency: 'GBP',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    }).format(amount);
+// Animate fee amount on step change
+function animateFeeAmount(stepElement) {
+    const feeAmountElement = stepElement.querySelector('.fee-amount');
+    if (!feeAmountElement) return;
+
+    // Get the target amount from the element's text content
+    const targetText = feeAmountElement.textContent;
+    const targetAmount = parseInt(targetText.replace(/[^0-9]/g, ''));
+
+    if (isNaN(targetAmount)) return;
+
+    // Reset and animate
+    let currentAmount = 0;
+    const duration = 800; // milliseconds
+    const steps = 30;
+    const increment = targetAmount / steps;
+    const stepDuration = duration / steps;
+
+    // Add animation class
+    feeAmountElement.classList.add('animating');
+
+    const interval = setInterval(() => {
+        currentAmount += increment;
+        if (currentAmount >= targetAmount) {
+            currentAmount = targetAmount;
+            clearInterval(interval);
+            feeAmountElement.classList.remove('animating');
+        }
+        feeAmountElement.textContent = `£${Math.round(currentAmount)}`;
+    }, stepDuration);
 }
+
+// Initialize with animation on first step
+document.addEventListener('DOMContentLoaded', function() {
+    const firstStep = document.getElementById('step-1');
+    if (firstStep) {
+        setTimeout(() => {
+            animateFeeAmount(firstStep);
+        }, 300);
+    }
+});
 
 // ============================================
 // Form Input Auto-formatting

@@ -972,6 +972,7 @@ body.non-home-page.scrolled .nav-menu a {
    Pricing Calculator Section
    ============================================ */
 
+/* Pricing Section */
 .pricing-section {
     background-color: var(--white);
 }
@@ -1014,7 +1015,8 @@ body.non-home-page.scrolled .nav-menu a {
     flex-shrink: 0;
 }
 
-.calculator-card {
+/* Fee Breakdown Card */
+.fee-breakdown-card {
     background-color: var(--white);
     padding: 3rem;
     border-radius: var(--radius-lg);
@@ -1022,137 +1024,266 @@ body.non-home-page.scrolled .nav-menu a {
     border: 2px solid var(--gray-100);
 }
 
-.calculator-card h3 {
+.fee-breakdown-card h3 {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--navy);
+    font-size: 1.5rem;
 }
 
-.calculator-body label {
-    display: block;
+/* Step Navigation */
+.step-navigation {
+    margin-bottom: 2rem;
+}
+
+.step-title {
+    text-align: center;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
 }
 
-.price-input-wrapper {
-    position: relative;
-    margin-bottom: 1.5rem;
+.step-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
-.currency {
-    position: absolute;
-    left: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--gray-400);
-}
-
-#calc-price {
-    width: 100%;
-    padding: 1rem 1.25rem 1rem 2.5rem;
+.step-btn {
+    background-color: var(--off-white);
     border: 2px solid var(--gray-200);
     border-radius: var(--radius-md);
-    font-size: 1.25rem;
-    font-weight: 700;
-    font-family: var(--font-primary);
-    transition: var(--transition);
-}
-
-#calc-price:focus {
-    outline: none;
-    border-color: var(--sky-blue);
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
-}
-
-.price-slider {
-    width: 100%;
-    height: 8px;
-    border-radius: var(--radius-full);
-    background: linear-gradient(to right, var(--sky-blue-light), var(--sky-blue));
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-    margin-bottom: 2rem;
-}
-
-.price-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--sky-blue);
+    padding: 1rem;
     cursor: pointer;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-}
-
-.price-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: var(--shadow-lg);
-}
-
-.price-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--sky-blue);
-    cursor: pointer;
-    box-shadow: var(--shadow-md);
-    border: none;
-    transition: var(--transition);
-}
-
-.price-slider::-moz-range-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: var(--shadow-lg);
-}
-
-.calc-results {
-    background-color: var(--off-white);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 2rem;
-}
-
-.calc-row {
+    transition: all 0.3s ease;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--gray-200);
+    gap: 0.5rem;
+    font-family: var(--font-primary);
 }
 
-.calc-row:last-child {
-    border-bottom: none;
+.step-btn:hover {
+    border-color: var(--sky-blue-light);
+    background-color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
-.calc-row span {
-    color: var(--gray-500);
+.step-btn.active {
+    background-color: var(--sky-blue);
+    border-color: var(--sky-blue);
+    color: var(--white);
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--white);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
     font-size: 1rem;
 }
 
-.calc-row strong {
-    color: var(--navy);
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-.calc-total {
-    padding-top: 1.5rem;
-    margin-top: 0.5rem;
-    border-top: 2px solid var(--sky-blue);
-}
-
-.calc-total strong {
+.step-btn.active .step-number {
+    background-color: var(--white);
     color: var(--sky-blue);
-    font-size: 1.75rem;
 }
 
-.btn-calculator {
+.step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.step-btn.active .step-label {
+    color: var(--white);
+}
+
+/* Step Content */
+.step-content-wrapper {
+    position: relative;
+    min-height: 400px;
+}
+
+.step-content {
+    display: none;
+    opacity: 0;
+    animation: fadeOut 0.3s ease;
+}
+
+.step-content.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Fee Header */
+.fee-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fee-header h4 {
+    color: var(--navy);
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+}
+
+.fee-subtitle {
+    color: var(--gray-500);
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+}
+
+.fee-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--sky-blue);
+    margin: 1rem 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.fee-amount.animating {
+    color: var(--sky-blue-light);
+}
+
+.fee-label {
+    font-size: 0.9375rem;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+/* Fee Includes */
+.fee-includes {
+    background-color: var(--off-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+}
+
+.includes-title {
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+}
+
+.includes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.includes-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--gray-700);
+}
+
+.includes-list li:last-child {
+    margin-bottom: 0;
+}
+
+.includes-list li svg {
+    width: 18px;
+    height: 18px;
+    color: var(--success);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Fee Tooltip */
+.fee-tooltip {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background-color: var(--sky-blue-light);
+    background-color: rgba(14, 165, 233, 0.08);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--sky-blue);
+}
+
+.fee-tooltip svg {
+    width: 18px;
+    height: 18px;
+    color: var(--sky-blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.fee-tooltip p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+/* Fee Summary */
+.fee-summary {
+    background-color: var(--off-white);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    border: 2px solid var(--gray-100);
+}
+
+.fee-summary h5 {
+    color: var(--navy);
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.fee-summary p {
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.fee-summary p:last-child {
+    margin-bottom: 0;
+}
+
+.fee-summary strong {
+    color: var(--navy);
+}
+
+/* Primary CTA Button */
+.btn-primary-cta {
     width: 100%;
     background-color: var(--sky-blue-light);
     color: var(--white);
@@ -1164,24 +1295,27 @@ body.non-home-page.scrolled .nav-menu a {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+    font-family: var(--font-primary);
 }
 
-.btn-calculator:hover {
+.btn-primary-cta:hover {
     background-color: var(--sky-blue);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
-.btn-calculator:active {
+.btn-primary-cta:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(14, 165, 233, 0.25);
 }
 
-.calc-note {
+.cta-secondary {
     text-align: center;
     font-size: 0.875rem;
-    color: var(--gray-400);
+    color: var(--gray-500);
     margin-top: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
     margin-bottom: 0;
 }
 
@@ -2565,7 +2699,7 @@ body.non-home-page.scrolled .nav-menu a {
         gap: 2rem;
     }
 
-    /* Pricing Calculator Mobile */
+    /* Pricing Section Mobile */
     .pricing-wrapper {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -2581,8 +2715,20 @@ body.non-home-page.scrolled .nav-menu a {
         text-align: left;
     }
 
-    .calculator-card {
+    .fee-breakdown-card {
         padding: 2.5rem 2rem;
+    }
+
+    .step-buttons {
+        gap: 0.75rem;
+    }
+
+    .step-btn {
+        padding: 0.75rem;
+    }
+
+    .step-label {
+        font-size: 0.8125rem;
     }
 
     /* Comparison Table Mobile */
@@ -3081,7 +3227,7 @@ body.non-home-page.scrolled .nav-menu a {
         color: var(--error);
     }
 
-    /* Pricing Calculator Mobile - Compact Design */
+    /* Pricing Section Mobile - Compact Design */
     .pricing-section {
         padding: 2rem 0;
     }
@@ -3105,61 +3251,79 @@ body.non-home-page.scrolled .nav-menu a {
         display: none;
     }
 
-    .calculator-card {
+    .fee-breakdown-card {
         padding: 1.75rem 1.25rem;
         margin: 0 1rem;
     }
 
-    .calculator-card h3 {
+    .fee-breakdown-card h3 {
         font-size: 1.25rem;
         margin-bottom: 1.5rem;
     }
 
-    .calculator-body label {
-        font-size: 0.875rem;
-        margin-bottom: 0.5rem;
+    .step-title {
+        font-size: 0.8125rem;
+        margin-bottom: 0.75rem;
     }
 
-    .price-input-wrapper {
-        margin-bottom: 1rem;
+    .step-buttons {
+        gap: 0.5rem;
     }
 
-    #calc-price {
-        padding: 0.875rem 1rem 0.875rem 2.25rem;
-        font-size: 1.125rem;
+    .step-btn {
+        padding: 0.625rem 0.5rem;
     }
 
-    .price-slider {
-        height: 6px;
-        margin-bottom: 1.5rem;
-    }
-
-    .calc-results {
-        padding: 1.25rem 1rem;
-    }
-
-    .calc-row {
-        padding: 0.75rem 0;
-    }
-
-    .calc-row span {
+    .step-number {
+        width: 28px;
+        height: 28px;
         font-size: 0.875rem;
     }
 
-    .calc-row strong {
+    .step-label {
+        font-size: 0.75rem;
+    }
+
+    .step-content-wrapper {
+        min-height: 350px;
+    }
+
+    .fee-header h4 {
         font-size: 1.125rem;
     }
 
-    .calc-total strong {
-        font-size: 1.5rem;
+    .fee-amount {
+        font-size: 2.25rem;
     }
 
-    .btn-calculator {
+    .fee-includes {
+        padding: 1.25rem;
+    }
+
+    .includes-list li {
+        font-size: 0.875rem;
+    }
+
+    .fee-summary {
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+    }
+
+    .fee-summary h5 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .fee-summary p {
+        font-size: 0.875rem;
+    }
+
+    .btn-primary-cta {
         padding: 1rem 1.5rem;
         font-size: 0.9375rem;
     }
 
-    .calc-note {
+    .cta-secondary {
         font-size: 0.8125rem;
         margin-top: 0.75rem;
     }
