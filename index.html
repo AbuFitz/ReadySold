@@ -236,91 +236,40 @@
                 </div>
 
                 <div class="fee-breakdown-card">
-                <h3>Sell-Ready Fee Breakdown</h3>
+                    <!-- Tab Navigation -->
+                    <div class="fee-tabs">
+                        <button class="fee-tab active" data-fee="service">Service Fee</button>
+                        <button class="fee-tab" data-fee="success">Success Fee</button>
+                    </div>
 
-                <div class="fee-breakdown-body">
-                    <!-- Step Navigation -->
-                    <div class="step-navigation">
-                        <p class="step-title">Your sale journey</p>
-                        <div class="step-buttons">
-                            <button class="step-btn active" data-step="1">
-                                <span class="step-number">1</span>
-                                <span class="step-label">Sell-Ready Preparation</span>
-                            </button>
-                            <button class="step-btn" data-step="2">
-                                <span class="step-number">2</span>
-                                <span class="step-label">Sale Completion</span>
-                            </button>
+                    <!-- Fee Content -->
+                    <div class="fee-content-wrapper">
+                        <!-- Service Fee -->
+                        <div class="fee-content active" id="fee-service">
+                            <div class="fee-amount">£495</div>
+                            <p class="fee-description">Paid upfront for preparation and management</p>
+
+                            <ul class="fee-list">
+                                <li><i data-lucide="check"></i><span>Professional listing & photos</span></li>
+                                <li><i data-lucide="check"></i><span>Inspection & condition report</span></li>
+                                <li><i data-lucide="check"></i><span>Viewings & enquiry handling</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Success Fee -->
+                        <div class="fee-content" id="fee-success">
+                            <div class="fee-amount">£395</div>
+                            <p class="fee-description">Only paid when your car sells</p>
+
+                            <ul class="fee-list">
+                                <li><i data-lucide="check"></i><span>Deal coordination</span></li>
+                                <li><i data-lucide="check"></i><span>Buyer communication</span></li>
+                                <li><i data-lucide="check"></i><span>Completion support</span></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Step Content Container -->
-                    <div class="step-content-wrapper">
-                        <!-- Step 1: Sell-Ready Service Fee -->
-                        <div class="step-content active" id="step-1">
-                            <div class="fee-header">
-                                <h4>Sell-Ready Service Fee</h4>
-                                <div class="fee-amount" id="service-fee-amount">£495</div>
-                                <p class="fee-label">one-off</p>
-                            </div>
-
-                            <div class="fee-includes">
-                                <p class="includes-title">Includes:</p>
-                                <ul class="includes-list">
-                                    <li><i data-lucide="check"></i><span>Vehicle eligibility & history checks</span></li>
-                                    <li><i data-lucide="check"></i><span>Visual inspection & condition report</span></li>
-                                    <li><i data-lucide="check"></i><span>Professional listing & photography</span></li>
-                                    <li><i data-lucide="check"></i><span>Buyer enquiries handled</span></li>
-                                    <li><i data-lucide="check"></i><span>Managed viewings & guidance</span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fee-tooltip">
-                                <i data-lucide="info"></i>
-                                <p>Covers preparation and management whether or not the car sells.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Success Fee -->
-                        <div class="step-content" id="step-2">
-                            <div class="fee-header">
-                                <h4>Success Fee</h4>
-                                <p class="fee-subtitle">(only if your car sells)</p>
-                                <div class="fee-amount" id="success-fee-amount">£395</div>
-                                <p class="fee-label">paid on completion</p>
-                            </div>
-
-                            <div class="fee-includes">
-                                <p class="includes-title">Includes:</p>
-                                <ul class="includes-list">
-                                    <li><i data-lucide="check"></i><span>Deal coordination</span></li>
-                                    <li><i data-lucide="check"></i><span>Buyer communication</span></li>
-                                    <li><i data-lucide="check"></i><span>Handover guidance</span></li>
-                                    <li><i data-lucide="check"></i><span>Completion support</span></li>
-                                </ul>
-                            </div>
-
-                            <div class="fee-tooltip">
-                                <i data-lucide="info"></i>
-                                <p>Only payable if a sale completes through ReadySold.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Summary Block -->
-                    <div class="fee-summary">
-                        <h5>What this means for you</h5>
-                        <p>You pay a fixed Sell-Ready Service Fee for professional preparation and management.</p>
-                        <p>If your car sells through ReadySold, a flat success fee applies.</p>
-                        <p><strong>You stay in control of your minimum price at all times.</strong></p>
-                    </div>
-
-                    <button class="btn-primary-cta" onclick="openModal()">
-                        Book an Inspection
-                    </button>
-
-                    <p class="cta-secondary">See how ReadySold works</p>
-                </div>
+                    <button class="btn-fee-cta" onclick="openModal()">Book an Inspection</button>
                 </div>
             </div>
         </div>

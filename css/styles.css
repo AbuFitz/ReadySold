@@ -1018,305 +1018,134 @@ body.non-home-page.scrolled .nav-menu a {
 /* Fee Breakdown Card */
 .fee-breakdown-card {
     background-color: var(--white);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     border: 2px solid var(--gray-100);
 }
 
-.fee-breakdown-card h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--navy);
-    font-size: 1.5rem;
-}
-
-/* Step Navigation */
-.step-navigation {
+/* Fee Tabs */
+.fee-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--gray-200);
     margin-bottom: 2rem;
 }
 
-.step-title {
-    text-align: center;
-    font-size: 0.875rem;
+.fee-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--gray-500);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 1rem;
-}
-
-.step-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.step-btn {
-    background-color: var(--off-white);
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-md);
-    padding: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    transition: all 0.2s ease;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
     font-family: var(--font-primary);
 }
 
-.step-btn:hover {
-    border-color: var(--sky-blue-light);
-    background-color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.step-btn.active {
-    background-color: var(--sky-blue);
-    border-color: var(--sky-blue);
-    color: var(--white);
-}
-
-.step-number {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: var(--white);
+.fee-tab:hover {
     color: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1rem;
 }
 
-.step-btn.active .step-number {
-    background-color: var(--white);
+.fee-tab.active {
     color: var(--sky-blue);
+    border-bottom-color: var(--sky-blue);
 }
 
-.step-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-align: center;
-}
-
-.step-btn.active .step-label {
-    color: var(--white);
-}
-
-/* Step Content */
-.step-content-wrapper {
+/* Fee Content */
+.fee-content-wrapper {
     position: relative;
-    min-height: 400px;
+    min-height: 240px;
 }
 
-.step-content {
+.fee-content {
     display: none;
     opacity: 0;
-    animation: fadeOut 0.3s ease;
 }
 
-.step-content.active {
+.fee-content.active {
     display: block;
     opacity: 1;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-}
-
-/* Fee Header */
-.fee-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.fee-header h4 {
-    color: var(--navy);
-    font-size: 1.375rem;
-    margin-bottom: 0.5rem;
-}
-
-.fee-subtitle {
-    color: var(--gray-500);
-    font-size: 0.9375rem;
-    margin-bottom: 1rem;
 }
 
 .fee-amount {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--sky-blue);
-    margin: 1rem 0 0.5rem;
-    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
 }
 
-.fee-amount.animating {
-    color: var(--sky-blue-light);
-}
-
-.fee-label {
+.fee-description {
+    color: var(--gray-600);
     font-size: 0.9375rem;
-    color: var(--gray-500);
-    font-weight: 500;
-}
-
-/* Fee Includes */
-.fee-includes {
-    background-color: var(--off-white);
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
     margin-bottom: 1.5rem;
 }
 
-.includes-title {
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 1rem;
-    font-size: 0.9375rem;
-}
-
-.includes-list {
+.fee-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem 0;
 }
 
-.includes-list li {
+.fee-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.875rem;
     font-size: 0.9375rem;
     color: var(--gray-700);
 }
 
-.includes-list li:last-child {
+.fee-list li:last-child {
     margin-bottom: 0;
 }
 
-.includes-list li svg {
+.fee-list li svg {
     width: 18px;
     height: 18px;
     color: var(--success);
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
-/* Fee Tooltip */
-.fee-tooltip {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    background-color: var(--sky-blue-light);
-    background-color: rgba(14, 165, 233, 0.08);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--sky-blue);
-}
-
-.fee-tooltip svg {
-    width: 18px;
-    height: 18px;
-    color: var(--sky-blue);
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.fee-tooltip p {
-    margin: 0;
-    font-size: 0.875rem;
-    color: var(--gray-600);
-    line-height: 1.5;
-}
-
-/* Fee Summary */
-.fee-summary {
-    background-color: var(--off-white);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    margin: 2rem 0;
-    border: 2px solid var(--gray-100);
-}
-
-.fee-summary h5 {
-    color: var(--navy);
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-}
-
-.fee-summary p {
-    color: var(--gray-700);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-}
-
-.fee-summary p:last-child {
-    margin-bottom: 0;
-}
-
-.fee-summary strong {
-    color: var(--navy);
-}
-
-/* Primary CTA Button */
-.btn-primary-cta {
+/* CTA Button - Match Nav Style */
+.btn-fee-cta {
     width: 100%;
     background-color: var(--sky-blue-light);
     color: var(--white);
-    padding: 1.25rem 2rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-primary);
     border: none;
-    border-radius: var(--radius-md);
-    font-size: 1.125rem;
-    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
-    font-family: var(--font-primary);
 }
 
-.btn-primary-cta:hover {
+.btn-fee-cta:hover {
     background-color: var(--sky-blue);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
-.btn-primary-cta:active {
+.btn-fee-cta:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(14, 165, 233, 0.25);
-}
-
-.cta-secondary {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-bottom: 0;
 }
 
 /* ============================================
@@ -2716,19 +2545,16 @@ body.non-home-page.scrolled .nav-menu a {
     }
 
     .fee-breakdown-card {
-        padding: 2.5rem 2rem;
+        padding: 1.5rem;
     }
 
-    .step-buttons {
-        gap: 0.75rem;
+    .fee-tab {
+        font-size: 0.9375rem;
+        padding: 0.875rem 0.5rem;
     }
 
-    .step-btn {
-        padding: 0.75rem;
-    }
-
-    .step-label {
-        font-size: 0.8125rem;
+    .fee-amount {
+        font-size: 2rem;
     }
 
     /* Comparison Table Mobile */
@@ -3252,80 +3078,34 @@ body.non-home-page.scrolled .nav-menu a {
     }
 
     .fee-breakdown-card {
-        padding: 1.75rem 1.25rem;
+        padding: 1.25rem 1rem;
         margin: 0 1rem;
     }
 
-    .fee-breakdown-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .step-title {
-        font-size: 0.8125rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .step-buttons {
-        gap: 0.5rem;
-    }
-
-    .step-btn {
-        padding: 0.625rem 0.5rem;
-    }
-
-    .step-number {
-        width: 28px;
-        height: 28px;
+    .fee-tab {
         font-size: 0.875rem;
+        padding: 0.75rem 0.25rem;
     }
 
-    .step-label {
-        font-size: 0.75rem;
-    }
-
-    .step-content-wrapper {
-        min-height: 350px;
-    }
-
-    .fee-header h4 {
-        font-size: 1.125rem;
+    .fee-content-wrapper {
+        min-height: 220px;
     }
 
     .fee-amount {
-        font-size: 2.25rem;
+        font-size: 1.875rem;
     }
 
-    .fee-includes {
-        padding: 1.25rem;
-    }
-
-    .includes-list li {
+    .fee-description {
         font-size: 0.875rem;
     }
 
-    .fee-summary {
-        padding: 1.25rem;
-        margin: 1.5rem 0;
-    }
-
-    .fee-summary h5 {
-        font-size: 1rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .fee-summary p {
+    .fee-list li {
         font-size: 0.875rem;
     }
 
-    .btn-primary-cta {
-        padding: 1rem 1.5rem;
+    .btn-fee-cta {
+        padding: 0.75rem 1.5rem;
         font-size: 0.9375rem;
-    }
-
-    .cta-secondary {
-        font-size: 0.8125rem;
-        margin-top: 0.75rem;
     }
 
     /* Testimonials Mobile - Improved Card Design */

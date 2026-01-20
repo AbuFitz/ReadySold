@@ -346,80 +346,31 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// Fee Breakdown - Step Navigation
+// Fee Breakdown - Tab Navigation
 // ============================================
 
-// Fee amounts (configurable)
-const SELL_READY_FEE = 495; // £495
-const SUCCESS_FEE = 395; // £395
+// Tab navigation functionality
+const feeTabs = document.querySelectorAll('.fee-tab');
+const feeContents = document.querySelectorAll('.fee-content');
 
-// Step navigation functionality
-const stepButtons = document.querySelectorAll('.step-btn');
-const stepContents = document.querySelectorAll('.step-content');
+if (feeTabs.length > 0) {
+    feeTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const feeType = this.getAttribute('data-fee');
 
-if (stepButtons.length > 0) {
-    stepButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const stepNumber = this.getAttribute('data-step');
+            // Remove active class from all tabs and content
+            feeTabs.forEach(t => t.classList.remove('active'));
+            feeContents.forEach(content => content.classList.remove('active'));
 
-            // Remove active class from all buttons and content
-            stepButtons.forEach(btn => btn.classList.remove('active'));
-            stepContents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked button and corresponding content
+            // Add active class to clicked tab and corresponding content
             this.classList.add('active');
-            const targetContent = document.getElementById(`step-${stepNumber}`);
+            const targetContent = document.getElementById(`fee-${feeType}`);
             if (targetContent) {
                 targetContent.classList.add('active');
-
-                // Trigger number animation
-                animateFeeAmount(targetContent);
             }
         });
     });
 }
-
-// Animate fee amount on step change
-function animateFeeAmount(stepElement) {
-    const feeAmountElement = stepElement.querySelector('.fee-amount');
-    if (!feeAmountElement) return;
-
-    // Get the target amount from the element's text content
-    const targetText = feeAmountElement.textContent;
-    const targetAmount = parseInt(targetText.replace(/[^0-9]/g, ''));
-
-    if (isNaN(targetAmount)) return;
-
-    // Reset and animate
-    let currentAmount = 0;
-    const duration = 800; // milliseconds
-    const steps = 30;
-    const increment = targetAmount / steps;
-    const stepDuration = duration / steps;
-
-    // Add animation class
-    feeAmountElement.classList.add('animating');
-
-    const interval = setInterval(() => {
-        currentAmount += increment;
-        if (currentAmount >= targetAmount) {
-            currentAmount = targetAmount;
-            clearInterval(interval);
-            feeAmountElement.classList.remove('animating');
-        }
-        feeAmountElement.textContent = `£${Math.round(currentAmount)}`;
-    }, stepDuration);
-}
-
-// Initialize with animation on first step
-document.addEventListener('DOMContentLoaded', function() {
-    const firstStep = document.getElementById('step-1');
-    if (firstStep) {
-        setTimeout(() => {
-            animateFeeAmount(firstStep);
-        }, 300);
-    }
-});
 
 // ============================================
 // Form Input Auto-formatting
