@@ -968,6 +968,91 @@ body.non-home-page.scrolled .nav-menu a {
     font-size: 1.5rem;
 }
 
+/* Table header subtitles */
+.comparison-table th .th-subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+}
+
+/* Feature subtitles in rows */
+.comparison-table .feature-subtitle {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+/* Tooltip styles */
+.tooltip-trigger {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    cursor: help;
+    position: relative;
+}
+
+.tooltip-trigger .info-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--sky-blue);
+}
+
+.tooltip-trigger:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    white-space: normal;
+    width: 280px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.tooltip-trigger:hover::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 2px);
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--navy);
+    z-index: 1001;
+}
+
+/* Comparison CTA section */
+.comparison-cta {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(56, 189, 248, 0.05) 100%);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.comparison-cta h3 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.comparison-cta p {
+    font-size: 1.125rem;
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
 /* ============================================
    Pricing Calculator Section
    ============================================ */
@@ -3042,7 +3127,7 @@ body.non-home-page.scrolled .nav-menu a {
 
     .comparison-mobile-card h3 {
         font-size: 1.125rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         color: var(--navy);
         display: flex;
         align-items: center;
@@ -3051,6 +3136,12 @@ body.non-home-page.scrolled .nav-menu a {
 
     .comparison-mobile-card.readysold h3 {
         color: var(--sky-blue);
+    }
+
+    .comparison-mobile-card .card-subtitle {
+        font-size: 0.875rem;
+        color: var(--gray-500);
+        margin-bottom: 1rem;
     }
 
     .comparison-mobile-features {
@@ -3079,6 +3170,25 @@ body.non-home-page.scrolled .nav-menu a {
 
     .comparison-feature-item .cross {
         color: var(--error);
+    }
+
+    /* Comparison CTA mobile */
+    .comparison-cta {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+
+    .comparison-cta h3 {
+        font-size: 1.25rem;
+    }
+
+    .comparison-cta p {
+        font-size: 1rem;
+    }
+
+    /* Hide tooltips on mobile */
+    .tooltip-trigger {
+        display: none;
     }
 
     /* Pricing Calculator Mobile - Compact Design */
