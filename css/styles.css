@@ -1315,244 +1315,108 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 /* ============================================
-   ReadySold Verified Section
+   Integrated Elements - Streamlined Design
    ============================================ */
 
-.verified-section {
-    background-color: var(--off-white);
-}
-
-.verified-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.verified-item {
+/* ReadySold Verified - Integrated into How It Works */
+.verified-strip {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--gray-200);
     text-align: center;
-    padding: 1.5rem;
 }
 
-.verified-item i {
-    width: 48px;
-    height: 48px;
-    color: var(--sky-blue);
-    margin: 0 auto 1rem;
-}
-
-.verified-item h4 {
+.verified-strip h3 {
     color: var(--navy);
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.verified-item p {
-    color: var(--gray-600);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-}
-
-.verified-note {
-    text-align: center;
-    margin-top: 2.5rem;
-    color: var(--gray-500);
-    font-size: 0.875rem;
-    font-style: italic;
-}
-
-/* ============================================
-   Category Vehicles Section
-   ============================================ */
-
-.category-section {
-    background-color: var(--white);
-}
-
-.two-column-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.column-content p {
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.category-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-}
-
-.category-list li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-.category-list li svg {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-}
-
-.category-list li svg[data-lucide="check-circle"] {
-    color: var(--success);
-}
-
-.category-list li svg[data-lucide="x-circle"] {
-    color: var(--error);
-}
-
-.category-list li svg[data-lucide="eye"],
-.category-list li svg[data-lucide="shield"] {
-    color: var(--sky-blue);
-}
-
-.category-note {
-    font-size: 0.9375rem;
-    color: var(--gray-600);
-    line-height: 1.6;
-    margin-top: 1.5rem;
-}
-
-.info-box {
-    background-color: var(--off-white);
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    border-left: 4px solid var(--sky-blue);
-}
-
-.info-box h4 {
-    color: var(--navy);
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-.info-box p {
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* ============================================
-   What We're NOT Section
-   ============================================ */
-
-.what-not-section {
-    background-color: var(--gray-50);
-}
-
-.not-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.not-item {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    text-align: center;
-    border: 2px solid var(--gray-200);
-}
-
-.not-item i {
-    width: 40px;
-    height: 40px;
-    color: var(--error);
-    margin: 0 auto 1rem;
-}
-
-.not-item p {
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin: 0;
-}
-
-.not-item strong {
-    color: var(--navy);
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.what-not-footer {
-    text-align: center;
-    margin-top: 2.5rem;
+.verified-intro {
     color: var(--gray-600);
     font-size: 1rem;
-    line-height: 1.6;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ============================================
-   Philosophy Section
-   ============================================ */
-
-.philosophy-section {
-    background-color: var(--navy);
-    color: var(--white);
-}
-
-.philosophy-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.philosophy-content h2 {
-    color: var(--white);
-    margin-bottom: 1.5rem;
-}
-
-.philosophy-lead {
-    font-size: 1.25rem;
-    color: var(--gray-300);
     margin-bottom: 2.5rem;
 }
 
-.philosophy-comparison {
+.verified-badges {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.badge-item i {
+    width: 40px;
+    height: 40px;
+    color: var(--sky-blue);
+}
+
+.badge-item span {
+    font-size: 0.9375rem;
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+/* Comparison Philosophy Text */
+.comparison-philosophy {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--gray-700);
+    max-width: 900px;
+    margin: 1rem auto 0;
+}
+
+.comparison-philosophy strong {
+    color: var(--navy);
+}
+
+/* Pricing Info Grid - Category & Transparency */
+.pricing-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin: 3rem 0;
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
-.philosophy-item p {
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    color: var(--gray-300);
+.info-callout {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.75rem;
+    background-color: var(--off-white);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--sky-blue);
 }
 
-.philosophy-item strong {
-    color: var(--sky-blue-light);
+.callout-icon {
+    flex-shrink: 0;
 }
 
-.philosophy-conclusion {
+.callout-icon i {
+    width: 32px;
+    height: 32px;
+    color: var(--sky-blue);
+}
+
+.callout-content h4 {
+    color: var(--navy);
     font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--white);
-    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
 }
 
-/* ============================================
-   Fee Note (Pricing Section)
-   ============================================ */
-
-.fee-note {
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    margin-top: 1.5rem;
-    font-style: italic;
+.callout-content p {
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
 }
+
 
 /* ============================================
    Chat Widget
@@ -4280,28 +4144,38 @@ button:active::after {
     }
 }
 
-    /* New Sections - Mobile Responsive */
-    .verified-grid,
-    .not-grid {
+    /* Integrated Elements - Mobile Responsive */
+    .verified-badges {
+        gap: 2rem;
+    }
+
+    .badge-item span {
+        font-size: 0.875rem;
+    }
+
+    .comparison-philosophy {
+        font-size: 1rem;
+    }
+
+    .pricing-info-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
-    .two-column-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .info-callout {
+        padding: 1.25rem;
     }
 
-    .philosophy-comparison {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .callout-icon i {
+        width: 28px;
+        height: 28px;
     }
 
-    .philosophy-lead {
-        font-size: 1.125rem;
-    }
-
-    .philosophy-conclusion {
+    .callout-content h4 {
         font-size: 1rem;
+    }
+
+    .callout-content p {
+        font-size: 0.875rem;
     }
 }
