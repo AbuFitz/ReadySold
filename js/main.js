@@ -1088,7 +1088,7 @@ const stepDetails = {
             <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Note:</strong> You set your own price. We provide market insights but the decision is yours.</p>
 
             <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
-                Book an Inspection
+                Get Started &ndash; Book Inspection
             </button>
         `
     },
@@ -1150,7 +1150,7 @@ const stepDetails = {
             </div>
 
             <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
-                Book an Inspection
+                Get Started &ndash; Book Inspection
             </button>
         `
     }
@@ -1227,6 +1227,31 @@ async function sendEmailNotification(type, data) {
         console.error('Email sending error:', error);
         throw error;
     }
+}
+
+// ============================================
+// FAQ Accordion
+// ============================================
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                faqItems.forEach(faqItem => faqItem.classList.remove('active'));
+
+                // Open clicked item if it wasn't already active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
 }
 
 // Make functions globally available

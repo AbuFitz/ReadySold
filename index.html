@@ -34,7 +34,7 @@
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#comparison">Why Choose Us</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><button class="btn-nav" onclick="openModal()">Book an Inspection</button></li>
+                <li><button class="btn-nav" onclick="openModal()">Get Started &ndash; Book Inspection</button></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobile-toggle">
@@ -67,7 +67,7 @@
                         <input type="tel" name="phone" id="phone" placeholder="e.g. 07700 900000" required>
                     </div>
                     <button type="submit" class="btn-hero">
-                        Book an Inspection
+                        Get Started &ndash; Book Inspection
                         <i data-lucide="arrow-right"></i>
                     </button>
                 </form>
@@ -76,15 +76,25 @@
         </div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="trust-bar">
-        <div class="trust-container">
-            <div class="trust-grid" style="justify-content: center;">
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <span class="trust-text">A Better Way to Sell Your Car</span>
+    <!-- ReadySold Verified -->
+    <section class="verified-bar">
+        <div class="container">
+            <div class="verified-badges-hero">
+                <div class="badge-item">
+                    <i data-lucide="shield-check"></i>
+                    <span>Identity Verified</span>
+                </div>
+                <div class="badge-item">
+                    <i data-lucide="file-check"></i>
+                    <span>History Checked</span>
+                </div>
+                <div class="badge-item">
+                    <i data-lucide="clipboard-check"></i>
+                    <span>Condition Documented</span>
+                </div>
+                <div class="badge-item">
+                    <i data-lucide="alert-circle"></i>
+                    <span>Faults Disclosed</span>
                 </div>
             </div>
         </div>
@@ -130,41 +140,51 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- ReadySold Verified - Integrated -->
-            <div class="verified-strip">
-                <h3>ReadySold Verified</h3>
-                <p class="verified-intro">Every listing includes professional verification for buyer confidence</p>
+    <!-- Professional Photography -->
+    <section class="photography-section">
+        <div class="container">
+            <div class="photography-content">
+                <div class="photography-text">
+                    <h2>Professional Photography</h2>
+                    <p class="photography-lead">Every vehicle gets a comprehensive photo shoot covering all angles</p>
 
-                <div class="verified-badges">
-                    <div class="badge-item">
-                        <i data-lucide="shield-check"></i>
-                        <span>Identity Verified</span>
-                    </div>
-                    <div class="badge-item">
-                        <i data-lucide="file-check"></i>
-                        <span>History Checked</span>
-                    </div>
-                    <div class="badge-item">
-                        <i data-lucide="clipboard-check"></i>
-                        <span>Condition Documented</span>
-                    </div>
-                    <div class="badge-item">
-                        <i data-lucide="alert-circle"></i>
-                        <span>Faults Disclosed</span>
+                    <div class="photo-features">
+                        <div class="photo-feature">
+                            <i data-lucide="camera"></i>
+                            <div>
+                                <h4>Exterior Shots</h4>
+                                <p>All angles, paintwork, wheels, badges</p>
+                            </div>
+                        </div>
+                        <div class="photo-feature">
+                            <i data-lucide="layout"></i>
+                            <div>
+                                <h4>Interior Detail</h4>
+                                <p>Seats, dashboard, controls, condition</p>
+                            </div>
+                        </div>
+                        <div class="photo-feature">
+                            <i data-lucide="settings"></i>
+                            <div>
+                                <h4>Engine & Boot</h4>
+                                <p>Mechanical presentation, storage space</p>
+                            </div>
+                        </div>
+                        <div class="photo-feature">
+                            <i data-lucide="zap"></i>
+                            <div>
+                                <h4>Notable Features</h4>
+                                <p>Alloys, tech, extras, unique details</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Image Divider -->
-    <div class="image-divider">
-        <div class="image-divider-content">
-            <h2>Quality Photos Covering All Angles</h2>
-            <p>Detailed images that sell your car faster</p>
-        </div>
-    </div>
 
     <!-- Comparison Section -->
     <section class="comparison-section" id="comparison">
@@ -295,24 +315,138 @@
                         </div>
                     </div>
 
-                    <button class="btn-fee-cta" onclick="openModal()">Book an Inspection</button>
+                    <button class="btn-fee-cta" onclick="openModal()">Get Started &ndash; Book Inspection</button>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Integrated Info Boxes -->
-                <div class="pricing-info-grid">
-                    <div class="info-callout">
-                        <div class="callout-icon"><i data-lucide="info"></i></div>
-                        <div class="callout-content">
-                            <h4>Category Vehicles</h4>
-                            <p>We accept <strong>Category S & N</strong> vehicles with full disclosure. Category A & B not accepted. Status always clearly shown to buyers.</p>
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">QUESTIONS</p>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about selling with ReadySold</p>
+            </div>
+
+            <div class="faq-grid">
+                <!-- Left Column -->
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is ReadySold?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>ReadySold is a managed private-sale service. We handle the preparation, presentation, enquiries, and viewings while you keep full control of pricing and the final decision to sell. All sales are private transactions between buyer and seller — we provide facilitation, preparation, and support.</p>
                         </div>
                     </div>
 
-                    <div class="info-callout">
-                        <div class="callout-icon"><i data-lucide="alert-triangle"></i></div>
-                        <div class="callout-content">
-                            <h4>What We're NOT</h4>
-                            <p>Not a dealer. Not instant cash. No guaranteed prices. Visual inspections only (not warranties). You control pricing and final decisions.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What are the fees?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>Sell-Ready Service Fee: £495</strong> (paid upfront, non-refundable) — Covers inspection, photography, listing, and buyer management whether or not the car sells.</p>
+                            <p><strong>Success Fee: £395</strong> (only if sold) — Flat fee payable only if a sale completes through ReadySold.</p>
+                            <p>Optional preparation, servicing, or repairs are quoted separately and only carried out with your approval.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do you accept Category S or N vehicles?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we accept <strong>Category S and Category N</strong> vehicles with full disclosure. Category status is always clearly shown to buyers upfront and transparently.</p>
+                            <p><strong>Category A and B vehicles are not accepted.</strong></p>
+                            <p>Category vehicles are handled with the same documentation standards as non-category vehicles, with additional disclosure to ensure buyer transparency.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Who sets the price?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p><strong>You do.</strong> ReadySold provides market insights and guidance, but you set your own price and maintain control of your minimum acceptable offer. You approve or decline all offers — no pressure to accept anything below your expectations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do I keep my car during the process?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. You keep your vehicle throughout the entire selling process. We coordinate viewings around your schedule, and you remain present. The car stays with you until handover — if you choose to accept an offer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is ReadySold NOT?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>ReadySold is <strong>not a car dealer</strong> — we don't buy vehicles.</p>
+                            <p>We're <strong>not an instant cash service</strong> — we facilitate professional private sales.</p>
+                            <p>We provide <strong>no guaranteed prices or timeframes</strong> — you control pricing and final decisions.</p>
+                            <p>Our inspections are <strong>visual and observational</strong> — not mechanical warranties or guarantees.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is ReadySold Verified?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Every ReadySold listing includes professional verification:</p>
+                            <ul>
+                                <li><strong>Identity Verified</strong> — Seller identity confirmed</li>
+                                <li><strong>History Checked</strong> — Vehicle history verified, category status disclosed</li>
+                                <li><strong>Condition Documented</strong> — Professional visual inspection summary</li>
+                                <li><strong>Faults Disclosed</strong> — Known issues clearly documented</li>
+                            </ul>
+                            <p>Note: ReadySold inspections are visual assessments, not mechanical warranties.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How long does it take to sell?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We cannot guarantee timeframes as this depends on make, model, condition, pricing, and market demand. ReadySold provides professional presentation and buyer management — but you remain in control of pricing decisions, which directly impacts sale speed.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What if my car doesn't sell?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The £495 Sell-Ready Service Fee covers preparation and management work carried out whether or not the car sells, and is non-refundable. You pay no Success Fee unless a sale completes. You keep your car and there's no additional charge.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I cancel or withdraw my car?</span>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. You remain in control throughout. The upfront Sell-Ready Service Fee is non-refundable as the work has been completed, but you're free to withdraw your vehicle from sale at any time.</p>
                         </div>
                     </div>
                 </div>
@@ -320,15 +454,13 @@
         </div>
     </section>
 
-    <!-- REMOVED: Standalone sections now integrated above -->
-
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="container">
             <h2>Ready to Sell Your Way?</h2>
             <p>Book an inspection and see if ReadySold is right for you — no obligation.</p>
             <button class="btn-cta" onclick="openModal()">
-                Book an Inspection
+                Get Started &ndash; Book Inspection
                 <i data-lucide="arrow-right"></i>
             </button>
         </div>
@@ -396,7 +528,7 @@
             </button>
 
             <div class="modal-content" id="modal-step-1">
-                <h3 id="modal-title">Book an Inspection</h3>
+                <h3 id="modal-title">Get Started &ndash; Book Inspection</h3>
                 <p id="modal-subtitle">Tell us about your car and we'll arrange an eligibility check and inspection.</p>
 
                 <form id="contact-form">
