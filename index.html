@@ -34,7 +34,7 @@
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#comparison">Why Choose Us</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><button class="btn-nav" onclick="openModal()">Get Free Valuation</button></li>
+                <li><button class="btn-nav" onclick="openModal()">Book an Inspection</button></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobile-toggle">
@@ -48,8 +48,8 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text-content">
-                <h1>Sell Your Car<br><span class="hero-highlight">Without The Stress</span></h1>
-                <p class="hero-subtitle">Get top market price while we do the work. No upfront fees, no time-wasters.<br>Keep driving until sold — you only pay when we get you results.</p>
+                <h1>Sell Your Car<br><span class="hero-highlight">Your Way</span></h1>
+                <p class="hero-subtitle">Managed private sale. We handle buyers, viewings, and admin.<br>You keep control of pricing and the final decision. Keep your car throughout.</p>
             </div>
 
             <div class="hero-form-card">
@@ -63,15 +63,15 @@
                         <input type="text" name="mileage" id="mileage" placeholder="e.g. 45,000" required>
                     </div>
                     <div class="form-field">
-                        <label>Your Price</label>
-                        <input type="text" name="price" id="price" placeholder="e.g. £6,000" required>
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" id="phone" placeholder="e.g. 07700 900000" required>
                     </div>
                     <button type="submit" class="btn-hero">
-                        Get Free Valuation
+                        Book an Inspection
                         <i data-lucide="arrow-right"></i>
                     </button>
                 </form>
-                <p class="hero-form-note">30-day listing • Pay only if sold • Takes 30 seconds</p>
+                <p class="hero-form-note">Flat fees • No commission • Takes 30 seconds</p>
             </div>
         </div>
     </section>
@@ -95,15 +95,15 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-subtitle">THE PROCESS</p>
-                <h2>Three simple steps</h2>
-                <p class="how-tagline">Your car sold hassle-free in days, not weeks</p>
+                <h2>How ReadySold Works</h2>
+                <p class="how-tagline">Managed private sale — you keep control throughout</p>
             </div>
 
             <div class="steps-container">
                 <div class="step-card" onclick="openStepModal(1)">
                     <div class="step-number">1</div>
-                    <h3>Get Valuation</h3>
-                    <p class="step-intro">We analyze the market and provide a realistic, achievable price for your car.</p>
+                    <h3>Inspection & Eligibility</h3>
+                    <p class="step-intro">Submit your car details. We check eligibility and book a visual inspection to verify condition.</p>
                     <button class="step-expand-btn">
                         <span>View Details</span>
                         <i data-lucide="chevron-right"></i>
@@ -112,8 +112,8 @@
 
                 <div class="step-card" onclick="openStepModal(2)">
                     <div class="step-number">2</div>
-                    <h3>We Handle Sales</h3>
-                    <p class="step-intro">Quality photos, listings, viewings, and negotiations — all managed by us.</p>
+                    <h3>Sell-Ready Preparation</h3>
+                    <p class="step-intro">Professional photos, documentation, and ReadySold Verified listing. You set your price.</p>
                     <button class="step-expand-btn">
                         <span>View Details</span>
                         <i data-lucide="chevron-right"></i>
@@ -122,8 +122,8 @@
 
                 <div class="step-card" onclick="openStepModal(3)">
                     <div class="step-number">3</div>
-                    <h3>Get Paid</h3>
-                    <p class="step-intro">Buyer pays you directly. We handle paperwork. You pay us only when sold.</p>
+                    <h3>We Handle Buyers</h3>
+                    <p class="step-intro">We manage enquiries, viewings, and test drives. You approve or decline all offers — no pressure.</p>
                     <button class="step-expand-btn">
                         <span>View Details</span>
                         <i data-lucide="chevron-right"></i>
@@ -147,7 +147,7 @@
             <div class="section-header">
                 <p class="section-subtitle">THE DIFFERENCE</p>
                 <h2>Why Choose ReadySold?</h2>
-                <p>More money in your pocket, zero stress on your shoulders</p>
+                <p>Professional private selling — without the hassle</p>
             </div>
 
             <div class="comparison-container">
@@ -163,7 +163,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Get full market value</td>
+                            <td>Target private-sale pricing</td>
                             <td><i data-lucide="check" class="check"></i></td>
                             <td><i data-lucide="check" class="check"></i></td>
                             <td><i data-lucide="x" class="cross"></i></td>
@@ -247,13 +247,14 @@
                         <!-- Service Fee -->
                         <div class="fee-content active" id="fee-service">
                             <div class="fee-amount">£495</div>
-                            <p class="fee-description">Paid upfront for preparation and management</p>
+                            <p class="fee-description">Paid upfront before listing (non-refundable)</p>
 
                             <ul class="fee-list">
                                 <li><i data-lucide="check"></i><span>Professional listing & photos</span></li>
                                 <li><i data-lucide="check"></i><span>Inspection & condition report</span></li>
                                 <li><i data-lucide="check"></i><span>Viewings & enquiry handling</span></li>
                             </ul>
+                            <p class="fee-note">Optional prep/repairs quoted separately with your approval</p>
                         </div>
 
                         <!-- Success Fee -->
@@ -275,15 +276,137 @@
         </div>
     </section>
 
+    <!-- ReadySold Verified Section -->
+    <section class="verified-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">VERIFICATION</p>
+                <h2>ReadySold Verified</h2>
+                <p>Professional presentation that builds buyer confidence</p>
+            </div>
 
+            <div class="verified-grid">
+                <div class="verified-item">
+                    <i data-lucide="user-check"></i>
+                    <h4>Identity Verified</h4>
+                    <p>Seller identity confirmed for buyer peace of mind</p>
+                </div>
+
+                <div class="verified-item">
+                    <i data-lucide="file-text"></i>
+                    <h4>History Checks</h4>
+                    <p>Vehicle history verified, category status disclosed</p>
+                </div>
+
+                <div class="verified-item">
+                    <i data-lucide="clipboard-check"></i>
+                    <h4>Visual Inspection</h4>
+                    <p>Professional condition summary and documentation</p>
+                </div>
+
+                <div class="verified-item">
+                    <i data-lucide="alert-circle"></i>
+                    <h4>Transparent Faults</h4>
+                    <p>Known issues clearly documented upfront</p>
+                </div>
+            </div>
+
+            <p class="verified-note">ReadySold inspections are visual and observational — not mechanical warranties</p>
+        </div>
+    </section>
+
+    <!-- Category Vehicles Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="two-column-layout">
+                <div class="column-content">
+                    <p class="section-subtitle">CATEGORY VEHICLES</p>
+                    <h2>We Accept Cat S & Cat N</h2>
+                    <p>ReadySold accepts Category S and Category N vehicles with full transparency and professional disclosure.</p>
+
+                    <ul class="category-list">
+                        <li><i data-lucide="check-circle"></i><span>Category S & N accepted</span></li>
+                        <li><i data-lucide="x-circle"></i><span>Category A & B not accepted</span></li>
+                        <li><i data-lucide="eye"></i><span>Status always clearly shown to buyers</span></li>
+                        <li><i data-lucide="shield"></i><span>Same documentation standards apply</span></li>
+                    </ul>
+
+                    <p class="category-note">Category vehicles are handled with additional disclosure to ensure buyer transparency and reduce disputes.</p>
+                </div>
+
+                <div class="column-visual">
+                    <div class="info-box">
+                        <h4>Full Disclosure</h4>
+                        <p>Category status is prominently displayed on all listings. Buyers are informed upfront and transparently, reducing negotiation friction and building trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We're NOT Section -->
+    <section class="what-not-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">TRANSPARENCY</p>
+                <h2>What ReadySold Is NOT</h2>
+                <p>Clear about what we do — and what we don't</p>
+            </div>
+
+            <div class="not-grid">
+                <div class="not-item">
+                    <i data-lucide="x"></i>
+                    <p><strong>Not a dealer</strong><br>We don't buy vehicles</p>
+                </div>
+
+                <div class="not-item">
+                    <i data-lucide="x"></i>
+                    <p><strong>Not instant cash</strong><br>We facilitate private sales</p>
+                </div>
+
+                <div class="not-item">
+                    <i data-lucide="x"></i>
+                    <p><strong>No guaranteed prices</strong><br>You control pricing decisions</p>
+                </div>
+
+                <div class="not-item">
+                    <i data-lucide="x"></i>
+                    <p><strong>No warranty service</strong><br>Visual inspections only</p>
+                </div>
+            </div>
+
+            <p class="what-not-footer">All sales are private transactions between buyer and seller. ReadySold provides facilitation, preparation, and support.</p>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="container">
+            <div class="philosophy-content">
+                <h2>Our Philosophy</h2>
+                <p class="philosophy-lead">There is no single "best" way to sell a car.</p>
+
+                <div class="philosophy-comparison">
+                    <div class="philosophy-item">
+                        <p><strong>Dealer-led routes</strong> prioritise speed and certainty</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <p><strong>Private sales</strong> prioritise value and control</p>
+                    </div>
+                </div>
+
+                <p class="philosophy-conclusion">ReadySold exists to make private selling professional, transparent, and manageable — without turning it into a dealer transaction.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="container">
-            <h2>Ready to Sell Without The Stress?</h2>
-            <p>Get your free valuation today — no obligation, no pressure.</p>
+            <h2>Ready to Sell Your Way?</h2>
+            <p>Book an inspection and see if ReadySold is right for you — no obligation.</p>
             <button class="btn-cta" onclick="openModal()">
-                Get Free Valuation
+                Book an Inspection
                 <i data-lucide="arrow-right"></i>
             </button>
         </div>
@@ -351,8 +474,8 @@
             </button>
 
             <div class="modal-content" id="modal-step-1">
-                <h3 id="modal-title">Get Your Free Valuation</h3>
-                <p id="modal-subtitle">Tell us about your car and we'll get back to you promptly.</p>
+                <h3 id="modal-title">Book an Inspection</h3>
+                <p id="modal-subtitle">Tell us about your car and we'll arrange an eligibility check and inspection.</p>
 
                 <form id="contact-form">
                     <!-- Car details - shown when modal opened directly -->
@@ -368,8 +491,12 @@
                         </div>
 
                         <div class="modal-field">
-                            <label>Your Expected Price</label>
-                            <input type="text" name="price" id="modal-price" placeholder="e.g. £6,000" required>
+                            <label>Category Status (if applicable)</label>
+                            <select name="category" id="modal-category">
+                                <option value="none">None / Not Applicable</option>
+                                <option value="cat-s">Category S</option>
+                                <option value="cat-n">Category N</option>
+                            </select>
                         </div>
                     </div>
 
@@ -389,7 +516,7 @@
                         <input type="email" name="email" id="contact-email" placeholder="john@example.com" required>
                     </div>
 
-                    <button type="submit" class="btn-modal">Get My Free Valuation</button>
+                    <button type="submit" class="btn-modal">Book Inspection</button>
 
                     <p class="modal-privacy">
                         <i data-lucide="lock"></i>

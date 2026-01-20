@@ -1058,94 +1058,99 @@ setTimeout(() => {
 
 const stepDetails = {
     1: {
-        title: "Get Your Free Valuation",
+        title: "Inspection & Eligibility",
         content: `
-            <h3>Step 1: Get Your Valuation</h3>
-            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">We provide honest, market-based valuations — no inflated promises.</p>
-            
+            <h3>Step 1: Inspection & Eligibility</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">We verify your vehicle and confirm suitability for managed private sale.</p>
+
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
                 <h4 style="margin-bottom: 1rem; color: var(--navy);">What We Do:</h4>
                 <ul style="list-style: none; padding: 0;">
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
                         <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
-                        <span>Analyze recent sales data for your exact make and model</span>
+                        <span>Check vehicle eligibility for managed sale</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
                         <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
-                        <span>Review current market demand and pricing trends</span>
+                        <span>Visual inspection and condition assessment</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
                         <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
-                        <span>Consider your car's condition, mileage, and service history</span>
+                        <span>Category status disclosure (if applicable)</span>
                     </li>
                     <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
                         <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
-                        <span>Provide a realistic price that will actually sell</span>
+                        <span>Discuss pricing strategy and expectations</span>
                     </li>
                 </ul>
             </div>
 
-            <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Response time:</strong> We aim to respond promptly during business hours (Mon-Sat, 9am-6pm)</p>
-            
+            <p style="font-size: 0.938rem; color: var(--gray-500);"><strong>Note:</strong> You set your own price. We provide market insights but the decision is yours.</p>
+
             <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
-                Get Free Valuation Now
+                Book an Inspection
             </button>
         `
     },
     2: {
-        title: "We Handle Everything",
+        title: "Sell-Ready Preparation",
         content: `
-            <h3>Step 2: We Handle Everything</h3>
-            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Sit back and relax. We take complete control of the sale.</p>
-            
+            <h3>Step 2: Sell-Ready Preparation</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Professional presentation with ReadySold Verified system.</p>
+
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Quality Photos</h4>
-                <p style="margin: 0; color: var(--gray-600);">Detailed images covering all angles of your vehicle. We capture exterior, interior, engine bay, and any notable features to showcase your car effectively.</p>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Professional Photography</h4>
+                <p style="margin: 0; color: var(--gray-600);">Quality images covering all angles — exterior, interior, engine bay, and notable features.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Multi-Platform Advertising</h4>
-                <p style="margin: 0; color: var(--gray-600);">Your car gets listed on AutoTrader, eBay Motors, Facebook Marketplace, and more. Maximum exposure = faster sale.</p>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">ReadySold Verified Documentation</h4>
+                <p style="margin: 0; color: var(--gray-600);">Identity verification, history checks, condition summary, and transparent fault disclosure.</p>
             </div>
 
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Buyer Screening</h4>
-                <p style="margin: 0; color: var(--gray-600);">We filter out time-wasters and lowballers. Only serious, qualified buyers get through to viewings.</p>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Professional Listing</h4>
+                <p style="margin: 0; color: var(--gray-600);">Comprehensive listing created at your set price. Multi-platform exposure for maximum visibility.</p>
             </div>
 
-            <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Viewings & Test Drives</h4>
-                <p style="margin: 0; color: var(--gray-600);">We coordinate all viewings around your schedule. You're present but we handle the conversations and negotiations.</p>
-            </div>
-
-            <p style="font-size: 0.938rem; color: var(--gray-500); margin-top: 2rem;"><strong>Best part:</strong> You keep driving your car the entire time. It stays with you until sold.</p>
+            <p style="font-size: 0.938rem; color: var(--gray-500); margin-top: 2rem;"><strong>Upfront Fee:</strong> £495 Sell-Ready Service Fee covers all preparation whether or not the car sells.</p>
         `
     },
     3: {
-        title: "Get Paid",
+        title: "We Handle Buyers",
         content: `
-            <h3>Step 3: Get Paid</h3>
-            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">Simple, secure, and completely transparent.</p>
-            
+            <h3>Step 3: We Handle Buyers</h3>
+            <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">You keep control. We handle the hassle.</p>
+
             <div style="background: var(--gray-50); padding: 2rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 1rem; color: var(--navy);">Payment Process:</h4>
-                <ol style="padding-left: 1.5rem; color: var(--gray-700);">
-                    <li style="margin-bottom: 1rem;"><strong>Sale Agreed:</strong> Once we negotiate the best price with a buyer</li>
-                    <li style="margin-bottom: 1rem;"><strong>Buyer Pays You:</strong> Money transfers directly to your account (we never handle the funds)</li>
-                    <li style="margin-bottom: 1rem;"><strong>Paperwork Sorted:</strong> We handle V5C transfer and all documentation</li>
-                    <li style="margin-bottom: 1rem;"><strong>Our Fee:</strong> You pay us 8% of the sale price (£350 minimum)</li>
-                </ol>
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">What We Manage:</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>All buyer enquiries and communication</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>Viewing coordination and test drive management</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>You approve or decline all offers — no pressure</span>
+                    </li>
+                    <li style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: flex-start;">
+                        <i data-lucide="check-circle" style="color: var(--sky-blue); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                        <span>If you accept: we support handover and completion</span>
+                    </li>
+                </ul>
             </div>
 
-            <div style="background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%); padding: 2rem; border-radius: var(--radius-md); color: white; text-align: center;">
-                <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">No Sale, No Fee</h4>
-                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.063rem;">You only pay if we successfully sell your car</p>
+            <div style="background: var(--off-white); padding: 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--sky-blue);">
+                <h4 style="margin-bottom: 1rem; color: var(--navy);">Success Fee</h4>
+                <p style="margin: 0; color: var(--gray-700);">£395 flat fee only if sale completes. Covers deal coordination, buyer communication, and completion support. You keep your vehicle throughout and pay nothing extra if the car doesn't sell.</p>
             </div>
 
-            <p style="font-size: 0.938rem; color: var(--gray-500); margin-top: 2rem;"><strong>Timeline:</strong> Most cars sell within 2-6 weeks, depending on make, model, and market conditions.</p>
-            
             <button class="btn-modal" onclick="closeStepModal(); openModal();" style="margin-top: 2rem;">
-                Start Selling Today
+                Book an Inspection
             </button>
         `
     }
