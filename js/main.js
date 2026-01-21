@@ -248,6 +248,9 @@ function openLearnMoreModal() {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay active';
     modal.id = 'learn-more-modal';
+    modal.onclick = function(e) {
+        if (e.target === this) closeLearnMoreModal();
+    };
     modal.innerHTML = `
         <div class="modal-container" style="max-width: 600px;">
             <button class="modal-close" onclick="closeLearnMoreModal()">

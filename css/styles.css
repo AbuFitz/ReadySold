@@ -14,16 +14,6 @@
     --sky-blue-light: #38BDF8;
     --sky-blue-dark: #0284C7;
 
-    /* Accent Colors for Visual Pop */
-    --purple: #8B5CF6;
-    --purple-light: #A78BFA;
-    --teal: #14B8A6;
-    --teal-light: #5EEAD4;
-    --orange: #F97316;
-    --orange-light: #FB923C;
-    --pink: #EC4899;
-    --pink-light: #F472B6;
-
     /* Neutrals */
     --white: #FFFFFF;
     --off-white: #F8FAFC;
@@ -41,11 +31,6 @@
     --success: #10B981;
     --warning: #F59E0B;
     --error: #EF4444;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--sky-blue) 0%, var(--purple) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--teal) 0%, var(--sky-blue) 100%);
-    --gradient-warm: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
 
     /* Typography */
     --font-primary: 'Plus Jakarta Sans', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -308,7 +293,7 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 .btn-nav {
-    background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--purple) 100%);
+    background-color: var(--sky-blue-light);
     color: var(--white) !important;
     padding: 0.75rem 1.75rem;
     border-radius: var(--radius-full);
@@ -318,13 +303,13 @@ body.non-home-page.scrolled .nav-menu a {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
 .btn-nav:hover {
-    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--purple-light) 100%);
+    background-color: var(--sky-blue);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
     color: var(--white) !important;
 }
 
@@ -400,10 +385,7 @@ body.non-home-page.scrolled .nav-menu a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg,
-        rgba(15, 23, 42, 0.75) 0%,
-        rgba(14, 165, 233, 0.3) 50%,
-        rgba(139, 92, 246, 0.2) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.4), rgba(0, 0, 0, 0.3));
     z-index: 1;
 }
 
@@ -434,7 +416,7 @@ body.non-home-page.scrolled .nav-menu a {
     color: var(--white);
     margin-bottom: 1.5rem;
     font-weight: 900;
-    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
     line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.02em;
@@ -459,10 +441,10 @@ body.non-home-page.scrolled .nav-menu a {
 .hero-form-card {
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(20px);
-    padding: 1.75rem 2rem 1.5rem;
+    padding: 1.75rem 2.5rem 1.5rem;
     border-radius: var(--radius-xl);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
-    max-width: 820px;
+    max-width: 980px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -472,8 +454,8 @@ body.non-home-page.scrolled .nav-menu a {
 
 .hero-form {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1.3fr;
-    gap: 1.125rem;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr;
+    gap: 1.25rem;
     align-items: end;
     margin-bottom: 1.25rem;
 }
@@ -524,7 +506,7 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 .btn-hero {
-    background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--purple) 100%);
+    background-color: var(--sky-blue-light);
     color: var(--white);
     padding: 0;
     border: none;
@@ -538,7 +520,7 @@ body.non-home-page.scrolled .nav-menu a {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
     white-space: nowrap;
     position: relative;
     right: 0;
@@ -569,9 +551,9 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 .btn-hero:hover {
-    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--purple-light) 100%);
+    background-color: var(--sky-blue);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
 }
 
 .btn-hero:hover svg {
@@ -599,9 +581,9 @@ body.non-home-page.scrolled .nav-menu a {
 
 /* Value Bar - Seller Benefits */
 .value-bar {
-    background: linear-gradient(135deg, #F0F9FF 0%, #EDE9FE 50%, #ECFDF5 100%);
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+    background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gray-200);
 }
 
 .value-badges {
@@ -617,41 +599,18 @@ body.non-home-page.scrolled .nav-menu a {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    transition: transform 0.3s ease;
 }
 
-.value-item:hover {
-    transform: translateY(-4px);
-}
-
-.value-item:nth-child(1) i {
-    width: 44px;
-    height: 44px;
-    color: var(--teal);
-}
-
-.value-item:nth-child(2) i {
-    width: 44px;
-    height: 44px;
-    color: var(--purple);
-}
-
-.value-item:nth-child(3) i {
-    width: 44px;
-    height: 44px;
+.value-item i {
+    width: 40px;
+    height: 40px;
     color: var(--sky-blue);
-}
-
-.value-item:nth-child(4) i {
-    width: 44px;
-    height: 44px;
-    color: var(--orange);
 }
 
 .value-item span {
     font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--navy);
+    font-weight: 500;
+    color: var(--gray-700);
 }
 
 /* ============================================
@@ -736,8 +695,8 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 .step-number {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--sky-blue) 100%);
     color: var(--white);
     border-radius: var(--radius-full);
@@ -745,7 +704,7 @@ body.non-home-page.scrolled .nav-menu a {
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    font-size: 1.875rem;
+    font-size: 1.75rem;
     margin: 0 auto 1.5rem;
     box-shadow:
         0 6px 20px rgba(56, 189, 248, 0.4),
@@ -755,49 +714,12 @@ body.non-home-page.scrolled .nav-menu a {
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Colorful step variations */
-.step-card:nth-child(1) .step-number {
-    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%);
-    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3);
-}
-
-.step-card:nth-child(2) .step-number {
-    background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple) 100%);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3);
-}
-
-.step-card:nth-child(3) .step-number {
-    background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
-    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3);
-}
-
 .step-card:hover .step-number {
-    transform: scale(1.15) rotate(5deg);
+    transform: scale(1.1) rotate(5deg);
     box-shadow:
-        0 8px 25px currentColor,
+        0 8px 25px rgba(56, 189, 248, 0.5),
         inset 0 -2px 0 rgba(0, 0, 0, 0.15),
         inset 0 2px 0 rgba(255, 255, 255, 0.4);
-}
-
-.step-card:nth-child(1):hover {
-    border-color: var(--teal);
-    box-shadow: 0 12px 30px rgba(20, 184, 166, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08);
-}
-
-.step-card:nth-child(2):hover {
-    border-color: var(--purple);
-    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08);
-}
-
-.step-card:nth-child(3):hover {
-    border-color: var(--orange);
-    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08);
 }
 
 .step-icon {
@@ -933,10 +855,7 @@ body.non-home-page.scrolled .nav-menu a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg,
-        rgba(14, 165, 233, 0.85) 0%,
-        rgba(139, 92, 246, 0.75) 50%,
-        rgba(236, 72, 153, 0.65) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(14, 165, 233, 0.4));
 }
 
 .photo-showcase-content {
@@ -1058,19 +977,7 @@ body.non-home-page.scrolled .nav-menu a {
 
 /* Pricing Section */
 .pricing-section {
-    background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 50%, var(--white) 100%);
-    position: relative;
-}
-
-.pricing-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -5%;
-    width: 40%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
-    pointer-events: none;
+    background-color: var(--white);
 }
 
 .pricing-wrapper {
@@ -1145,22 +1052,11 @@ body.non-home-page.scrolled .nav-menu a {
 
 .fee-tab:hover {
     color: var(--navy);
-    background: linear-gradient(to top, rgba(14, 165, 233, 0.05) 0%, transparent 100%);
 }
 
 .fee-tab.active {
-    background: linear-gradient(to top, rgba(14, 165, 233, 0.08) 0%, transparent 100%);
-    position: relative;
-}
-
-.fee-tab:nth-child(1).active {
-    color: var(--purple);
-    border-bottom-color: var(--purple);
-}
-
-.fee-tab:nth-child(2).active {
-    color: var(--teal);
-    border-bottom-color: var(--teal);
+    color: var(--sky-blue);
+    border-bottom-color: var(--sky-blue);
 }
 
 /* Fee Content */
@@ -1190,27 +1086,10 @@ body.non-home-page.scrolled .nav-menu a {
 }
 
 .fee-amount {
-    font-size: 2.75rem;
-    font-weight: 800;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--sky-blue);
     margin-bottom: 0.5rem;
-}
-
-#fee-upfront .fee-amount {
-    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-#fee-success .fee-amount {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .fee-description {
@@ -2436,7 +2315,7 @@ body.non-home-page.scrolled .nav-menu a {
     }
 }
 
-.modal {
+.modal, .modal-container {
     background-color: var(--white);
     border-radius: var(--radius-xl);
     max-width: 540px;
