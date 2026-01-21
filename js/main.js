@@ -286,7 +286,7 @@ function openLearnMoreModal() {
                     </ul>
                 </div>
 
-                <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--sky-blue-dark) 100%); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem; color: white;">
+                <div style="background: linear-gradient(135deg, var(--sky-blue-light) 0%, var(--sky-blue-dark) 100%); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 2rem; color: white;">
                     <p style="margin: 0; font-size: 1.063rem; color: rgba(255,255,255,0.95);">
                         <strong style="color: white;">Honest listings attract serious buyers.</strong> We're transparent about condition, which means you get realistic offers from people who actually want your car - not time-wasters expecting perfection.
                     </p>
