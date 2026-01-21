@@ -720,74 +720,74 @@ const chatbotKnowledge = {
 
 const responses = {
     greeting: [
-        "Hi! Thanks for stopping by. Whether you're curious about selling or just browsing, I'm here to help answer your questions.",
-        "Hello! I can help you understand how selling with us works, answer questions about pricing, or guide you through getting started.",
-        "Hey there! Feel free to ask me anything about selling your car - from how our process works to what happens with payment."
+        "Hi! I'm here to help with any questions about ReadySold. Ask me about our fees, process, or anything else.",
+        "Hello! Happy to explain how our managed private-sale service works. What would you like to know?",
+        "Hey! Feel free to ask about pricing, timeline, or how selling with ReadySold works."
     ],
     pricing: [
-        "We charge 8% of the final sale price, with a minimum fee of £350. You only pay when your car sells - no upfront costs, no hidden fees. If we don't sell it, you don't pay anything.",
-        "Our fee is straightforward: 8% commission with a £350 minimum, and you only pay after your car sells. Zero risk on your part. We're motivated to get you the best price because we only earn when you do.",
-        "It's 8% of whatever we sell your car for (minimum £350), but here's the key - you don't pay a penny until the sale completes. No listing fees, no photography charges, nothing upfront."
+        "We charge a flat £495 upfront service fee (non-refundable, paid at inspection) plus a £395 success fee when your car sells. No percentages, no commission.",
+        "Simple fees: £495 upfront (covers inspection, photos, listings, admin) and £395 when sold. That's it - no hidden costs or percentages.",
+        "£495 at inspection + £395 at sale. Flat fees, not commission-based. The upfront fee is non-refundable as it covers our service costs."
     ],
     process: [
-        "Here's how it works: First, you submit your car details and we provide a free valuation. Then we arrange to take photos covering all angles and create listings on AutoTrader, eBay Motors, Facebook Marketplace, and more. While we handle all buyer enquiries, viewings, and negotiations, you keep driving your car as normal. Once we find the right buyer and the sale completes, you get paid and we collect our 8% commission.",
-        "It's pretty simple. Step 1: Free valuation (no obligation). Step 2: We photograph your car and list it everywhere. Step 3: We manage buyers, viewings, and negotiations while you go about your life. Step 4: Sale completes, money goes to your account, you pay our 8%. That's it.",
-        "Think of it as us doing all the hard work while you relax. After the free valuation, we handle photography, create listings across multiple platforms, filter out time-wasters, coordinate viewings around your schedule, and negotiate with buyers. Your car stays with you the whole time until it sells."
+        "Book inspection → We photograph & list your car → Handle all buyers & viewings → You approve offers → Sale completes → You get paid. You keep your car throughout and stay in control.",
+        "Simple: inspection, photography, multi-platform listing, we manage buyers/viewings, you approve final sale. Your car stays with you the whole time.",
+        "We handle everything - photos, listings, buyers, viewings - while you keep control of pricing and final decisions. It's a managed private sale."
     ],
     driving: [
-        "Absolutely! Your car stays with you throughout. You keep the keys, keep driving, keep using it normally. We just schedule viewings around your availability. You're never without your car until it actually sells.",
-        "Yes, 100%. We work around your schedule - you keep full use of your vehicle. When someone wants to view it, we coordinate a time that suits you. No loss of mobility, no inconvenience.",
-        "That's one of the best parts - you maintain complete access to your car. We're not one of those services where you hand over the keys. It stays in your possession and you keep driving until the moment it sells."
+        "Yes, absolutely. Your car stays with you until it sells. We coordinate viewings around your schedule.",
+        "100%. You keep full access to your car throughout. We just arrange viewings when it suits you.",
+        "Your car never leaves you until sale completes. We work around your availability for viewings."
     ],
     time: [
-        "Most cars sell within 2-6 weeks, though it varies based on make, model, condition, and pricing. Popular models in good condition can move in days, while others might take a bit longer. We give realistic expectations based on your specific car and current market demand.",
-        "Timeline depends on your vehicle and the market. A well-priced car in decent condition typically sells within a month. Some move faster, some take longer. We'll be honest about realistic timeframes when we value your car.",
-        "Selling time varies - factors like make, model, mileage, condition, and price all matter. Most vehicles sell within 4-6 weeks. We respond quickly to valuations (usually same day), and then it's about finding the right buyer at the right price."
+        "Timeframes vary - we make no guarantees. Some cars sell quickly, others take longer depending on make, model, condition, and market demand.",
+        "It depends on the vehicle and market conditions. We're honest that we can't guarantee timelines, but we work actively to find buyers.",
+        "Timeline varies by car and market. We list actively but make no promises on how long it'll take."
     ],
     payment: [
-        "Payment is direct and secure. The buyer pays you directly - the money goes straight into your account, not through us. Once you've received the full amount and the sale is complete, you then pay our 8% commission (£350 minimum). You're always in control of the funds.",
-        "Here's the payment flow: Buyer transfers money directly to your bank account → You confirm receipt → Sale paperwork completed → You pay our 8% commission. Simple, transparent, secure. We never touch the buyer's money.",
-        "When your car sells, the buyer pays you directly. You get the cash in your account first. After you've been paid and the sale is finalized, you settle our 8% fee. Zero upfront costs, you're in control throughout."
+        "£495 paid at inspection (non-refundable). £395 success fee paid when your car sells. Buyer pays you directly, then you settle our success fee.",
+        "Upfront fee at inspection, success fee at sale. The buyer's payment goes straight to you - we never handle their money.",
+        "You pay £495 before we start, £395 when it sells. Buyer pays you directly, then you pay us the success fee."
     ],
     photography: [
-        "Photos are included at no extra cost. We take detailed images from all angles - exterior, interior, engine bay, boot, any features or notable details. Quality photos make a huge difference in attracting serious buyers and getting better offers.",
-        "We handle the photography as part of our service. We'll capture your car from every angle to give buyers a complete picture. Exterior shots, interior condition, engine bay - everything they need to see. No additional charge.",
-        "Yes, photos are included. We know good images sell cars, so we make sure to cover all angles: outside, inside, under the bonnet, any features worth highlighting. It's all part of getting you the best result."
+        "Included in the service. We take comprehensive photos covering all angles - exterior, interior, engine bay, details.",
+        "Professional photos are part of our £495 service fee. Full coverage from every angle.",
+        "Yes, covered in the upfront fee. We shoot all angles to make your listing stand out."
     ],
     selling: [
-        "We list your car on all major platforms: AutoTrader, eBay Motors, Facebook Marketplace, and others. We create compelling listings, field all enquiries, pre-screen buyers to filter out time-wasters, coordinate viewings, and handle negotiations. You stay informed and approve the final sale price.",
-        "Think of us as your personal sales team. We advertise your car across multiple platforms, manage all buyer communications, vet potential buyers, arrange viewings around your schedule, and negotiate to get the best price. You're involved in key decisions but free from the daily hassle.",
-        "Complete end-to-end service. Multi-platform listings, buyer screening, viewing coordination, expert negotiation, paperwork handling. We bring you serious buyers only, keep you updated throughout, and always get your approval before finalizing any sale."
+        "We list on AutoTrader, eBay Motors, Facebook Marketplace, and more. We handle all buyer contact, viewings, and negotiations.",
+        "Multi-platform listings (AutoTrader, eBay, Facebook, etc.). We manage buyers, coordinate viewings, negotiate - you approve the final deal.",
+        "Listed everywhere major. We screen buyers, handle viewings, negotiate offers, and keep you informed."
     ],
     condition: [
-        "Your car doesn't need to be perfect. We sell vehicles in all conditions - minor damage, scratches, high mileage, wear and tear, it doesn't matter. We're honest about condition in our listings, which actually attracts more realistic buyers. As long as your car runs and has valid documentation, we can sell it.",
-        "Honestly, condition doesn't need to be perfect at all. High mileage? Fine. A few dents or scratches? Not a problem. We handle cars as-is. Being upfront about condition in our listings means we attract buyers who are genuinely interested, not time-wasters expecting showroom perfection.",
-        "Don't worry about minor imperfections. We sell cars in any condition - high mileage, cosmetic damage, worn interiors, you name it. We're transparent about condition with buyers, which builds trust and leads to faster sales. If it's roadworthy with proper docs, we can work with it."
+        "We accept cars in any condition - including Category S/N. High mileage, minor damage, wear and tear - all fine. We're upfront with buyers about condition.",
+        "Category S/N accepted (A/B not accepted). Minor damage, high mileage, cosmetic issues - we handle it. Transparency attracts serious buyers.",
+        "Condition doesn't need to be perfect. We accept Cat S/N and cars with faults. Honest listings get better results."
     ],
     locations: [
-        "We currently operate across [regions/cities]. When you request a valuation, we can confirm if we cover your area. We're expanding our service areas regularly, so even if we're not in your location yet, it's worth checking with us.",
-        "Our coverage depends on where you're located. Submit your car details for a free valuation and we'll let you know if we service your area. We're growing our reach, so we might be expanding to your region soon.",
-        "Coverage varies by location. The best way to find out is to request a free valuation - we'll confirm whether we can help with your specific area. No obligation either way."
+        "Service availability depends on your location. Submit a booking request and we'll confirm if we cover your area.",
+        "Coverage varies by region. Request an inspection and we'll let you know if we service your area.",
+        "Submit your details and we'll confirm whether we operate in your location."
     ],
     paperwork: [
-        "We handle all the paperwork for you - V5C logbook transfer, any required documentation, everything needed to complete the sale legally. You'll need to provide your V5C, and we take care of the rest. Makes the whole process smooth and stress-free.",
-        "All documentation is sorted by us. We manage the V5C transfer, ensure everything is legal and above board, and handle the admin. You just need your logbook and any service history you have (helps with valuation). We do the rest.",
-        "Paperwork is part of our service. When the car sells, we coordinate the V5C transfer and make sure all documents are in order. You provide the logbook and we handle the administrative side of completing the sale."
+        "We handle V5C transfers and paperwork. You provide the logbook, we manage the admin when the sale completes.",
+        "All sorted by us. You need your V5C logbook - we handle the transfer and documentation.",
+        "We take care of the paperwork. Just have your V5C ready when it's time to complete the sale."
     ],
     viewings: [
-        "We coordinate all viewings around your schedule. When a buyer wants to see the car, we arrange a time that works for you. We're present during viewings to handle conversations and questions, but you're there too since it's your car. We manage the interaction professionally while respecting your time.",
-        "Viewings work around you. We schedule them at times that suit your availability - evenings, weekends, whenever. We accompany the viewing to handle buyer questions and negotiations. You're present, but we do the talking and managing. Makes it easy and low-pressure.",
-        "We manage the viewing process. Interested buyers go through us first, then we coordinate a time that fits your schedule. We're there with you during the viewing to handle discussions, answer questions, and deal with any negotiations. You're involved but not burdened."
+        "We coordinate viewings around your schedule. You're present (it's your car), but we handle conversations and negotiations.",
+        "Scheduled to suit you. We're there to manage buyer interactions while you keep control.",
+        "Viewings work around your availability. We handle the buyer communication and negotiation."
     ],
     valuation: [
-        "Getting a free valuation is easy. Just fill in the form on this page with your reg number and a few details, or if you prefer, you can reach out directly. We'll research current market values, look at comparable sales, and get back to you with an honest assessment. Zero obligation to proceed.",
-        "Free valuations are our starting point. Enter your registration and details in the form above, and we'll analyze market data, recent sales, and your car's specifics to provide a realistic valuation. It's completely free with no pressure to sell through us.",
-        "You can request a free valuation right on this page - just enter your registration number and we'll take it from there. We look at current market conditions, comparable vehicles, and your car's details to give you an accurate figure. No commitment required."
+        "We provide market guidance, but pricing is your decision. This is a managed private sale - you set the price and control final decisions.",
+        "You control pricing. We can advise on market values, but ultimately it's your call on what price to list and accept.",
+        "Pricing is up to you. We offer guidance based on market data, but you're in control."
     ],
     default: [
-        "That's a good question. Let me know specifically what you'd like to know more about - I can explain our pricing, walk you through how it works, discuss timeline expectations, talk about car conditions we accept, or anything else about the selling process.",
-        "I want to make sure I give you the right information. Could you tell me more about what you're curious about? Whether it's fees, process, timelines, paperwork, or something else - I'm here to help.",
-        "I can help with that - just need a bit more detail. Are you wondering about pricing, how the process works, how long things take, whether we accept cars in certain conditions, or something else? Let me know and I'll give you a proper answer."
+        "What would you like to know? I can explain our fees, process, timelines, accepted conditions, or anything else.",
+        "Happy to help. Ask me about pricing, how it works, viewings, accepted vehicles, or any other questions.",
+        "What can I help with? Fees, process, timeline, car condition - just ask."
     ]
 };
 
@@ -832,10 +832,10 @@ function addQuickReplies() {
     const quickRepliesDiv = document.createElement('div');
     quickRepliesDiv.className = 'quick-replies';
     quickRepliesDiv.innerHTML = `
-        <button class="quick-reply-btn" onclick="handleQuickReply('How much do you charge?')">Pricing</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('How does the process work?')">How It Works</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('Can I still drive my car?')">Keep Driving?</button>
-        <button class="quick-reply-btn" onclick="handleQuickReply('I want a free valuation')">Get Valuation</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('What are your fees?')">Pricing</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('How does it work?')">Process</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('Can I keep driving?')">Keep Car?</button>
+        <button class="quick-reply-btn" onclick="handleQuickReply('Do you accept damaged cars?')">Condition</button>
     `;
     chatMessages.appendChild(quickRepliesDiv);
     scrollToBottom();
